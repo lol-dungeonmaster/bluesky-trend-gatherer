@@ -44,6 +44,8 @@ function calculateDeltas(t, i, history, currentMomentTsStr) {
                 let durMins = Math.floor(durMs / 60000);
                 if (durMins > 0) {
                     timeUnchangedStr = `<span style="font-size: calc(9px * var(--font-mult)); opacity: 0.6; margin-left: 6px; font-weight: normal; color: FieldText;">(${durMins}m in pos)</span>`;
+                } else if (durMins === 0) {
+                    timeUnchangedStr = `<span style="font-size: calc(9px * var(--font-mult)); opacity: 0.6; margin-left: 6px; font-weight: normal; color: FieldText;">(<1m in pos)</span>`;
                 }
             }
         }

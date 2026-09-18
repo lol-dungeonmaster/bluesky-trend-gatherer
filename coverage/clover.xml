@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1789768363042" clover="3.2.0">
-  <project timestamp="1789768363042" name="All files">
-    <metrics statements="550" coveredstatements="392" conditionals="326" coveredconditionals="176" methods="53" coveredmethods="33" elements="929" coveredelements="601" complexity="0" loc="550" ncloc="550" packages="1" files="4" classes="4"/>
+<coverage generated="1789772981014" clover="3.2.0">
+  <project timestamp="1789772981014" name="All files">
+    <metrics statements="552" coveredstatements="392" conditionals="328" coveredconditionals="176" methods="53" coveredmethods="33" elements="933" coveredelements="601" complexity="0" loc="552" ncloc="552" packages="1" files="4" classes="4"/>
     <file name="background.src.js" path="/home/chuubi/Desktop/boromir-meme/trends_extension/src/background.src.js">
       <metrics statements="309" coveredstatements="185" conditionals="174" coveredconditionals="75" methods="27" coveredmethods="13"/>
       <line num="1" count="9" type="stmt"/>
@@ -315,7 +315,7 @@
       <line num="530" count="0" type="stmt"/>
     </file>
     <file name="math_deltas.js" path="/home/chuubi/Desktop/boromir-meme/trends_extension/src/math_deltas.js">
-      <metrics statements="40" coveredstatements="40" conditionals="59" coveredconditionals="46" methods="3" coveredmethods="3"/>
+      <metrics statements="42" coveredstatements="40" conditionals="61" coveredconditionals="46" methods="3" coveredmethods="3"/>
       <line num="2" count="4" type="cond" truecount="2" falsecount="3"/>
       <line num="3" count="4" type="stmt"/>
       <line num="4" count="4" type="cond" truecount="2" falsecount="0"/>
@@ -353,9 +353,11 @@
       <line num="44" count="1" type="stmt"/>
       <line num="45" count="1" type="cond" truecount="1" falsecount="1"/>
       <line num="46" count="1" type="stmt"/>
-      <line num="52" count="4" type="stmt"/>
-      <line num="55" count="1" type="cond" truecount="3" falsecount="1"/>
-      <line num="56" count="1" type="stmt"/>
+      <line num="47" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="48" count="0" type="stmt"/>
+      <line num="54" count="4" type="stmt"/>
+      <line num="57" count="1" type="cond" truecount="3" falsecount="1"/>
+      <line num="58" count="1" type="stmt"/>
     </file>
     <file name="popup.js" path="/home/chuubi/Desktop/boromir-meme/trends_extension/src/popup.js">
       <metrics statements="195" coveredstatements="161" conditionals="93" coveredconditionals="55" methods="23" coveredmethods="17"/>
