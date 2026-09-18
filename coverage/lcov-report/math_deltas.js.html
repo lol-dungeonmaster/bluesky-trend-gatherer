@@ -1,0 +1,256 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for math_deltas.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="index.html">All files</a> math_deltas.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>50/50</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">77.96% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>46/59</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>3/3</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>40/40</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function calculateDeltas(t, i, history, currentMomentTsStr) {
+    let title = t.displayName || t.topic || <span class="branch-2 cbranch-no" title="branch not covered" >t.name </span>|| <span class="branch-3 cbranch-no" title="branch not covered" >t.value </span>|| <span class="branch-4 cbranch-no" title="branch not covered" >"Unknown Topic";</span>
+    let rank = i + 1;
+    let pc = t.postCount || 0;
+    let ac = (t.actors &amp;&amp; Array.isArray(t.actors)) ? t.actors.length : 0;
+    
+    let rankDiffStr = `&lt;span style="color: #f97316; font-weight: bold; margin-left: 4px; font-size: calc(10px * var(--font-mult)); white-space: nowrap; display: inline-flex; align-items: flex-start; gap: 1px; text-shadow: 0 0 4px rgba(249, 115, 22, 0.4);"&gt;New&lt;span style="font-size: calc(16px * var(--font-mult)); color: #fbbf24; margin-top: -6px; line-height: 1;"&gt;✦&lt;/span&gt;&lt;/span&gt;`;
+    let pcDiffStr = "";
+    let acDiffStr = "";
+    let timeUnchangedStr = "";
+&nbsp;
+    if (history &amp;&amp; history.length &gt; 0) {
+        let prevTrends = history[0].trends;
+        let prevIndex = prevTrends.findIndex(pt =&gt; (pt.displayName || pt.topic || <span class="branch-2 cbranch-no" title="branch not covered" >pt.name </span>|| <span class="branch-3 cbranch-no" title="branch not covered" >pt.value </span>|| <span class="branch-4 cbranch-no" title="branch not covered" >"Unknown Topic")</span> === title);
+        
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (prevIndex !== -1) {
+            let prevRank = prevIndex + 1;
+            let prevPt = prevTrends[prevIndex];
+            let prevPc = prevPt.postCount || 0;
+            let prevAc = (prevPt.actors &amp;&amp; Array.isArray(prevPt.actors)) ? prevPt.actors.length : 0;
+&nbsp;
+            let rankDiff = prevRank - rank;
+            if (rankDiff &gt; 0) rankDiffStr = `&lt;span style="color:#4ade80; margin-left:4px; font-size: calc(11px * var(--font-mult));"&gt;▲${rankDiff}&lt;/span&gt;`;
+            else if (rankDiff &lt; 0) rankDiffStr = `&lt;span style="color:#ef4444; margin-left:4px; font-size: calc(11px * var(--font-mult));"&gt;▼${Math.abs(rankDiff)}&lt;/span&gt;`;
+            else rankDiffStr = `&lt;span style="color:color-mix(in srgb, CanvasText 40%, transparent); margin-left:4px; font-size: calc(11px * var(--font-mult));"&gt;—&lt;/span&gt;`;
+&nbsp;
+            let pcDiff = pc - prevPc;
+            if (pcDiff &gt; 0) pcDiffStr = `&lt;span style="color:#4ade80;"&gt;(+${pcDiff})&lt;/span&gt;`;
+            else if (pcDiff &lt; 0) pcDiffStr = `&lt;span style="color:#ef4444;"&gt;(${pcDiff})&lt;/span&gt;`;
+&nbsp;
+            let acDiff = ac - prevAc;
+            if (acDiff &gt; 0) acDiffStr = `&lt;span style="color:#4ade80;"&gt;(+${acDiff})&lt;/span&gt;`;
+            else if (acDiff &lt; 0) acDiffStr = `&lt;span style="color:#ef4444;"&gt;(${acDiff})&lt;/span&gt;`;
+&nbsp;
+            if (rankDiff === 0 &amp;&amp; currentMomentTsStr) {
+                let unchangedSince = history[0].ts;
+                for (let j = 1; j &lt; history.length; j++) {
+                    let ht = history[j].trends;
+                    let hIndex = ht.findIndex(pt =&gt; (pt.displayName || pt.topic || <span class="branch-2 cbranch-no" title="branch not covered" >pt.name </span>|| <span class="branch-3 cbranch-no" title="branch not covered" >pt.value </span>|| <span class="branch-4 cbranch-no" title="branch not covered" >"Unknown Topic")</span> === title);
+                    if (hIndex + 1 === rank) unchangedSince = history[j].ts;
+                    else break;
+                }
+                let durMs = new Date(currentMomentTsStr.replace(" ", "T")) - new Date(typeof unchangedSince === "string" ? <span class="branch-0 cbranch-no" title="branch not covered" >unchangedSince.replace(" ", "T") </span>: unchangedSince);
+                let durMins = Math.floor(durMs / 60000);
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (durMins &gt; 0) {
+                    timeUnchangedStr = `&lt;span style="font-size: calc(9px * var(--font-mult)); opacity: 0.6; margin-left: 6px; font-weight: normal; color: FieldText;"&gt;(${durMins}m in pos)&lt;/span&gt;`;
+                }
+            }
+        }
+    }
+&nbsp;
+    return { rankDiffStr, pcDiffStr, acDiffStr, timeUnchangedStr };
+}
+&nbsp;
+<span class="missing-if-branch" title="else path not taken" >E</span>if (typeof module !== 'undefined' &amp;&amp; module.exports) {
+    module.exports = { calculateDeltas };
+}
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-09-18T21:52:43.028Z
+            </div>
+        <script src="prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
+    </body>
+</html>
+    

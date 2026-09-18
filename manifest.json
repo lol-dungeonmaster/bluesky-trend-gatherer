@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "bluesky-trend-gatherer@localhost"
+    }
+  },
+  "name": "Bluesky Trend Gatherer",
+  "version": "1.0",
+  "icons": { "48": "assets/icon-on.svg", "96": "assets/icon-on.svg" },
+  "description": "Gathers and stores Bluesky trending data natively using DuckDB-Wasm and OPFS.",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "tabs",
+    "downloads",
+    "*://*.bsky.network/*",
+    "*://bsky.app/*"
+  ],
+  "browser_action": {
+    "default_title": "Toggle Monitor (Off)"
+    , "default_icon": "assets/icon-off.svg", "default_popup": "src/popup.html"
+  },
+  "options_ui": {
+    "page": "src/options.html",
+    "browser_style": true,
+    "open_in_tab": true
+  },
+  "background": {
+    "page": "src/background.html"
+  },
+  "web_accessible_resources": [
+    "lib/duckdb-eh.wasm",
+    "lib/duckdb-browser-eh.worker.js"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://bsky.app/*"],
+      "js": ["src/content.js"]
+    }
+  ]
+}

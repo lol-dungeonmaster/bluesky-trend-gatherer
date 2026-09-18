@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bluesky Trend Gatherer Settings</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; border-radius: 4px; }
+    .danger { background-color: #dc3545; color: white; border: none; }
+    .primary { background-color: #007bff; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <h2>Database Management</h2>
+  <button id="btn-export" class="primary">Export to Parquet</button>
+  <button id="btn-clear" class="danger">Clear Database & Reset Count</button>
+  <script src="options.js"></script>
+</body>
+</html>
