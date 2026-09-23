@@ -10,7 +10,7 @@
       border: none; background: none; padding: 2px 0; cursor: pointer; color: FieldText; font-family: monospace;
       width: 28px; text-align: center;
     }
-    .font-btn:hover { background: color-mix(in srgb, CanvasText 5%, transparent); }
+    .font-btn:hover { background: rgba(17, 133, 254, 0.15); color: #1185fe; }
     .font-btn.active { background: #1185fe !important; color: white !important; font-weight: bold; }
 
     :root {
@@ -114,7 +114,10 @@
       transition: all 0.2s ease-in-out;
     }
     button.nav-btn:hover:not(:disabled) {
-      text-shadow: 0 0 8px currentColor;
+      text-shadow: 0 0 8px #1185fe;
+      color: #1185fe;
+      border-color: rgba(17, 133, 254, 0.5);
+      background: rgba(17, 133, 254, 0.1);
     }
     button.nav-btn:disabled {
       opacity: 0.3;
@@ -147,7 +150,9 @@
       pointer-events: auto;
     }
     .scroll-top-btn:hover {
-      background: color-mix(in srgb, CanvasText 10%, transparent);
+      background: rgba(17, 133, 254, 0.2);
+      color: #1185fe;
+      border-color: rgba(17, 133, 254, 0.5);
       transform: scale(1.05);
     }
   </style>
@@ -167,15 +172,18 @@
         <button class="font-btn" data-size="1.25" title="Larger" style="border-right: 1px solid color-mix(in srgb, CanvasText 20%, transparent);">++</button>
         <button class="font-btn" data-size="1.5" title="Largest">+++</button>
       </div>
+      <button id="btnOptions" title="Settings / Export Database" class="nav-btn" style="padding: 2px 6px; margin-left: 6px; font-size: 14px;">⚙️</button>
     </div>
     
     <div class="trends-container" style="position: relative; margin-top: 15px; border-top: 1px solid color-mix(in srgb, CanvasText 20%, transparent); padding-top: 10px; display: flex; flex-direction: column; flex-grow: 1; min-height: 0;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-        <button id="btnPrev" title="Older" class="nav-btn">&lt;</button>
+        <button id="btnOldest" title="Oldest" class="nav-btn">&lt;&lt;</button>
+        <button id="btnPrev" title="Older" class="nav-btn" style="margin-left: 4px;">&lt;</button>
         <div id="trendTimestamp" style="font-size: calc(11px * var(--font-mult)); opacity: 0.9; text-align: center; flex-grow: 1;">Loading...</div>
-        <button id="btnNext" title="Newer" class="nav-btn">&gt;</button>
+        <button id="btnNext" title="Newer" class="nav-btn" style="margin-right: 4px;">&gt;</button>
+        <button id="btnNewest" title="Newest" class="nav-btn">&gt;&gt;</button>
       </div>
-      <div id="trendList" style="font-size: calc(11px * var(--font-mult)); line-height: 1.5; flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: color-mix(in srgb, CanvasText 5%, transparent); padding: 8px; border-radius: 6px; white-space: pre-wrap; word-break: break-word; min-height: 0;">
+      <div id="trendList" style="font-size: calc(11px * var(--font-mult)); line-height: 1.5; flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: color-mix(in srgb, CanvasText 5%, transparent); padding: 8px 8px 48px 8px; border-radius: 6px; white-space: pre-wrap; word-break: break-word; min-height: 0;">
       </div>
       <button id="scrollTopBtn" class="scroll-top-btn" title="Scroll to top">↑</button>
     </div>

@@ -14,7 +14,8 @@ const TrendingTopicSchema = z.object({
   description: z.string().optional().default("No context provided"),
   postCount: z.number().int().optional(),
   category: z.string().optional(),
-  actors: z.array(ActorSchema).optional()
+  actors: z.array(ActorSchema).optional(),
+  timeInTop20Ms: z.number().int().optional()
 }).passthrough();
 
 const TrendPayloadSchema = z.array(TrendingTopicSchema);

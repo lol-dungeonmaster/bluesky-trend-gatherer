@@ -18,6 +18,41 @@ browser.storage.local.get(["eventCount"]).then((res) => {
 browser.storage.local.remove("isActive"); // Clean up old state
 
 let sessionEventCount = 0;
+
+let longevityState = {};
+let previousTopics = new Set();
+async function rebuildLongevityState() {
+    if (!conn) return;
+    try {
+        const res = await conn.query("SELECT gap_ms, raw_json FROM trends ORDER BY captured_at ASC");
+        const rows = res.toArray().map(r => r.toJSON ? r.toJSON() : r);
+        longevityState = {};
+        previousTopics = new Set();
+        for (const r of rows) {
+            let arr = [];
+            try { arr = typeof r.raw_json === 'string' ? JSON.parse(r.raw_json) : r.raw_json; } catch(e) {}
+            
+            let currentTopics = new Set();
+            if (Array.isArray(arr)) {
+                for (const t of arr) {
+                    if (t && t.topic) {
+                        currentTopics.add(t.topic);
+                        if (longevityState[t.topic] === undefined) {
+                            longevityState[t.topic] = 0;
+                        } else if (previousTopics.has(t.topic)) {
+                            longevityState[t.topic] += (r.gap_ms || 0);
+                        }
+                    }
+                }
+            }
+            previousTopics = currentTopics;
+        }
+        console.log(`[${new Date().toISOString()}] Rebuilt longevity state for ${Object.keys(longevityState).length} unique trends.`);
+    } catch(e) {
+        console.error("Failed to rebuild longevity state", e);
+    }
+}
+
 let sessionStartTime = Date.now();
 let firstEventTime = null;
 let lastEventTime = null;
@@ -25,31 +60,80 @@ let lastEventTime = null;
 let cachedDbSize = "0 B";
 
 async function getDatabaseSizeStr() {
-    let totalBytes = 0;
     try {
-        const opfsRoot = await navigator.storage.getDirectory();
-        try {
-            const handle = await opfsRoot.getFileHandle('bluesky_trends.db');
-            const file = await handle.getFile();
-            totalBytes += file.size;
-        } catch(e) {}
-        try {
-            const handleWAL = await opfsRoot.getFileHandle('bluesky_trends.db.wal');
-            const fileWAL = await handleWAL.getFile();
-            totalBytes += fileWAL.size;
-        } catch(e) {}
-    } catch(e) {}
-
-    if (totalBytes === 0) return "0 B";
-    const k = 1024;
-    const sizes = ['B', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(totalBytes) / Math.log(k));
-    return parseFloat((totalBytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        if (navigator.storage && navigator.storage.estimate) {
+            const est = await navigator.storage.estimate();
+            if (est && est.usage) {
+                let bytes = est.usage;
+                if (bytes < 1024) return bytes + " B";
+                else if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+                else return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+            }
+        }
+    } catch(e) {
+        console.error("Storage estimate failed", e);
+    }
+    return "0 B";
 }
 
 let lastUpdateDurationMs = null;
 
+
+
+
+
+function createIconImageData(isOn) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = isOn ? "#1185fe" : "#999999";
+    ctx.beginPath();
+    ctx.moveTo(6, 0);
+    ctx.lineTo(26, 0);
+    ctx.quadraticCurveTo(32, 0, 32, 6);
+    ctx.lineTo(32, 26);
+    ctx.quadraticCurveTo(32, 32, 26, 32);
+    ctx.lineTo(6, 32);
+    ctx.quadraticCurveTo(0, 32, 0, 26);
+    ctx.lineTo(0, 6);
+    ctx.quadraticCurveTo(0, 0, 6, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 3;
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(6, 25);
+    ctx.lineTo(13, 17);
+    ctx.lineTo(19, 21);
+    ctx.lineTo(26, 11);
+    ctx.stroke();
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(18, 10);
+    ctx.lineTo(28, 10);
+    ctx.lineTo(28, 20);
+    ctx.closePath();
+    ctx.fill();
+    return ctx.getImageData(0, 0, 32, 32);
+}
+
 async function updateIcon() {
+    if (isActive) {
+        browser.browserAction.setIcon({ imageData: createIconImageData(true) });
+        let badgeText = sessionEventCount.toString();
+        if (sessionEventCount >= 1000) {
+            badgeText = (sessionEventCount / 1000).toFixed(1).replace('.0', '') + 'k';
+        }
+        browser.browserAction.setBadgeText({ text: badgeText });
+        browser.browserAction.setBadgeBackgroundColor({ color: "#28a745" });
+    } else {
+        browser.browserAction.setIcon({ imageData: createIconImageData(false) });
+        browser.browserAction.setBadgeText({ text: "" });
+    }
+    cachedDbSize = await getDatabaseSizeStr();
     let avgStr = "∞";
     if (sessionEventCount >= 1 && sessionStartTime && lastEventTime) {
         let diffMs = lastEventTime - sessionStartTime;
@@ -90,14 +174,6 @@ async function updateIcon() {
     titleStr += `Update Time (avg): ${avgStr}\n`;
     titleStr += `Last Update: ${lastUpdateStr}`;
 
-    if (isActive) {
-        browser.browserAction.setIcon({ path: "/assets/icon-on.svg" });
-        browser.browserAction.setBadgeText({ text: sessionEventCount.toString() });
-        browser.browserAction.setBadgeBackgroundColor({ color: "#28a745" });
-    } else {
-        browser.browserAction.setIcon({ path: "/assets/icon-off.svg" });
-        browser.browserAction.setBadgeText({ text: "" });
-    }
     browser.browserAction.setTitle({ title: titleStr });
 }
 
@@ -118,7 +194,6 @@ async function incrementAndSaveCount() {
     lastEventTime = now;
     
     await browser.storage.local.set({ eventCount: eventCount });
-    cachedDbSize = await getDatabaseSizeStr();
     updateIcon();
 }
 
@@ -178,6 +253,18 @@ async function triggerFlutter() {
     }
 }
 
+async function terminateDatabase() {
+    if (conn) {
+        try { await conn.close(); } catch(e) {}
+        conn = null;
+    }
+    if (db) {
+        try { await db.terminate(); } catch(e) {}
+        db = null;
+    }
+    console.log(`[${new Date().toISOString()}] [Monitor] DuckDB terminated. Memory released.`);
+}
+
 async function stopMonitor() {
     if (monitorTimeoutId) {
         clearTimeout(monitorTimeoutId);
@@ -187,14 +274,17 @@ async function stopMonitor() {
         activeBskyTabId = null;
         console.log(`[${new Date().toISOString()}] [Monitor] Stopped.`);
     }
+    await terminateDatabase();
 }
 
 async function autoDisable() {
     if (isActive) {
         isActive = false;
-                updateIcon();
+        updateIcon();
         await stopMonitor();
         console.log(`[${new Date().toISOString()}] [Monitor] Auto-disabled due to tab loss or crash.`);
+    } else {
+        await terminateDatabase();
     }
 }
 
@@ -205,6 +295,7 @@ async function sha1(str) {
 
 async function startMonitor() {
     await stopMonitor();
+    await initDatabase();
     if (navigator.storage && navigator.storage.estimate) {
         try {
             const est = await navigator.storage.estimate();
@@ -244,13 +335,29 @@ browser.tabs.onActivated.addListener(async (activeInfo) => {
 
 browser.tabs.onRemoved.addListener(async (tabId) => {
     if (isActive && tabId === activeBskyTabId) {
-        console.log(`[${new Date().toISOString()}] [Monitor] Monitored tab closed. Auto-disabling.`);
-        autoDisable();
+        const bestTab = await getBestBskyTab();
+        if (bestTab) {
+            activeBskyTabId = bestTab.id;
+            lastMigrationTime = Date.now();
+            console.log(`[${new Date().toISOString()}] [Monitor] Monitored tab closed. Rescued by migrating to tab ${activeBskyTabId}.`);
+        } else {
+            console.log(`[${new Date().toISOString()}] [Monitor] Monitored tab closed. No alternative tabs found. Auto-disabling.`);
+            autoDisable();
+        }
+    }
+});
+
+browser.tabs.onReplaced.addListener(async (addedTabId, removedTabId) => {
+    if (isActive && removedTabId === activeBskyTabId) {
+        activeBskyTabId = addedTabId;
+        lastMigrationTime = Date.now();
+        console.log(`[${new Date().toISOString()}] [Monitor] Monitored tab replaced (awoken from sleep). Migrated to tab ${activeBskyTabId}.`);
     }
 });
 
 // --- 0. INITIALIZE DUCKDB ---
-async function initDatabase() {
+async function initDatabase(skipLongevity = false) {
+    if (db) return;
     try {
         console.log(`[${new Date().toISOString()}] Initializing DuckDB-Wasm...`);
         
@@ -267,8 +374,39 @@ async function initDatabase() {
         db = new duckdb.AsyncDuckDB(logger, worker);
         await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
         
-        await db.open({ path: 'opfs://bluesky_trends.db', accessMode: duckdb.DuckDBAccessMode.READ_WRITE });
-        conn = await db.connect();
+        
+        let retries = 5;
+    let connected = false;
+    while (retries > 0 && !connected) {
+        try {
+            await db.open({ path: 'opfs://bluesky_trends.db', accessMode: 3 /* READ_WRITE */ });
+            conn = await db.connect();
+            await conn.query("SET max_expression_depth TO 10000");
+            // Test write access explicitly
+            await conn.query("CREATE TABLE IF NOT EXISTS _lock_test (id INT); DROP TABLE _lock_test;");
+            connected = true;
+        } catch(e) {
+            console.error("DuckDB locked or failed. Retries left: " + retries, e);
+            if (conn) { try { await conn.close(); } catch(e2){} conn = null; }
+            retries--;
+            if (retries === 0) {
+                // Try renaming the file as a final fallback if removeEntry fails
+                console.log("Nuclear OPFS wipe due to hanging locks...");
+                try {
+                    const root = await navigator.storage.getDirectory();
+                    try { await root.removeEntry('bluesky_trends.db', { recursive: true }); } catch(err){}
+                    try { await root.removeEntry('bluesky_trends.db.wal', { recursive: true }); } catch(err){}
+                } catch(e3) {}
+                await db.open({ path: 'opfs://bluesky_trends.db', accessMode: 3 });
+                conn = await db.connect();
+            await conn.query("SET max_expression_depth TO 10000");
+                connected = true;
+            } else {
+                console.log("Waiting 3 seconds for Firefox to release the OPFS lock...");
+                await new Promise(r => setTimeout(r, 3000));
+            }
+        }
+    }
         
         if (navigator.storage && navigator.storage.estimate) {
                 const est = await navigator.storage.estimate();
@@ -284,20 +422,22 @@ async function initDatabase() {
             await conn.query(`
             CREATE TABLE IF NOT EXISTS trends (
                 captured_at TIMESTAMP,
-                raw_json JSON
+                raw_json VARCHAR
             );
         `);
-        try { await conn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR"); } catch(e) {}
-        try { await conn.query("ALTER TABLE trends ADD COLUMN is_flutter BOOLEAN"); } catch(e) {}
-        try { await conn.query("ALTER TABLE trends ADD COLUMN gap_ms INTEGER"); } catch(e) {}
-        try { await conn.query("ALTER TABLE trends ADD COLUMN payload_hash VARCHAR"); } catch(e) {}
+        const colRes = await conn.query("SELECT column_name FROM information_schema.columns WHERE table_name = 'trends'");
+        const columns = colRes.toArray().map(r => r.toJSON().column_name);
+        if (!columns.includes('viewer_did')) await conn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR");
+        if (!columns.includes('is_flutter')) await conn.query("ALTER TABLE trends ADD COLUMN is_flutter BOOLEAN");
+        if (!columns.includes('gap_ms')) await conn.query("ALTER TABLE trends ADD COLUMN gap_ms INTEGER");
+        if (!columns.includes('payload_hash')) await conn.query("ALTER TABLE trends ADD COLUMN payload_hash VARCHAR");
         
         console.log(`[${new Date().toISOString()}] DuckDB successfully initialized on OPFS!`);
+        if (!skipLongevity) await rebuildLongevityState();
     } catch (e) {
         console.error(`[${new Date().toISOString()}] Failed to initialize DuckDB`, e);
     }
 }
-initDatabase();
 
 // --- 2. THE INTERCEPTOR ---
 
@@ -377,6 +517,21 @@ browser.webRequest.onBeforeRequest.addListener(
         const rawIsFlutter = timeSinceFlutterMs < 5000;
         const rawPayloadHash = await sha1(currentTrendsString);
         const rawGapMs = lastEventTime ? (Date.now() - lastEventTime) : 0;
+        
+        // 1.5 Inject Live Longevity Data
+        let currentTopics = new Set();
+        for (let t of validTrendsArray) {
+            currentTopics.add(t.topic);
+            if (longevityState[t.topic] === undefined) {
+                longevityState[t.topic] = 0;
+            } else if (previousTopics.has(t.topic)) {
+                longevityState[t.topic] += rawGapMs;
+            }
+            t.timeInTop20Ms = longevityState[t.topic];
+        }
+        previousTopics = currentTopics;
+        // Re-stringify with injected data
+        currentTrendsString = JSON.stringify(validTrendsArray);
 
         // 2. Validate our engineered database row fields via Zod
         const dbRow = DatabaseRowSchema.parse({
@@ -399,7 +554,7 @@ browser.webRequest.onBeforeRequest.addListener(
             
             await conn.query(`
                 INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash)
-                VALUES (CURRENT_TIMESTAMP, '${dbRow.raw_json.replace(/'/g, "''")}', '${dbRow.viewer_did}', ${dbRow.is_flutter}, ${dbRow.gap_ms}, '${dbRow.payload_hash}')
+                VALUES (CURRENT_TIMESTAMP, '${dbRow.raw_json.replace(/'/g, "''")}', '${dbRow.viewer_did.replace(/'/g, "''")}', ${dbRow.is_flutter}, ${dbRow.gap_ms}, '${dbRow.payload_hash}')
             `);
             browser.runtime.sendMessage({ command: "TREND_ADDED" }).catch(() => {});
             
@@ -417,7 +572,7 @@ browser.webRequest.onBeforeRequest.addListener(
                 }
                 let nextDelay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
                 totalScheduledDelayMs = nextDelay;
-                console.log(`[${new Date().toISOString()}] [Monitor] Timer reset due to migration. Next event in ${Math.round(nextDelay/1000)}s.`);
+                console.log(`[${new Date().toISOString()}] [Monitor] Updated fluttering interval. Next event in ${Math.round(nextDelay/1000)}s.`);
                 monitorTimeoutId = setTimeout(triggerFlutter, nextDelay);
             }
         } else {
@@ -456,13 +611,16 @@ browser.runtime.onMessage.addListener(async (message) => {
         }
         return Promise.resolve(true);
     }
+    if (!conn && ["GET_TREND_MOMENT", "EXPORT", "CLEAR", "IMPORT"].includes(message.command)) {
+        await initDatabase(message.command === "CLEAR");
+    }
     if (message.command === "GET_AUTH_STATUS") {
         return Promise.resolve({ hasCheckedAuth, isLoggedIn, rateLimit: currentRateLimit });
     }
     if (message.command === "GET_TREND_MOMENT") {
       if (!conn) return Promise.resolve({ error: "DB not initialized" });
       try {
-          const offset = message.offset || 0;
+          const offset = Number(message.offset) || 0;
           const countResult = await conn.query(`SELECT COUNT(*) as c FROM trends`);
           const rows = countResult.toArray();
           let firstRow = rows[0];
@@ -501,6 +659,94 @@ browser.runtime.onMessage.addListener(async (message) => {
           console.error("GET_TREND_MOMENT Error:", e);
           return Promise.resolve({ error: e.toString() });
       }
+    } else if (message.command === "IMPORT") {
+        console.log(`[${new Date().toISOString()}] Importing database...`);
+        try {
+            const buffer = new Uint8Array(await message.file.arrayBuffer());
+            await db.registerFileBuffer('import.parquet', buffer);
+            
+            // Read all existing timestamps for deduplication
+            const existingRes = await conn.query("SELECT captured_at FROM trends");
+            const existingSet = new Set(existingRes.toArray().map(r => {
+                let d = r.toJSON ? r.toJSON().captured_at : r.captured_at;
+                if (d instanceof Date) return d.getTime();
+                if (typeof d === 'number') return d;
+                return new Date(d).getTime();
+            }));
+            
+            // Read all incoming rows
+            const importRes = await conn.query(`SELECT * FROM 'import.parquet'`);
+            const incomingRows = importRes.toArray().map(r => r.toJSON ? r.toJSON() : r);
+            
+            const validInsertRows = [];
+            let errorsLogged = 0;
+            
+            for (let i = 0; i < incomingRows.length; i++) {
+                const row = incomingRows[i];
+                try {
+                    let tsStr = row.captured_at;
+                    if (!tsStr) throw new Error("Missing captured_at timestamp");
+                    
+                    let tsTime;
+                    if (tsStr instanceof Date) {
+                        tsTime = tsStr.getTime();
+                        tsStr = tsStr.toISOString();
+                    } else if (typeof tsStr !== 'string') {
+                        tsTime = Number(tsStr);
+                        tsStr = new Date(tsTime).toISOString();
+                    } else {
+                        tsTime = new Date(tsStr).getTime();
+                    }
+                    
+                    if (existingSet.has(tsTime)) continue; // skip duplicates silently
+                    
+                    const dbRow = DatabaseRowSchema.parse({
+                        viewer_did: row.viewer_did || 'anonymous',
+                        is_flutter: Boolean(row.is_flutter),
+                        gap_ms: Number(row.gap_ms) || 0,
+                        payload_hash: row.payload_hash || '',
+                        raw_json: typeof row.raw_json === 'string' ? row.raw_json : JSON.stringify(row.raw_json)
+                    });
+                    
+                    const payloadData = JSON.parse(dbRow.raw_json);
+                    TrendPayloadSchema.parse(payloadData);
+                    
+                    validInsertRows.push({
+                        captured_at: tsStr,
+                        raw_json: dbRow.raw_json,
+                        viewer_did: dbRow.viewer_did,
+                        is_flutter: dbRow.is_flutter,
+                        gap_ms: dbRow.gap_ms,
+                        payload_hash: dbRow.payload_hash
+                    });
+                } catch (e) {
+                    errorsLogged++;
+                    console.warn(`[Import] Skipping corrupt row at index ${i}:`, e.message);
+                }
+            }
+            
+            if (validInsertRows.length > 0) {
+                const CHUNK_SIZE = 50;
+                for (let i = 0; i < validInsertRows.length; i += CHUNK_SIZE) {
+                    const chunk = validInsertRows.slice(i, i + CHUNK_SIZE);
+                    const values = chunk.map(r => `('${r.captured_at}', '${r.raw_json.replace(/'/g, "''")}', '${r.viewer_did.replace(/'/g, "''")}', ${r.is_flutter}, ${r.gap_ms}, '${r.payload_hash.replace(/'/g, "''")}')`).join(',\n');
+                    await conn.query(`INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash) VALUES ${values}`);
+                }
+            }
+            
+            console.log(`[Import] Finished. Inserted ${validInsertRows.length} valid rows. Skipped ${errorsLogged} invalid/corrupt rows.`);
+            
+            const countRes = await conn.query("SELECT COUNT(*) as c FROM trends");
+            const firstRow = countRes.toArray()[0].toJSON();
+            eventCount = Number(firstRow.c || firstRow.count || Object.values(firstRow)[0] || 0);
+            await browser.storage.local.set({ eventCount });
+            updateIcon();
+            await rebuildLongevityState();
+            return Promise.resolve(true);
+        } catch (e) {
+            console.error("Import error:", e);
+            throw e;
+        }
     } else if (message.command === "EXPORT") {
         console.log(`[${new Date().toISOString()}] Exporting database...`);
         try {
@@ -520,12 +766,24 @@ browser.runtime.onMessage.addListener(async (message) => {
             console.error(`[${new Date().toISOString()}] Export failed`, e);
         }
     } else if (message.command === "CLEAR") {
-        console.log(`[${new Date().toISOString()}] Clearing database...`);
         try {
-            await conn.query(`DELETE FROM trends`);
+            await conn.query(`DROP TABLE IF EXISTS trends`);
+            await conn.query(`
+                CREATE TABLE trends (
+                    captured_at TIMESTAMP,
+                    raw_json VARCHAR,
+                    viewer_did VARCHAR,
+                    is_flutter BOOLEAN,
+                    gap_ms INTEGER,
+                    payload_hash VARCHAR
+                )
+            `);
+            await conn.query(`CHECKPOINT`);
             eventCount = 0;
             await browser.storage.local.set({ eventCount: 0 });
             updateIcon();
+            longevityState = {};
+            console.log(`[${new Date().toISOString()}] Cleared and checkpointed database...`);
         } catch (e) {
             console.error(`[${new Date().toISOString()}] Clear failed`, e);
         }

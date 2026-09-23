@@ -5,14 +5,16 @@
   "main": "background.js",
   "scripts": {
     "test": "jest --coverage",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "package": "npm run build && zip -r dist/bluesky-trend-gatherer.xpi manifest.json src assets dist -x \"*.git*\" \"*node_modules*\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@duckdb/duckdb-wasm": "^1.33.1-dev57.0",
+    "@duckdb/duckdb-wasm": "^1.32.0",
     "apache-arrow": "^21.2.0",
+    "duckdb": "^1.4.4",
     "zod": "^4.6.5"
   },
   "devDependencies": {

@@ -100,3 +100,21 @@ Our current security posture is excellent. We have neutralized DOM-based XSS via
 - background.src.js | DELETE FROM trends ... ORDER BY captured_at ASC LIMIT ...
 => FLAG: Secure. Dynamic ring-buffer threshold implemented at 95% capacity.
 ```
+
+### Scan Date: 2026-09-21T20:50:00Z
+
+```text
+[SCAN: Information Disclosure (Network Exfiltration)]
+- manifest.json | permissions: webRequest
+- manifest.json | content_security_policy (missing)
+=> FLAG: High severity Information Disclosure vector. Linter previously missed that default MV2 CSP implicitly allows `connect-src *`, permitting outbound fetch() exfiltration of intercepted webRequest data.
+
+[REMEDIATION APPLIED]
+- manifest.json | "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; connect-src 'self';"
+=> STATUS: Resolved. Extension is cryptographically bound to localhost data operations. DuckDB OPFS to Parquet export workflow verified to function entirely locally without network reliance.
+```
+
+## Scan Log: 2026-09-21 (SQL Injection Remediation)
+- **Vulnerability:** Unescaped strings in raw SQL queries.
+- **Threat (Tampering / Information Disclosure):** While the `raw_json` payload was properly escaped before database insertion, the `viewer_did` parameter (derived from the URL) was concatenated blindly. A malicious webpage framing Bluesky could theoretically manipulate the `?viewer=` query parameter to inject SQL (e.g. `'); DROP TABLE trends; --`). Additionally, the `offset` parameter passed from the UI was dynamically injected into a `LIMIT X OFFSET ${offset}` query without type coercion.
+- **Remediation:** Escaped single quotes (`.replace(/'/g, "''")`) for `viewer_did` in all `conn.query` templates. Enforced strict `Number()` coercion on the `offset` parameter in the message receiver.

@@ -10,6 +10,19 @@ function escapeHTML(str) {
     }[tag]));
 }
 
+
+function formatDuration(ms) {
+    if (!ms) return "0m";
+    const totalMins = Math.floor(ms / 60000);
+    const h = Math.floor(totalMins / 60);
+    const m = totalMins % 60;
+    if (h > 0) return `${h}h ${m}m`;
+    return `${m}m`;
+}
+
+let activePopover = null;
+function closePopover() { if (activePopover) { activePopover.remove(); activePopover = null; } }
+document.addEventListener("click", closePopover);
 document.addEventListener("DOMContentLoaded", async () => {
     const fontBtns = document.querySelectorAll(".font-btn");
     async function applyFontSize(multiplier) {
@@ -26,6 +39,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     const toggle = document.getElementById("monitorToggle");
+    const btnOptions = document.getElementById("btnOptions");
+    
+    if (btnOptions) {
+        btnOptions.addEventListener("click", () => {
+            if (typeof browser !== 'undefined' && browser.runtime.openOptionsPage) {
+                browser.runtime.openOptionsPage();
+            } else {
+                console.warn("browser.runtime.openOptionsPage is not available.");
+            }
+        });
+    }
 
     // Get current state from background script
     const response = await browser.runtime.sendMessage({ command: "GET_STATE" });
@@ -48,13 +72,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     let currentOffset = 0;
     let totalMoments = 0;
 
+    const btnOldest = document.getElementById("btnOldest");
     const btnPrev = document.getElementById("btnPrev");
     const btnNext = document.getElementById("btnNext");
+    const btnNewest = document.getElementById("btnNewest");
     const trendTimestamp = document.getElementById("trendTimestamp");
     const trendList = document.getElementById("trendList");
     const scrollTopBtn = document.getElementById("scrollTopBtn");
 
     trendList.addEventListener("scroll", () => {
+        closePopover();
         if (trendList.scrollTop > 100) {
             scrollTopBtn.classList.add("visible");
         } else {
@@ -87,7 +114,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     function updateNavButtons() {
         btnPrev.disabled = currentOffset >= totalMoments - 1;
+        btnOldest.disabled = currentOffset >= totalMoments - 1;
         btnNext.disabled = currentOffset <= 0;
+        btnNewest.disabled = currentOffset <= 0;
     }
     
     async function loadMoment(offset, isSilentRefresh = false) {
@@ -107,6 +136,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             trendList.innerHTML = "Database is empty.";
             btnPrev.disabled = true;
             btnNext.disabled = true;
+            btnOldest.disabled = true;
+            btnNewest.disabled = true;
             return;
         }
 
@@ -146,7 +177,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     let ac = (t.actors && Array.isArray(t.actors)) ? t.actors.length : 0;
                     
                     let deltas = calculateDeltas(t, i, history, res.moment.captured_at);
-                    let { rankDiffStr, pcDiffStr, acDiffStr, timeUnchangedStr } = deltas;
+                    let { rankDiffStr, pcDiffStr, acDiffStr, timeUnchangedStr, newActors, droppedActors } = deltas;
 
                     let link = t.link || "";
                     if (link && link.startsWith("/")) {
@@ -189,7 +220,165 @@ document.addEventListener("DOMContentLoaded", async () => {
                     meta.style.marginTop = "6px";
                     meta.style.fontSize = "calc(10px * var(--font-mult))";
                     meta.style.opacity = "0.7";
-                    meta.innerHTML = `<span style="min-width: 170px; display: inline-block; white-space: nowrap;">💬 ${pc.toLocaleString()} posts ${pcDiffStr}</span><span style="min-width: 170px; display: inline-block; white-space: nowrap;">👥 ${ac} top actors ${acDiffStr}</span>`;
+                    meta.innerHTML = `<span style="min-width: 170px; display: inline-block; white-space: nowrap;">💬 ${pc.toLocaleString()} posts ${pcDiffStr}</span>`;
+                    let actorsSpan = document.createElement("span");
+                    actorsSpan.className = 'actors-trigger';
+                    actorsSpan.style.minWidth = "170px";
+                    actorsSpan.style.display = "inline-block";
+                    actorsSpan.style.whiteSpace = "nowrap";
+                    let shiftIndicator = ((newActors && newActors.length > 0) || (droppedActors && droppedActors.length > 0)) ? ` ✨` : ``;
+                    actorsSpan.innerHTML = ac > 0 ? `👥 Top Actors${shiftIndicator} ${acDiffStr}` : `👥 No Top Actors`;
+                    
+                    if (ac > 0 && t.actors) {
+                        actorsSpan.style.cursor = "pointer";
+                        actorsSpan.style.color = "#1185fe";
+                        actorsSpan.style.textDecoration = "underline";
+                        actorsSpan.title = "View top actors";
+                        
+                        actorsSpan.onclick = (e) => {
+                            e.stopPropagation();
+                            if (activePopover && activePopover.triggerEl === actorsSpan) {
+                                closePopover();
+                                return;
+                            }
+                            closePopover();
+                            
+                            activePopover = document.createElement("div");
+                            activePopover.triggerEl = actorsSpan;
+                            activePopover.style.position = "absolute";
+                            activePopover.style.zIndex = "1000";
+                            activePopover.style.background = "Field";
+                            activePopover.style.border = "1px solid color-mix(in srgb, CanvasText 20%, transparent)";
+                            activePopover.style.borderRadius = "8px";
+                            activePopover.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+                            activePopover.style.padding = "8px";
+                            activePopover.style.display = "flex";
+                            activePopover.style.flexDirection = "column";
+                            activePopover.style.gap = "8px";
+                            activePopover.onclick = (e) => e.stopPropagation();
+                            
+                            function buildActorAvatar(actor, outlineColor) {
+                                let wrapper = document.createElement("div");
+                                wrapper.style.position = "relative";
+                                wrapper.style.display = "flex";
+                                wrapper.style.justifyContent = "center";
+
+                                let avContainer = document.createElement("div");
+                                avContainer.style.width = "36px";
+                                avContainer.style.height = "36px";
+                                avContainer.style.borderRadius = "50%";
+                                avContainer.style.cursor = "pointer";
+                                avContainer.style.overflow = "hidden";
+                                avContainer.style.border = "1px solid color-mix(in srgb, CanvasText 10%, transparent)";
+                                if (outlineColor) {
+                                    avContainer.style.boxShadow = `0 0 0 2px ${outlineColor}`;
+                                }
+                                
+                                let tooltip = document.createElement("div");
+                                tooltip.innerText = actor.displayName || actor.handle;
+                                tooltip.style.position = "absolute";
+                                tooltip.style.bottom = "115%";
+                                tooltip.style.left = "50%";
+                                tooltip.style.transform = "translateX(-50%)";
+                                tooltip.style.background = "Field";
+                                tooltip.style.color = "FieldText";
+                                tooltip.style.border = "1px solid color-mix(in srgb, CanvasText 20%, transparent)";
+                                tooltip.style.padding = "4px 8px";
+                                tooltip.style.borderRadius = "4px";
+                                tooltip.style.fontSize = "calc(12px * var(--font-mult))";
+                                tooltip.style.fontWeight = "bold";
+                                tooltip.style.fontFamily = 'Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace';
+                                tooltip.style.whiteSpace = "nowrap";
+                                tooltip.style.pointerEvents = "none";
+                                tooltip.style.opacity = "0";
+                                tooltip.style.transition = "opacity 0.1s ease-in-out";
+                                tooltip.style.zIndex = "2000";
+                                tooltip.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)";
+
+                                avContainer.onclick = () => {
+                                    browser.runtime.sendMessage({ command: "NAVIGATE", url: `https://bsky.app/profile/${actor.handle}` });
+                                };
+                                wrapper.onmouseenter = () => { 
+                                    avContainer.style.transform = "scale(1.1)"; 
+                                    if (outlineColor) avContainer.style.boxShadow = `0 0 8px ${outlineColor}`;
+                                    else avContainer.style.boxShadow = "0 0 8px #1185fe"; 
+                                    tooltip.style.opacity = "1";
+                                }
+                                wrapper.onmouseleave = () => { 
+                                    avContainer.style.transform = "none"; 
+                                    if (outlineColor) avContainer.style.boxShadow = `0 0 0 2px ${outlineColor}`;
+                                    else avContainer.style.boxShadow = "none"; 
+                                    tooltip.style.opacity = "0";
+                                }
+                                avContainer.style.transition = "all 0.2s";
+
+                                if (actor.avatar) {
+                                    let img = document.createElement("img");
+                                    img.src = actor.avatar;
+                                    img.style.width = "100%";
+                                    img.style.height = "100%";
+                                    img.style.objectFit = "cover";
+                                    avContainer.appendChild(img);
+                                } else {
+                                    avContainer.style.background = "#1185fe";
+                                    let init = document.createElement("div");
+                                    init.style.color = "white";
+                                    init.style.width = "100%";
+                                    init.style.height = "100%";
+                                    init.style.display = "flex";
+                                    init.style.alignItems = "center";
+                                    init.style.justifyContent = "center";
+                                    init.style.fontWeight = "bold";
+                                    init.innerText = (actor.displayName || actor.handle).charAt(0).toUpperCase();
+                                    avContainer.appendChild(init);
+                                }
+                                wrapper.appendChild(avContainer);
+                                wrapper.appendChild(tooltip);
+                                return wrapper;
+                            }
+                            
+                            let activeRow = document.createElement("div");
+                            activeRow.style.display = "flex";
+                            activeRow.style.gap = "8px";
+                            activePopover.appendChild(activeRow);
+
+                            t.actors.forEach(actor => {
+                                let outlineColor = (newActors && newActors.includes(actor.did)) ? "#4ade80" : null;
+                                activeRow.appendChild(buildActorAvatar(actor, outlineColor));
+                            });
+                            
+                            if (droppedActors && droppedActors.length > 0) {
+                                let divider = document.createElement("div");
+                                divider.style.width = "100%";
+                                divider.style.height = "1px";
+                                divider.style.background = "color-mix(in srgb, CanvasText 20%, transparent)";
+                                divider.style.margin = "2px 0";
+                                activePopover.appendChild(divider);
+
+                                let droppedRow = document.createElement("div");
+                                droppedRow.style.display = "flex";
+                                droppedRow.style.gap = "8px";
+                                droppedRow.style.opacity = "0.7"; 
+                                activePopover.appendChild(droppedRow);
+
+                                droppedActors.forEach(actor => {
+                                    droppedRow.appendChild(buildActorAvatar(actor, "#ef4444"));
+                                });
+                            }
+                            
+                            document.getElementById('app').appendChild(activePopover);
+                            const rect = actorsSpan.getBoundingClientRect();
+                            activePopover.style.top = (rect.bottom + 8) + "px";
+                            let left = rect.left;
+                            const popRect = activePopover.getBoundingClientRect();
+                            if (left + popRect.width > window.innerWidth - 10) {
+                                left = window.innerWidth - popRect.width - 10;
+                            }
+                            activePopover.style.left = left + "px";
+                        };
+                    }
+                    meta.appendChild(actorsSpan);
+
                     
                     if (link) {
                         let linkBtn = document.createElement("button");
@@ -205,6 +394,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             browser.runtime.sendMessage({ command: "NAVIGATE", url: link });
                         };
                         meta.appendChild(linkBtn);
+                    }
+                    
+                    if (t.timeInTop20Ms !== undefined) {
+                        let badge = document.createElement("span");
+                        badge.innerText = `⏱️ ${formatDuration(t.timeInTop20Ms)}`;
+                        badge.style.marginLeft = "auto";
+                        badge.style.opacity = "0.8";
+                        badge.title = "Total time tracked in Top 20";
+                        meta.appendChild(badge);
                     }
 
                     card.appendChild(meta);
@@ -222,7 +420,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 trendTimestamp.style.borderRadius = "4px";
             }
         } catch(e) {
-            trendList.innerHTML = `<pre style="margin:0; font-family:inherit; font-size: calc(10px * var(--font-mult)); color:red;">Error parsing:\n${escapeHTML(res.moment.raw_json)}</pre>`;
+            trendList.innerHTML = `<pre style="margin:0; font-family:inherit; font-size: calc(10px * var(--font-mult)); color:red;">Error parsing: ${e.message}\n${escapeHTML(res.moment.raw_json)}</pre>`;
         }
     }
 
@@ -233,6 +431,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     btnNext.addEventListener("click", () => {
         if (totalMoments <= 0 || currentOffset <= 0) return;
         loadMoment(currentOffset - 1, true);
+    });
+
+    
+    btnOldest.addEventListener("click", () => {
+        if (totalMoments <= 0 || currentOffset >= totalMoments - 1) return;
+        loadMoment(totalMoments - 1, true);
+    });
+    btnNewest.addEventListener("click", () => {
+        if (totalMoments <= 0 || currentOffset <= 0) return;
+        loadMoment(0, true);
     });
 
     loadMoment(0, false);

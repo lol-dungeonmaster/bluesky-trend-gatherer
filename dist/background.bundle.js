@@ -17351,7 +17351,7 @@ return true;`);
           return false;
         }
       })(new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0, 1, 4, 1, 96, 0, 0, 3, 2, 1, 0, 5, 4, 1, 3, 1, 1, 10, 11, 1, 9, 0, 65, 0, 254, 16, 2, 0, 26, 11]));
-      var b = { name: "@duckdb/duckdb-wasm", version: "1.33.1-dev57.0", description: "DuckDB powered by WebAssembly", license: "MIT", repository: { type: "git", url: "https://github.com/duckdb/duckdb-wasm.git" }, keywords: ["sql", "duckdb", "relational", "database", "data", "query", "wasm", "analytics", "olap", "arrow", "parquet", "json", "csv"], dependencies: { "apache-arrow": "^17.0.0", qs: "^6.14.1" }, devDependencies: { "@types/emscripten": "^1.39.10", "@types/jasmine": "^5.1.13", "@typescript-eslint/eslint-plugin": "^6.21.0", "@typescript-eslint/parser": "^6.21.0", esbuild: "^0.20.2", eslint: "^8.57.0", "eslint-plugin-jasmine": "^4.1.3", "eslint-plugin-react": "^7.37.5", "fast-glob": "^3.3.2", jasmine: "^5.13.0", "jasmine-core": "^5.1.2", "jasmine-spec-reporter": "^7.0.0", "js-sha256": "^0.11.1", karma: "^6.4.2", "karma-chrome-launcher": "^3.2.0", "karma-coverage": "^2.2.1", "karma-firefox-launcher": "^2.1.3", "karma-jasmine": "^5.1.0", "karma-jasmine-html-reporter": "^2.1.0", "karma-sourcemap-loader": "^0.4.0", "karma-spec-reporter": "^0.0.36", "make-dir": "^4.0.0", nyc: "^15.1.0", prettier: "^3.2.5", puppeteer: "^22.8.0", rimraf: "^5.0.5", s3rver: "^3.7.1", typedoc: "^0.28.15", typescript: "^5.3.3", "wasm-feature-detect": "^1.6.1", "web-worker": "^1.2.0" }, scripts: { "build:debug": "node bundle.mjs debug && tsc --emitDeclarationOnly", "build:release": "node bundle.mjs release && tsc --emitDeclarationOnly", docs: "typedoc", format: 'prettier --write "**/*.+(js|ts)"', report: "node ./coverage.mjs", "test:node": "node --enable-source-maps ../../node_modules/jasmine/bin/jasmine ./dist/tests-node.cjs", "test:node:debug": "node --inspect-brk --enable-source-maps ../../node_modules/jasmine/bin/jasmine ./dist/tests-node.cjs", "test:node:coverage": "nyc -r json --report-dir ./coverage/node node ../../node_modules/jasmine/bin/jasmine ./dist/tests-node.cjs", "test:firefox": "karma start ./karma/tests-firefox.cjs", "test:chrome": "karma start ./karma/tests-chrome.cjs", "test:chrome:eh": "karma start ./karma/tests-chrome-eh.cjs", "test:chrome:coverage": "karma start ./karma/tests-chrome-coverage.cjs", "test:browser": "karma start ./karma/tests-all.cjs", "test:browser:debug": "karma start ./karma/tests-debug.cjs", test: "npm run test:chrome && npm run test:node", "test:coverage": "npm run test:chrome:coverage && npm run test:node:coverage && npm run report", lint: "eslint src test" }, files: ["dist", "!dist/tests-*", "!dist/duckdb-browser-mvp.worker.js.map", "!dist/types/test"], main: "dist/duckdb-browser.cjs", module: "dist/duckdb-browser.mjs", types: "dist/duckdb-browser.d.ts", jsdelivr: "dist/duckdb-browser.cjs", unpkg: "dist/duckdb-browser.mjs", sideEffects: false, browser: { fs: false, path: false, perf_hooks: false, os: false, worker_threads: false }, exports: { "./dist/duckdb-mvp.wasm": "./dist/duckdb-mvp.wasm", "./dist/duckdb-eh.wasm": "./dist/duckdb-eh.wasm", "./dist/duckdb-coi.wasm": "./dist/duckdb-coi.wasm", "./dist/duckdb-browser": "./dist/duckdb-browser.mjs", "./dist/duckdb-browser.cjs": "./dist/duckdb-browser.cjs", "./dist/duckdb-browser.mjs": "./dist/duckdb-browser.mjs", "./dist/duckdb-browser-coi.pthread.worker.js": "./dist/duckdb-browser-coi.pthread.worker.js", "./dist/duckdb-browser-coi.worker.js": "./dist/duckdb-browser-coi.worker.js", "./dist/duckdb-browser-eh.worker.js": "./dist/duckdb-browser-eh.worker.js", "./dist/duckdb-browser-mvp.worker.js": "./dist/duckdb-browser-mvp.worker.js", "./dist/duckdb-node": "./dist/duckdb-node.cjs", "./dist/duckdb-node.cjs": "./dist/duckdb-node.cjs", "./dist/duckdb-node-blocking": "./dist/duckdb-node-blocking.cjs", "./dist/duckdb-node-blocking.cjs": "./dist/duckdb-node-blocking.cjs", "./dist/duckdb-node-eh.worker.cjs": "./dist/duckdb-node-eh.worker.cjs", "./dist/duckdb-node-mvp.worker.cjs": "./dist/duckdb-node-mvp.worker.cjs", "./blocking": { node: { types: "./dist/duckdb-node-blocking.d.ts", require: "./dist/duckdb-node-blocking.cjs", import: "./dist/duckdb-node-blocking.cjs" }, types: "./dist/duckdb-node-blocking.d.ts", import: "./dist/duckdb-node-blocking.mjs", require: "./dist/duckdb-node-blocking.cjs" }, ".": { browser: { types: "./dist/duckdb-browser.d.ts", import: "./dist/duckdb-browser.mjs", require: "./dist/duckdb-browser.cjs" }, node: { types: "./dist/duckdb-node.d.ts", import: "./dist/duckdb-node.cjs", require: "./dist/duckdb-node.cjs" }, types: "./dist/duckdb-browser.d.ts", import: "./dist/duckdb-browser.mjs", require: "./dist/duckdb-browser.cjs" } } };
+      var b = { name: "@duckdb/duckdb-wasm", version: "1.32.0", description: "DuckDB powered by WebAssembly", license: "MIT", repository: { type: "git", url: "https://github.com/duckdb/duckdb-wasm.git" }, keywords: ["sql", "duckdb", "relational", "database", "data", "query", "wasm", "analytics", "olap", "arrow", "parquet", "json", "csv"], dependencies: { "apache-arrow": "^17.0.0" }, devDependencies: { "@types/emscripten": "^1.39.10", "@types/jasmine": "^5.1.4", "@typescript-eslint/eslint-plugin": "^6.21.0", "@typescript-eslint/parser": "^6.21.0", esbuild: "^0.20.2", eslint: "^8.57.0", "eslint-plugin-jasmine": "^4.1.3", "eslint-plugin-react": "^7.34.0", "fast-glob": "^3.3.2", jasmine: "^5.1.0", "jasmine-core": "^5.1.2", "jasmine-spec-reporter": "^7.0.0", "js-sha256": "^0.11.1", karma: "^6.4.2", "karma-chrome-launcher": "^3.2.0", "karma-coverage": "^2.2.1", "karma-firefox-launcher": "^2.1.3", "karma-jasmine": "^5.1.0", "karma-jasmine-html-reporter": "^2.1.0", "karma-sourcemap-loader": "^0.4.0", "karma-spec-reporter": "^0.0.36", "make-dir": "^4.0.0", nyc: "^15.1.0", prettier: "^3.2.5", puppeteer: "^22.8.0", rimraf: "^5.0.5", s3rver: "^3.7.1", typedoc: "^0.25.13", typescript: "^5.3.3", "wasm-feature-detect": "^1.6.1", "web-worker": "^1.2.0" }, scripts: { "build:debug": "node bundle.mjs debug && tsc --emitDeclarationOnly", "build:release": "node bundle.mjs release && tsc --emitDeclarationOnly", docs: "typedoc", format: 'prettier --write "**/*.+(js|ts)"', report: "node ./coverage.mjs", "test:node": "node --enable-source-maps ../../node_modules/jasmine/bin/jasmine ./dist/tests-node.cjs", "test:node:debug": "node --inspect-brk --enable-source-maps ../../node_modules/jasmine/bin/jasmine ./dist/tests-node.cjs", "test:node:coverage": "nyc -r json --report-dir ./coverage/node node ../../node_modules/jasmine/bin/jasmine ./dist/tests-node.cjs", "test:firefox": "karma start ./karma/tests-firefox.cjs", "test:chrome": "karma start ./karma/tests-chrome.cjs", "test:chrome:eh": "karma start ./karma/tests-chrome-eh.cjs", "test:chrome:coverage": "karma start ./karma/tests-chrome-coverage.cjs", "test:browser": "karma start ./karma/tests-all.cjs", "test:browser:debug": "karma start ./karma/tests-debug.cjs", test: "npm run test:chrome && npm run test:node", "test:coverage": "npm run test:chrome:coverage && npm run test:node:coverage && npm run report", lint: "eslint src test" }, files: ["dist", "!dist/tests-*", "!dist/duckdb-browser-mvp.worker.js.map", "!dist/types/test"], main: "dist/duckdb-browser.cjs", module: "dist/duckdb-browser.mjs", types: "dist/duckdb-browser.d.ts", jsdelivr: "dist/duckdb-browser.cjs", unpkg: "dist/duckdb-browser.mjs", sideEffects: false, browser: { fs: false, path: false, perf_hooks: false, os: false, worker_threads: false }, exports: { "./dist/duckdb-mvp.wasm": "./dist/duckdb-mvp.wasm", "./dist/duckdb-eh.wasm": "./dist/duckdb-eh.wasm", "./dist/duckdb-coi.wasm": "./dist/duckdb-coi.wasm", "./dist/duckdb-browser": "./dist/duckdb-browser.mjs", "./dist/duckdb-browser.cjs": "./dist/duckdb-browser.cjs", "./dist/duckdb-browser.mjs": "./dist/duckdb-browser.mjs", "./dist/duckdb-browser-coi.pthread.worker.js": "./dist/duckdb-browser-coi.pthread.worker.js", "./dist/duckdb-browser-coi.worker.js": "./dist/duckdb-browser-coi.worker.js", "./dist/duckdb-browser-eh.worker.js": "./dist/duckdb-browser-eh.worker.js", "./dist/duckdb-browser-mvp.worker.js": "./dist/duckdb-browser-mvp.worker.js", "./dist/duckdb-node": "./dist/duckdb-node.cjs", "./dist/duckdb-node.cjs": "./dist/duckdb-node.cjs", "./dist/duckdb-node-blocking": "./dist/duckdb-node-blocking.cjs", "./dist/duckdb-node-blocking.cjs": "./dist/duckdb-node-blocking.cjs", "./dist/duckdb-node-eh.worker.cjs": "./dist/duckdb-node-eh.worker.cjs", "./dist/duckdb-node-mvp.worker.cjs": "./dist/duckdb-node-mvp.worker.cjs", "./blocking": { node: { types: "./dist/duckdb-node-blocking.d.ts", require: "./dist/duckdb-node-blocking.cjs", import: "./dist/duckdb-node-blocking.cjs" }, types: "./dist/duckdb-node-blocking.d.ts", import: "./dist/duckdb-node-blocking.mjs", require: "./dist/duckdb-node-blocking.cjs" }, ".": { browser: { types: "./dist/duckdb-browser.d.ts", import: "./dist/duckdb-browser.mjs", require: "./dist/duckdb-browser.cjs" }, node: { types: "./dist/duckdb-node.d.ts", import: "./dist/duckdb-node.cjs", require: "./dist/duckdb-node.cjs" }, types: "./dist/duckdb-browser.d.ts", import: "./dist/duckdb-browser.mjs", require: "./dist/duckdb-browser.cjs" } } };
       var D = b.name;
       var O = b.version;
       var L = b.version.split(".");
@@ -40712,7 +40712,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         description: z2.string().optional().default("No context provided"),
         postCount: z2.number().int().optional(),
         category: z2.string().optional(),
-        actors: z2.array(ActorSchema).optional()
+        actors: z2.array(ActorSchema).optional(),
+        timeInTop20Ms: z2.number().int().optional()
       }).passthrough();
       var TrendPayloadSchema2 = z2.array(TrendingTopicSchema);
       var DatabaseRowSchema2 = z2.object({
@@ -40747,36 +40748,113 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
   });
   browser.storage.local.remove("isActive");
   var sessionEventCount = 0;
+  var longevityState = {};
+  var previousTopics = /* @__PURE__ */ new Set();
+  async function rebuildLongevityState() {
+    if (!conn) return;
+    try {
+      const res = await conn.query("SELECT gap_ms, raw_json FROM trends ORDER BY captured_at ASC");
+      const rows = res.toArray().map((r) => r.toJSON ? r.toJSON() : r);
+      longevityState = {};
+      previousTopics = /* @__PURE__ */ new Set();
+      for (const r of rows) {
+        let arr = [];
+        try {
+          arr = typeof r.raw_json === "string" ? JSON.parse(r.raw_json) : r.raw_json;
+        } catch (e) {
+        }
+        let currentTopics = /* @__PURE__ */ new Set();
+        if (Array.isArray(arr)) {
+          for (const t of arr) {
+            if (t && t.topic) {
+              currentTopics.add(t.topic);
+              if (longevityState[t.topic] === void 0) {
+                longevityState[t.topic] = 0;
+              } else if (previousTopics.has(t.topic)) {
+                longevityState[t.topic] += r.gap_ms || 0;
+              }
+            }
+          }
+        }
+        previousTopics = currentTopics;
+      }
+      console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Rebuilt longevity state for ${Object.keys(longevityState).length} unique trends.`);
+    } catch (e) {
+      console.error("Failed to rebuild longevity state", e);
+    }
+  }
   var sessionStartTime = Date.now();
   var firstEventTime = null;
   var lastEventTime = null;
   var cachedDbSize = "0 B";
   async function getDatabaseSizeStr() {
-    let totalBytes = 0;
     try {
-      const opfsRoot = await navigator.storage.getDirectory();
-      try {
-        const handle = await opfsRoot.getFileHandle("bluesky_trends.db");
-        const file = await handle.getFile();
-        totalBytes += file.size;
-      } catch (e) {
-      }
-      try {
-        const handleWAL = await opfsRoot.getFileHandle("bluesky_trends.db.wal");
-        const fileWAL = await handleWAL.getFile();
-        totalBytes += fileWAL.size;
-      } catch (e) {
+      if (navigator.storage && navigator.storage.estimate) {
+        const est = await navigator.storage.estimate();
+        if (est && est.usage) {
+          let bytes = est.usage;
+          if (bytes < 1024) return bytes + " B";
+          else if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+          else return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+        }
       }
     } catch (e) {
+      console.error("Storage estimate failed", e);
     }
-    if (totalBytes === 0) return "0 B";
-    const k = 1024;
-    const sizes = ["B", "KB", "MB", "GB"];
-    const i = Math.floor(Math.log(totalBytes) / Math.log(k));
-    return parseFloat((totalBytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+    return "0 B";
   }
   var lastUpdateDurationMs = null;
+  function createIconImageData(isOn) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = isOn ? "#1185fe" : "#999999";
+    ctx.beginPath();
+    ctx.moveTo(6, 0);
+    ctx.lineTo(26, 0);
+    ctx.quadraticCurveTo(32, 0, 32, 6);
+    ctx.lineTo(32, 26);
+    ctx.quadraticCurveTo(32, 32, 26, 32);
+    ctx.lineTo(6, 32);
+    ctx.quadraticCurveTo(0, 32, 0, 26);
+    ctx.lineTo(0, 6);
+    ctx.quadraticCurveTo(0, 0, 6, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 3;
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(6, 25);
+    ctx.lineTo(13, 17);
+    ctx.lineTo(19, 21);
+    ctx.lineTo(26, 11);
+    ctx.stroke();
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(18, 10);
+    ctx.lineTo(28, 10);
+    ctx.lineTo(28, 20);
+    ctx.closePath();
+    ctx.fill();
+    return ctx.getImageData(0, 0, 32, 32);
+  }
   async function updateIcon() {
+    if (isActive) {
+      browser.browserAction.setIcon({ imageData: createIconImageData(true) });
+      let badgeText = sessionEventCount.toString();
+      if (sessionEventCount >= 1e3) {
+        badgeText = (sessionEventCount / 1e3).toFixed(1).replace(".0", "") + "k";
+      }
+      browser.browserAction.setBadgeText({ text: badgeText });
+      browser.browserAction.setBadgeBackgroundColor({ color: "#28a745" });
+    } else {
+      browser.browserAction.setIcon({ imageData: createIconImageData(false) });
+      browser.browserAction.setBadgeText({ text: "" });
+    }
+    cachedDbSize = await getDatabaseSizeStr();
     let avgStr = "\u221E";
     if (sessionEventCount >= 1 && sessionStartTime && lastEventTime) {
       let diffMs = lastEventTime - sessionStartTime;
@@ -40817,14 +40895,6 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     titleStr += `Update Time (avg): ${avgStr}
 `;
     titleStr += `Last Update: ${lastUpdateStr}`;
-    if (isActive) {
-      browser.browserAction.setIcon({ path: "/assets/icon-on.svg" });
-      browser.browserAction.setBadgeText({ text: sessionEventCount.toString() });
-      browser.browserAction.setBadgeBackgroundColor({ color: "#28a745" });
-    } else {
-      browser.browserAction.setIcon({ path: "/assets/icon-off.svg" });
-      browser.browserAction.setBadgeText({ text: "" });
-    }
     browser.browserAction.setTitle({ title: titleStr });
   }
   async function incrementAndSaveCount() {
@@ -40842,7 +40912,6 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     }
     lastEventTime = now;
     await browser.storage.local.set({ eventCount });
-    cachedDbSize = await getDatabaseSizeStr();
     updateIcon();
   }
   var activeBskyTabId = null;
@@ -40893,6 +40962,23 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       autoDisable();
     }
   }
+  async function terminateDatabase() {
+    if (conn) {
+      try {
+        await conn.close();
+      } catch (e) {
+      }
+      conn = null;
+    }
+    if (db) {
+      try {
+        await db.terminate();
+      } catch (e) {
+      }
+      db = null;
+    }
+    console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] DuckDB terminated. Memory released.`);
+  }
   async function stopMonitor() {
     if (monitorTimeoutId) {
       clearTimeout(monitorTimeoutId);
@@ -40902,6 +40988,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       activeBskyTabId = null;
       console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Stopped.`);
     }
+    await terminateDatabase();
   }
   async function autoDisable() {
     if (isActive) {
@@ -40909,6 +40996,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       updateIcon();
       await stopMonitor();
       console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Auto-disabled due to tab loss or crash.`);
+    } else {
+      await terminateDatabase();
     }
   }
   async function sha1(str) {
@@ -40917,6 +41006,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
   }
   async function startMonitor() {
     await stopMonitor();
+    await initDatabase();
     if (navigator.storage && navigator.storage.estimate) {
       try {
         const est = await navigator.storage.estimate();
@@ -40953,11 +41043,26 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
   });
   browser.tabs.onRemoved.addListener(async (tabId) => {
     if (isActive && tabId === activeBskyTabId) {
-      console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Monitored tab closed. Auto-disabling.`);
-      autoDisable();
+      const bestTab = await getBestBskyTab();
+      if (bestTab) {
+        activeBskyTabId = bestTab.id;
+        lastMigrationTime = Date.now();
+        console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Monitored tab closed. Rescued by migrating to tab ${activeBskyTabId}.`);
+      } else {
+        console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Monitored tab closed. No alternative tabs found. Auto-disabling.`);
+        autoDisable();
+      }
     }
   });
-  async function initDatabase() {
+  browser.tabs.onReplaced.addListener(async (addedTabId, removedTabId) => {
+    if (isActive && removedTabId === activeBskyTabId) {
+      activeBskyTabId = addedTabId;
+      lastMigrationTime = Date.now();
+      console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Monitored tab replaced (awoken from sleep). Migrated to tab ${activeBskyTabId}.`);
+    }
+  });
+  async function initDatabase(skipLongevity = false) {
+    if (db) return;
     try {
       console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Initializing DuckDB-Wasm...`);
       const MANUAL_BUNDLES = {
@@ -40971,8 +41076,53 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       const logger = new duckdb.VoidLogger();
       db = new duckdb.AsyncDuckDB(logger, worker);
       await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
-      await db.open({ path: "opfs://bluesky_trends.db", accessMode: duckdb.DuckDBAccessMode.READ_WRITE });
-      conn = await db.connect();
+      let retries = 5;
+      let connected = false;
+      while (retries > 0 && !connected) {
+        try {
+          await db.open({
+            path: "opfs://bluesky_trends.db",
+            accessMode: 3
+            /* READ_WRITE */
+          });
+          conn = await db.connect();
+          await conn.query("SET max_expression_depth TO 10000");
+          await conn.query("CREATE TABLE IF NOT EXISTS _lock_test (id INT); DROP TABLE _lock_test;");
+          connected = true;
+        } catch (e) {
+          console.error("DuckDB locked or failed. Retries left: " + retries, e);
+          if (conn) {
+            try {
+              await conn.close();
+            } catch (e2) {
+            }
+            conn = null;
+          }
+          retries--;
+          if (retries === 0) {
+            console.log("Nuclear OPFS wipe due to hanging locks...");
+            try {
+              const root = await navigator.storage.getDirectory();
+              try {
+                await root.removeEntry("bluesky_trends.db", { recursive: true });
+              } catch (err) {
+              }
+              try {
+                await root.removeEntry("bluesky_trends.db.wal", { recursive: true });
+              } catch (err) {
+              }
+            } catch (e3) {
+            }
+            await db.open({ path: "opfs://bluesky_trends.db", accessMode: 3 });
+            conn = await db.connect();
+            await conn.query("SET max_expression_depth TO 10000");
+            connected = true;
+          } else {
+            console.log("Waiting 3 seconds for Firefox to release the OPFS lock...");
+            await new Promise((r) => setTimeout(r, 3e3));
+          }
+        }
+      }
       if (navigator.storage && navigator.storage.estimate) {
         const est = await navigator.storage.estimate();
         if (est.usage && est.quota && est.usage / est.quota > 0.95) {
@@ -40987,31 +41137,21 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       await conn.query(`
             CREATE TABLE IF NOT EXISTS trends (
                 captured_at TIMESTAMP,
-                raw_json JSON
+                raw_json VARCHAR
             );
         `);
-      try {
-        await conn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR");
-      } catch (e) {
-      }
-      try {
-        await conn.query("ALTER TABLE trends ADD COLUMN is_flutter BOOLEAN");
-      } catch (e) {
-      }
-      try {
-        await conn.query("ALTER TABLE trends ADD COLUMN gap_ms INTEGER");
-      } catch (e) {
-      }
-      try {
-        await conn.query("ALTER TABLE trends ADD COLUMN payload_hash VARCHAR");
-      } catch (e) {
-      }
+      const colRes = await conn.query("SELECT column_name FROM information_schema.columns WHERE table_name = 'trends'");
+      const columns = colRes.toArray().map((r) => r.toJSON().column_name);
+      if (!columns.includes("viewer_did")) await conn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR");
+      if (!columns.includes("is_flutter")) await conn.query("ALTER TABLE trends ADD COLUMN is_flutter BOOLEAN");
+      if (!columns.includes("gap_ms")) await conn.query("ALTER TABLE trends ADD COLUMN gap_ms INTEGER");
+      if (!columns.includes("payload_hash")) await conn.query("ALTER TABLE trends ADD COLUMN payload_hash VARCHAR");
       console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] DuckDB successfully initialized on OPFS!`);
+      if (!skipLongevity) await rebuildLongevityState();
     } catch (e) {
       console.error(`[${(/* @__PURE__ */ new Date()).toISOString()}] Failed to initialize DuckDB`, e);
     }
   }
-  initDatabase();
   var currentRateLimit = null;
   var isLoggedIn = false;
   var hasCheckedAuth = false;
@@ -41077,6 +41217,18 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
           const rawIsFlutter = timeSinceFlutterMs < 5e3;
           const rawPayloadHash = await sha1(currentTrendsString);
           const rawGapMs = lastEventTime ? Date.now() - lastEventTime : 0;
+          let currentTopics = /* @__PURE__ */ new Set();
+          for (let t of validTrendsArray) {
+            currentTopics.add(t.topic);
+            if (longevityState[t.topic] === void 0) {
+              longevityState[t.topic] = 0;
+            } else if (previousTopics.has(t.topic)) {
+              longevityState[t.topic] += rawGapMs;
+            }
+            t.timeInTop20Ms = longevityState[t.topic];
+          }
+          previousTopics = currentTopics;
+          currentTrendsString = JSON.stringify(validTrendsArray);
           const dbRow = DatabaseRowSchema.parse({
             viewer_did: rawViewerDid,
             is_flutter: rawIsFlutter,
@@ -41094,7 +41246,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
           if (conn) {
             await conn.query(`
                 INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash)
-                VALUES (CURRENT_TIMESTAMP, '${dbRow.raw_json.replace(/'/g, "''")}', '${dbRow.viewer_did}', ${dbRow.is_flutter}, ${dbRow.gap_ms}, '${dbRow.payload_hash}')
+                VALUES (CURRENT_TIMESTAMP, '${dbRow.raw_json.replace(/'/g, "''")}', '${dbRow.viewer_did.replace(/'/g, "''")}', ${dbRow.is_flutter}, ${dbRow.gap_ms}, '${dbRow.payload_hash}')
             `);
             browser.runtime.sendMessage({ command: "TREND_ADDED" }).catch(() => {
             });
@@ -41106,7 +41258,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
               }
               let nextDelay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
               totalScheduledDelayMs = nextDelay;
-              console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Timer reset due to migration. Next event in ${Math.round(nextDelay / 1e3)}s.`);
+              console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Updated fluttering interval. Next event in ${Math.round(nextDelay / 1e3)}s.`);
               monitorTimeoutId = setTimeout(triggerFlutter, nextDelay);
             }
           } else {
@@ -41141,13 +41293,16 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       }
       return Promise.resolve(true);
     }
+    if (!conn && ["GET_TREND_MOMENT", "EXPORT", "CLEAR", "IMPORT"].includes(message.command)) {
+      await initDatabase(message.command === "CLEAR");
+    }
     if (message.command === "GET_AUTH_STATUS") {
       return Promise.resolve({ hasCheckedAuth, isLoggedIn, rateLimit: currentRateLimit });
     }
     if (message.command === "GET_TREND_MOMENT") {
       if (!conn) return Promise.resolve({ error: "DB not initialized" });
       try {
-        const offset = message.offset || 0;
+        const offset = Number(message.offset) || 0;
         const countResult = await conn.query(`SELECT COUNT(*) as c FROM trends`);
         const rows = countResult.toArray();
         let firstRow = rows[0];
@@ -41182,6 +41337,80 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         console.error("GET_TREND_MOMENT Error:", e);
         return Promise.resolve({ error: e.toString() });
       }
+    } else if (message.command === "IMPORT") {
+      console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Importing database...`);
+      try {
+        const buffer = new Uint8Array(await message.file.arrayBuffer());
+        await db.registerFileBuffer("import.parquet", buffer);
+        const existingRes = await conn.query("SELECT captured_at FROM trends");
+        const existingSet = new Set(existingRes.toArray().map((r) => {
+          let d = r.toJSON ? r.toJSON().captured_at : r.captured_at;
+          if (d instanceof Date) return d.getTime();
+          if (typeof d === "number") return d;
+          return new Date(d).getTime();
+        }));
+        const importRes = await conn.query(`SELECT * FROM 'import.parquet'`);
+        const incomingRows = importRes.toArray().map((r) => r.toJSON ? r.toJSON() : r);
+        const validInsertRows = [];
+        let errorsLogged = 0;
+        for (let i = 0; i < incomingRows.length; i++) {
+          const row = incomingRows[i];
+          try {
+            let tsStr = row.captured_at;
+            if (!tsStr) throw new Error("Missing captured_at timestamp");
+            let tsTime;
+            if (tsStr instanceof Date) {
+              tsTime = tsStr.getTime();
+              tsStr = tsStr.toISOString();
+            } else if (typeof tsStr !== "string") {
+              tsTime = Number(tsStr);
+              tsStr = new Date(tsTime).toISOString();
+            } else {
+              tsTime = new Date(tsStr).getTime();
+            }
+            if (existingSet.has(tsTime)) continue;
+            const dbRow = DatabaseRowSchema.parse({
+              viewer_did: row.viewer_did || "anonymous",
+              is_flutter: Boolean(row.is_flutter),
+              gap_ms: Number(row.gap_ms) || 0,
+              payload_hash: row.payload_hash || "",
+              raw_json: typeof row.raw_json === "string" ? row.raw_json : JSON.stringify(row.raw_json)
+            });
+            const payloadData = JSON.parse(dbRow.raw_json);
+            TrendPayloadSchema.parse(payloadData);
+            validInsertRows.push({
+              captured_at: tsStr,
+              raw_json: dbRow.raw_json,
+              viewer_did: dbRow.viewer_did,
+              is_flutter: dbRow.is_flutter,
+              gap_ms: dbRow.gap_ms,
+              payload_hash: dbRow.payload_hash
+            });
+          } catch (e) {
+            errorsLogged++;
+            console.warn(`[Import] Skipping corrupt row at index ${i}:`, e.message);
+          }
+        }
+        if (validInsertRows.length > 0) {
+          const CHUNK_SIZE = 50;
+          for (let i = 0; i < validInsertRows.length; i += CHUNK_SIZE) {
+            const chunk = validInsertRows.slice(i, i + CHUNK_SIZE);
+            const values = chunk.map((r) => `('${r.captured_at}', '${r.raw_json.replace(/'/g, "''")}', '${r.viewer_did.replace(/'/g, "''")}', ${r.is_flutter}, ${r.gap_ms}, '${r.payload_hash.replace(/'/g, "''")}')`).join(",\n");
+            await conn.query(`INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash) VALUES ${values}`);
+          }
+        }
+        console.log(`[Import] Finished. Inserted ${validInsertRows.length} valid rows. Skipped ${errorsLogged} invalid/corrupt rows.`);
+        const countRes = await conn.query("SELECT COUNT(*) as c FROM trends");
+        const firstRow = countRes.toArray()[0].toJSON();
+        eventCount = Number(firstRow.c || firstRow.count || Object.values(firstRow)[0] || 0);
+        await browser.storage.local.set({ eventCount });
+        updateIcon();
+        await rebuildLongevityState();
+        return Promise.resolve(true);
+      } catch (e) {
+        console.error("Import error:", e);
+        throw e;
+      }
     } else if (message.command === "EXPORT") {
       console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Exporting database...`);
       try {
@@ -41199,12 +41428,24 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         console.error(`[${(/* @__PURE__ */ new Date()).toISOString()}] Export failed`, e);
       }
     } else if (message.command === "CLEAR") {
-      console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Clearing database...`);
       try {
-        await conn.query(`DELETE FROM trends`);
+        await conn.query(`DROP TABLE IF EXISTS trends`);
+        await conn.query(`
+                CREATE TABLE trends (
+                    captured_at TIMESTAMP,
+                    raw_json VARCHAR,
+                    viewer_did VARCHAR,
+                    is_flutter BOOLEAN,
+                    gap_ms INTEGER,
+                    payload_hash VARCHAR
+                )
+            `);
+        await conn.query(`CHECKPOINT`);
         eventCount = 0;
         await browser.storage.local.set({ eventCount: 0 });
         updateIcon();
+        longevityState = {};
+        console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Cleared and checkpointed database...`);
       } catch (e) {
         console.error(`[${(/* @__PURE__ */ new Date()).toISOString()}] Clear failed`, e);
       }

@@ -9,3 +9,17 @@ document.getElementById('btn-clear').addEventListener('click', () => {
         alert("Database cleared!");
     }
 });
+
+document.getElementById('btn-import').addEventListener('click', () => {
+    document.getElementById('file-import').click();
+});
+document.getElementById('file-import').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+        await browser.runtime.sendMessage({ command: "IMPORT", file: file });
+        alert("Import complete! Database restored.");
+    } catch(err) {
+        alert("Import failed: " + err.message);
+    }
+});

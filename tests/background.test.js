@@ -1,3 +1,8 @@
+const { TextEncoder, TextDecoder } = require("util");
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+HTMLCanvasElement.prototype.getContext = jest.fn(() => ({ fillStyle: "", beginPath: jest.fn(), moveTo: jest.fn(), lineTo: jest.fn(), quadraticCurveTo: jest.fn(), closePath: jest.fn(), fill: jest.fn(), font: "", textAlign: "", textBaseline: "", stroke: jest.fn(), fillText: jest.fn(), getImageData: jest.fn(() => ({ data: [] })) }));
+global.mockQuery = jest.fn().mockResolvedValue({ toArray: () => [] });
 const fs = require('fs');
 const path = require('path');
 
@@ -12,10 +17,11 @@ jest.mock('@duckdb/duckdb-wasm', () => ({
     AsyncDuckDB: class {
         constructor() {}
         async instantiate() {}
+        async registerFileBuffer() {}
         async open() {}
         async connect() { 
             return { 
-                query: jest.fn().mockResolvedValue({ toArray: () => [] }),
+                query: global.mockQuery,
                 close: jest.fn()
             };
         }
@@ -57,6 +63,9 @@ describe("Background Script", () => {
         if (!browser.tabs) browser.tabs = {};
         if (!browser.tabs.onActivated) browser.tabs.onActivated = { addListener: jest.fn() };
         if (!browser.tabs.onUpdated) browser.tabs.onUpdated = { addListener: jest.fn() };
+        if (!browser.tabs.onRemoved) browser.tabs.onRemoved = { addListener: jest.fn() };
+        if (!global.crypto.subtle) global.crypto.subtle = { digest: jest.fn().mockResolvedValue(new ArrayBuffer(20)) };
+        if (!browser.tabs.onReplaced) browser.tabs.onReplaced = { addListener: jest.fn() };
         browser.tabs.query = jest.fn().mockResolvedValue([{ id: 1, url: "https://bsky.app" }]);
 
         // Capture listeners
@@ -254,6 +263,7 @@ describe("Background Script", () => {
         const { TextEncoder } = require("util"); const encoder = new TextEncoder();
         const dummyData = JSON.stringify({ trends: [{ topic: "test", link: "/search?q=test", description: "testing" }] });
         filterMock.ondata({ data: encoder.encode(dummyData).buffer });
+        await new Promise(r => setTimeout(r, 50));
         
         // Trigger onstop
         filterMock.onstop();
@@ -286,5 +296,84 @@ describe("Background Script", () => {
             rateLimit: { remaining: "45", reset: "1726671234", limit: "3000", policy: null },
             isLoggedIn: true
         });
+    });
+    it("should process IMPORT commands and handle Parquet files", async () => {
+        global.mockQuery.mockReset();
+        global.mockQuery.mockResolvedValue({ toArray: () => [] }); // default fallback
+
+        jest.isolateModules(() => { require('../src/background.src.js'); });
+        await new Promise(r => setTimeout(r, 50));
+        await messageListeners[0]({ command: "SET_STATE", isActive: true }, {}, jest.fn());
+        await new Promise(r => setTimeout(r, 50));
+
+        const onMessage = messageListeners[0];
+        
+        // Mock query sequence
+        global.mockQuery
+            .mockResolvedValueOnce({ toArray: () => [{ captured_at: "2024-01-01T12:00:00.000Z" }] }) // SELECT captured_at
+            .mockResolvedValueOnce({ 
+                toArray: () => [
+                    { captured_at: "2024-01-01T12:00:00.000Z", raw_json: "[]" }, // Duplicate, should be skipped
+                    { captured_at: "2024-01-01T12:01:00.000Z", raw_json: "[]", gap_ms: 50, viewer_did: "abc", is_flutter: false, payload_hash: "hash" }, // Valid
+                    { captured_at: 1726671234000, raw_json: "[]" }, // Valid Number
+                    { captured_at: new Date(), raw_json: "[]" }, // Valid Date
+                    { captured_at: null } // Corrupt
+                ] 
+            }) // SELECT * FROM 'import.parquet'
+            .mockResolvedValueOnce({}) // INSERT INTO
+            .mockResolvedValueOnce({ toArray: () => [{ toJSON: () => ({ c: 8 }) }] }) // SELECT COUNT
+            .mockResolvedValueOnce({ toArray: () => [] }); // rebuild longevity
+
+        const dummyFile = {
+            arrayBuffer: async () => new ArrayBuffer(10)
+        };
+        
+        await onMessage({ command: "IMPORT", file: dummyFile }, {}, jest.fn());
+        
+        expect(global.mockQuery).toHaveBeenCalledWith(expect.stringContaining("INSERT INTO trends"));
+        expect(browser.storage.local.set).toHaveBeenCalledWith({ eventCount: 8 });
+    });
+
+
+    it("should handle corrupted JSON gracefully in filterResponseData", async () => {
+        jest.isolateModules(() => { require('../src/background.src.js'); });
+        await new Promise(r => setTimeout(r, 50));
+        await messageListeners[0]({ command: "SET_STATE", isActive: true }, {}, jest.fn());
+
+        let filterMock = {
+            ondata: jest.fn(),
+            onstop: jest.fn(),
+            write: jest.fn(),
+            disconnect: jest.fn()
+        };
+        browser.webRequest.filterResponseData = jest.fn().mockReturnValue(filterMock);
+        beforeRequestListeners[0]({ requestId: "999", method: "GET", url: "https://public.api.bsky.app/xrpc/app.bsky.unspecced.getTrends" });
+        
+        let encoder = new TextEncoder();
+        filterMock.ondata({ data: encoder.encode("INVALID JSON {") });
+        await filterMock.onstop();
+        // Just checking that it doesn't throw and disconnects
+        expect(filterMock.disconnect).toHaveBeenCalled();
+    });
+
+    it("should handle invalid Zod schema gracefully in filterResponseData", async () => {
+        jest.isolateModules(() => { require('../src/background.src.js'); });
+        await new Promise(r => setTimeout(r, 50));
+        await messageListeners[0]({ command: "SET_STATE", isActive: true }, {}, jest.fn());
+
+        let filterMock = {
+            ondata: jest.fn(),
+            onstop: jest.fn(),
+            write: jest.fn(),
+            disconnect: jest.fn()
+        };
+        browser.webRequest.filterResponseData = jest.fn().mockReturnValue(filterMock);
+        beforeRequestListeners[0]({ requestId: "9992", method: "GET", url: "https://public.api.bsky.app/xrpc/app.bsky.unspecced.getTrends" });
+        
+        let encoder = new TextEncoder();
+        // valid JSON, but missing required Zod fields (e.g. topic)
+        filterMock.ondata({ data: encoder.encode(JSON.stringify([{ broken: "schema" }])) });
+        await filterMock.onstop();
+        expect(filterMock.disconnect).toHaveBeenCalled();
     });
 });

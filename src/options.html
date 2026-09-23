@@ -2,17 +2,85 @@
 <html>
 <head>
   <title>Bluesky Trend Gatherer Settings</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icon-on.svg">
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; border-radius: 4px; }
-    .danger { background-color: #dc3545; color: white; border: none; }
-    .primary { background-color: #007bff; color: white; border: none; }
+    :root {
+      color-scheme: light dark;
+    }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+      padding: 30px; 
+      max-width: 600px;
+      margin: 0 auto;
+      background: Canvas;
+      color: CanvasText;
+    }
+    h2 {
+      color: #1185fe;
+      border-bottom: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+      padding-bottom: 10px;
+    }
+    .settings-group {
+      background: color-mix(in srgb, CanvasText 5%, transparent);
+      border: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .settings-group p {
+      margin-top: 0;
+      color: color-mix(in srgb, CanvasText 80%, transparent);
+      line-height: 1.5;
+    }
+    button { 
+      padding: 10px 20px; 
+      margin-right: 10px; 
+      font-size: 14px; 
+      font-weight: 600;
+      cursor: pointer; 
+      border-radius: 6px; 
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .danger { 
+      background-color: transparent; 
+      color: #dc3545; 
+      border: 1px solid #dc3545; 
+    }
+    .danger:hover {
+      background-color: #dc3545;
+      color: white;
+    }
+    .primary { 
+      background-color: #1185fe; 
+      color: white; 
+      border: 1px solid #1185fe; 
+    }
+    .primary:hover {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
   </style>
 </head>
 <body>
   <h2>Database Management</h2>
-  <button id="btn-export" class="primary">Export to Parquet</button>
-  <button id="btn-clear" class="danger">Clear Database & Reset Count</button>
+  
+  <div class="settings-group">
+    <p>Export your archived timeline shifts into a compressed Apache Parquet file for deep analysis in Jupyter Notebooks or Pandas.</p>
+    <button id="btn-export" class="primary">Export to Parquet</button>
+  </div>
+
+  <div class="settings-group">
+    <p>Restore a previously exported timeline backup. Identical snapshot timestamps are automatically deduplicated.</p>
+    <button id="btn-import" class="primary">Import Parquet Backup</button>
+    <input type="file" id="file-import" accept=".parquet" style="display: none;">
+  </div>
+
+  <div class="settings-group">
+    <p>Permanently wipe all collected timeline data from the local OPFS database. This action cannot be undone unless you have a backup.</p>
+    <button id="btn-clear" class="danger">Clear Database</button>
+  </div>
+
   <script src="options.js"></script>
 </body>
 </html>

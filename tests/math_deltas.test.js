@@ -54,3 +54,49 @@ describe("Math Deltas", () => {
         expect(result.timeUnchangedStr).toContain("10m in pos");
     });
 });
+
+describe("math_deltas <1m condition", () => {
+    it("should display <1m in pos if diff is less than 60s", () => {
+        const h0 = { ts: new Date(Date.now() - 30000), trends: [{ topic: "Same", rank: 1 }] };
+        const h1 = { ts: new Date(Date.now() - 60000), trends: [{ topic: "Same", rank: 1 }] }; // 30s
+        const res = calculateDeltas({ topic: "Same" }, 0, [h0], new Date(Date.now()).toISOString());
+        expect(res.timeUnchangedStr).toContain("<1m in pos");
+    });
+});
+
+
+describe("math_deltas actor diffing and returning trends", () => {
+    it("should identify new and dropped actors", () => {
+        const t = { topic: "Alpha", actors: [{ did: "user1" }, { did: "user3" }] };
+        const history = [{
+            ts: "2026-09-18T10:00:00",
+            trends: [
+                { topic: "Alpha", actors: [{ did: "user1" }, { did: "user2" }] }
+            ]
+        }];
+        const result = require('../src/math_deltas.js').calculateDeltas(t, 0, history, "2026-09-18 10:05:00");
+        expect(result.newActors).toEqual(["user3"]);
+        expect(result.droppedActors).toEqual([{ did: "user2" }]);
+    });
+
+    it("should suppress New tag for returning trends found deeper in history", () => {
+        const t = { topic: "Returning" };
+        const history = [
+            { ts: "2026-09-18T10:00:00", trends: [{ topic: "Other" }] },
+            { ts: "2026-09-18T09:55:00", trends: [{ topic: "Returning" }] }
+        ];
+        const result = require('../src/math_deltas.js').calculateDeltas(t, 0, history, "2026-09-18 10:05:00");
+        expect(result.rankDiffStr).toContain("—");
+        expect(result.timeUnchangedStr).toContain("<1m in pos");
+    });
+
+    it("should suppress New tag if timeInTop20Ms is much larger than currentGapMs", () => {
+        const t = { topic: "Returning", timeInTop20Ms: 600000 };
+        const history = [
+            { ts: "2026-09-18T10:00:00", trends: [{ topic: "Other" }] }
+        ];
+        const result = require('../src/math_deltas.js').calculateDeltas(t, 0, history, "2026-09-18 10:05:00");
+        expect(result.rankDiffStr).toContain("—");
+        expect(result.timeUnchangedStr).toContain("<1m in pos");
+    });
+});

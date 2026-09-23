@@ -9,6 +9,7 @@
   "version": "1.0",
   "icons": { "48": "assets/icon-on.svg", "96": "assets/icon-on.svg" },
   "description": "Gathers and stores Bluesky trending data natively using DuckDB-Wasm and OPFS.",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; connect-src 'self';",
   "permissions": [
     "webRequest",
     "webRequestBlocking",
@@ -20,7 +21,7 @@
   ],
   "browser_action": {
     "default_title": "Toggle Monitor (Off)"
-    , "default_icon": "assets/icon-off.svg", "default_popup": "src/popup.html"
+    , "default_icon": "assets/icon-off.png", "default_popup": "src/popup.html"
   },
   "options_ui": {
     "page": "src/options.html",
