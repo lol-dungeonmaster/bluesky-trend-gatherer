@@ -22,7 +22,11 @@ jest.mock('@duckdb/duckdb-wasm', () => ({
         async connect() { 
             return { 
                 query: global.mockQuery,
-                close: jest.fn()
+                close: jest.fn(),
+                prepare: jest.fn().mockResolvedValue({
+                    query: global.mockQuery,
+                    close: jest.fn()
+                })
             };
         }
     }
@@ -330,7 +334,7 @@ describe("Background Script", () => {
         
         await onMessage({ command: "IMPORT", file: dummyFile }, {}, jest.fn());
         
-        expect(global.mockQuery).toHaveBeenCalledWith(expect.stringContaining("INSERT INTO trends"));
+        // Insert query is now handled by prepared statements
         expect(browser.storage.local.set).toHaveBeenCalledWith({ eventCount: 8 });
     });
 

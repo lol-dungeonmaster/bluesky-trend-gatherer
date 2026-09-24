@@ -1,6 +1,6 @@
 # <img src="assets/icon-on.svg" width="40" height="40" alt="Icon" valign="middle" style="margin-right: 8px;"> Bluesky Trend Gatherer
 
-A lightweight, privacy-first Firefox extension designed to archive and analyze temporal trend data from the Bluesky network.
+A lightweight, privacy-first browser extension designed to archive and analyze temporal trend data from the Bluesky network.
 
 ## Design Goal
 
@@ -60,21 +60,22 @@ Currently, the extension serves as a robust foundational archiver. It passively 
 - **Trend Longevity & Rank Deltas:** Dynamically tracks how long each topic survives in the Top 20 (e.g. `34m in pos`). Computes live statistical diffs to show exactly how many ranks a topic has jumped (`▲3`), how many new posts it gained (`+4.2k`), or if it's completely `New`.
 - **Live Actor Cohort Diffing:** Explore key drivers of a trend with a themed popover displaying the "Top Actors". The extension actively tracks cohort shifts: if an actor newly joins the Top 5, they receive a glowing green ring; if they drop out, they are banished to a red-tinted lower row.
 - **Data Portability & Import Idempotency:** Instantly export your collected timeline as a compressed `.parquet` file, ready for Jupyter or Pandas. You can also **import** `.parquet` backups directly back into the extension—fortified by rigorous Zod schema validation and idempotent duplicate protection.
+- **Cross-Browser MV2 Support:** Built natively for Firefox and its Gecko forks (Waterfox, LibreWolf, Zen), but fully bundled with Mozilla's WebExtension Polyfill to allow seamless installation on privacy-focused Chromium forks that continue to maintain Manifest V2 support (Brave, Vivaldi, Thorium).
 
 ---
 
 ## 🚀 Installation (For Regular Users)
 
-You don't need any coding experience to install and use this extension!
+You don't need any coding experience to install and use this extension! Download or clone this repository to your computer, then follow the instructions for your browser.
 
-1. Download or clone this repository to your computer.
-2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
-3. Click the **Load Temporary Add-on...** button.
-4. Select the `manifest.json` file from the downloaded folder.
-5. Open a tab to `bsky.app`, click the new extension icon in your toolbar, and toggle it "On" to begin archiving!
+### Firefox / Gecko Forks
+1. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
+2. Click the **Load Temporary Add-on...** button.
+3. Select the `manifest.json` file from the downloaded folder.
+4. Open a tab to `bsky.app`, click the new extension icon in your toolbar, and toggle it "On" to begin archiving!
 
 > [!WARNING]
-> **Data Persistence:** When installed as a "Temporary Add-on" via `about:debugging`, Firefox will **permanently delete** your collected OPFS database whenever the browser is restarted. To keep your data between sessions, you must either frequently use the Export button or install the extension permanently.
+> **Firefox Data Persistence:** When installed as a "Temporary Add-on" via `about:debugging`, Firefox will **permanently delete** your collected OPFS database whenever the browser is restarted. To keep your data between sessions, you must either frequently use the Export button or follow the Permanent Installation instructions below.
 
 <details>
 <summary><b>Advanced: Permanent Installation</b> (Click to expand)</summary>
@@ -89,6 +90,14 @@ To prevent Firefox from wiping your database on restart, you can permanently ins
 
 Your database will now safely persist across all browser restarts!
 </details>
+
+### Chromium Forks (Brave, Vivaldi, Thorium)
+Because Google Chrome and Microsoft Edge forcefully deprecated Manifest V2, this extension relies on Chromium forks that have pledged to maintain MV2 support for ad-blockers and privacy tools.
+1. Open your browser (Brave, Vivaldi, Thorium, or Supermium) and navigate to the extensions page (e.g., `brave://extensions`).
+2. Toggle on **Developer mode** in the top right corner.
+3. Click the **Load unpacked** button.
+4. Select the extension directory (the folder containing `manifest.json`).
+*(Chromium browsers will automatically persist your OPFS database across browser restarts without any extra configuration).*
 
 ---
 
@@ -116,11 +125,20 @@ If you'd like to fork the repository to build your own analytics features, the s
 
 ---
 
-## Exporting Data
-To export your collected data for analysis:
-1. Go to `about:addons` in Firefox.
-2. Find **Bluesky Trend Gatherer** and click the **Preferences/Options** tab.
-3. Click the **Export to Parquet** button. Your data will instantly download as a `.parquet` file!
+## 📤📥 Exporting & Importing Data
+
+The extension includes a built-in database manager to easily back up, analyze, and restore your gathered trends.
+
+### Accessing the Manager
+1. Click the **⚙️** (gear icon) in the top right of the extension's popup, OR
+2. Go to your browser's extension settings (e.g., `about:addons`), find **Bluesky Trend Gatherer**, and click **Preferences/Options**.
+
+### Exporting
+Click the **Export to Parquet** button to instantly download your entire local database as a highly compressed `.parquet` file. This format is perfect for loading into Python data science tools like Pandas or Jupyter Notebooks!
+
+### Importing
+If you've switched browsers or accidentally had your Temporary extension data wiped, you can easily restore your timeline. Click the **Import from Parquet** button and select a previously exported file. 
+*(The import process is fully idempotent and validated—it will automatically ignore duplicate timestamps and skip corrupted rows, safely merging the backup into your active database).*
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.

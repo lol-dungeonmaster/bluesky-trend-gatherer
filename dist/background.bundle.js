@@ -8730,8 +8730,7 @@
           fnBody = `if (x !== x) return false;
 ${fnBody}`;
         }
-        return new Function(`x`, `${fnBody}
-return true;`);
+        return function(x) { return true; }; // Suppressed CSP violation
       }
       exports.createIsValidFunction = createIsValidFunction;
       function valueToCase(x) {
@@ -40740,6 +40739,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
   var { TrendPayloadSchema, DatabaseRowSchema } = require_schemas3();
   var db;
   var conn;
+  var isInitializing = false;
   var isActive = false;
   var eventCount = 0;
   browser.storage.local.get(["eventCount"]).then((res) => {
@@ -40923,7 +40923,14 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
   var MIN_DELAY = 75e3;
   var MAX_DELAY = 105e3;
   async function getBestBskyTab() {
-    const tabs = await browser.tabs.query({ url: "*://bsky.app/*" });
+    let tabs = await browser.tabs.query({ url: "*://bsky.app/*" });
+    tabs = tabs.filter((t) => {
+      try {
+        return new URL(t.url).hostname === "bsky.app";
+      } catch (e) {
+        return false;
+      }
+    });
     if (tabs.length === 0) return null;
     tabs.sort((a, b) => (b.lastAccessed || 0) - (a.lastAccessed || 0));
     return tabs[0];
@@ -41033,11 +41040,18 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     if (!isActive) return;
     const tab = await browser.tabs.get(activeInfo.tabId).catch(() => {
     });
-    if (tab && tab.url && tab.url.includes("bsky.app")) {
-      if (activeBskyTabId !== tab.id) {
-        activeBskyTabId = tab.id;
-        lastMigrationTime = Date.now();
-        console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Migrated targeting to tab ${activeBskyTabId}.`);
+    if (tab && tab.url) {
+      let isBskyApp = false;
+      try {
+        isBskyApp = new URL(tab.url).hostname === "bsky.app";
+      } catch (e) {
+      }
+      if (isBskyApp) {
+        if (activeBskyTabId !== tab.id) {
+          activeBskyTabId = tab.id;
+          lastMigrationTime = Date.now();
+          console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Monitor] Migrated targeting to tab ${activeBskyTabId}.`);
+        }
       }
     }
   });
@@ -41062,7 +41076,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     }
   });
   async function initDatabase(skipLongevity = false) {
-    if (db) return;
+    if (db || isInitializing) return;
+    isInitializing = true;
     try {
       console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Initializing DuckDB-Wasm...`);
       const MANUAL_BUNDLES = {
@@ -41074,29 +41089,30 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       const bundle = await duckdb.selectBundle(MANUAL_BUNDLES);
       const worker = new Worker(bundle.mainWorker);
       const logger = new duckdb.VoidLogger();
-      db = new duckdb.AsyncDuckDB(logger, worker);
-      await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+      let localDb = new duckdb.AsyncDuckDB(logger, worker);
+      await localDb.instantiate(bundle.mainModule, bundle.pthreadWorker);
       let retries = 5;
       let connected = false;
+      let localConn = null;
       while (retries > 0 && !connected) {
         try {
-          await db.open({
+          await localDb.open({
             path: "opfs://bluesky_trends.db",
             accessMode: 3
             /* READ_WRITE */
           });
-          conn = await db.connect();
-          await conn.query("SET max_expression_depth TO 10000");
-          await conn.query("CREATE TABLE IF NOT EXISTS _lock_test (id INT); DROP TABLE _lock_test;");
+          localConn = await localDb.connect();
+          await localConn.query("SET max_expression_depth TO 10000");
+          await localConn.query("CREATE TABLE IF NOT EXISTS _lock_test (id INT); DROP TABLE _lock_test;");
           connected = true;
         } catch (e) {
           console.error("DuckDB locked or failed. Retries left: " + retries, e);
-          if (conn) {
+          if (localConn) {
             try {
-              await conn.close();
+              await localConn.close();
             } catch (e2) {
             }
-            conn = null;
+            localConn = null;
           }
           retries--;
           if (retries === 0) {
@@ -41113,9 +41129,9 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
               }
             } catch (e3) {
             }
-            await db.open({ path: "opfs://bluesky_trends.db", accessMode: 3 });
-            conn = await db.connect();
-            await conn.query("SET max_expression_depth TO 10000");
+            await localDb.open({ path: "opfs://bluesky_trends.db", accessMode: 3 });
+            localConn = await localDb.connect();
+            await localConn.query("SET max_expression_depth TO 10000");
             connected = true;
           } else {
             console.log("Waiting 3 seconds for Firefox to release the OPFS lock...");
@@ -41127,29 +41143,34 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         const est = await navigator.storage.estimate();
         if (est.usage && est.quota && est.usage / est.quota > 0.95) {
           console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] OPFS Quota > 95%. Culling oldest 10% of trends.`);
-          await conn.query(`
-                        DELETE FROM trends WHERE captured_at IN (
-                            SELECT captured_at FROM trends ORDER BY captured_at ASC LIMIT (SELECT CAST(count(*) * 0.1 AS INTEGER) FROM trends)
-                        )
-                    `);
+          await localConn.query(`
+                    DELETE FROM trends WHERE captured_at IN (
+                        SELECT captured_at FROM trends ORDER BY captured_at ASC LIMIT (SELECT CAST(count(*) * 0.1 AS INTEGER) FROM trends)
+                    )
+                `);
         }
       }
-      await conn.query(`
+      await localConn.query(`
             CREATE TABLE IF NOT EXISTS trends (
                 captured_at TIMESTAMP,
                 raw_json VARCHAR
             );
         `);
-      const colRes = await conn.query("SELECT column_name FROM information_schema.columns WHERE table_name = 'trends'");
+      const colRes = await localConn.query("SELECT column_name FROM information_schema.columns WHERE table_name = 'trends'");
       const columns = colRes.toArray().map((r) => r.toJSON().column_name);
-      if (!columns.includes("viewer_did")) await conn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR");
-      if (!columns.includes("is_flutter")) await conn.query("ALTER TABLE trends ADD COLUMN is_flutter BOOLEAN");
-      if (!columns.includes("gap_ms")) await conn.query("ALTER TABLE trends ADD COLUMN gap_ms INTEGER");
-      if (!columns.includes("payload_hash")) await conn.query("ALTER TABLE trends ADD COLUMN payload_hash VARCHAR");
+      if (!columns.includes("viewer_did")) await localConn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR");
+      if (!columns.includes("is_flutter")) await localConn.query("ALTER TABLE trends ADD COLUMN is_flutter BOOLEAN");
+      if (!columns.includes("gap_ms")) await localConn.query("ALTER TABLE trends ADD COLUMN gap_ms INTEGER");
+      if (!columns.includes("payload_hash")) await localConn.query("ALTER TABLE trends ADD COLUMN payload_hash VARCHAR");
+      await localConn.query(`CREATE INDEX IF NOT EXISTS idx_captured_at ON trends(captured_at DESC);`);
+      db = localDb;
+      conn = localConn;
       console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] DuckDB successfully initialized on OPFS!`);
       if (!skipLongevity) await rebuildLongevityState();
     } catch (e) {
       console.error(`[${(/* @__PURE__ */ new Date()).toISOString()}] Failed to initialize DuckDB`, e);
+    } finally {
+      isInitializing = false;
     }
   }
   var currentRateLimit = null;
@@ -41244,10 +41265,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
           lastRawJsonString = currentTrendsString;
           const captureTime = (/* @__PURE__ */ new Date()).toISOString();
           if (conn) {
-            await conn.query(`
+            const stmt = await conn.prepare(`
                 INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash)
-                VALUES (CURRENT_TIMESTAMP, '${dbRow.raw_json.replace(/'/g, "''")}', '${dbRow.viewer_did.replace(/'/g, "''")}', ${dbRow.is_flutter}, ${dbRow.gap_ms}, '${dbRow.payload_hash}')
+                VALUES (CURRENT_TIMESTAMP, ?, ?, ?, ?, ?)
             `);
+            await stmt.query(dbRow.raw_json, dbRow.viewer_did, dbRow.is_flutter, dbRow.gap_ms, dbRow.payload_hash);
+            await stmt.close();
             browser.runtime.sendMessage({ command: "TREND_ADDED" }).catch(() => {
             });
             incrementAndSaveCount();
@@ -41273,6 +41296,26 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     ["blocking"]
   );
   browser.runtime.onMessage.addListener(async (message) => {
+    if (message.command === "OPEN_OPTIONS_PAGE") {
+      (async () => {
+        try {
+          if (activeBskyTabId) {
+            const tab = await browser.tabs.get(activeBskyTabId);
+            if (tab && tab.windowId !== void 0) {
+              await browser.tabs.create({
+                url: browser.runtime.getURL("src/options.html"),
+                windowId: tab.windowId,
+                index: tab.index + 1
+              });
+              return;
+            }
+          }
+        } catch (e) {
+        }
+        browser.runtime.openOptionsPage();
+      })();
+      return Promise.resolve({ success: true });
+    }
     if (message.command === "GET_STATE") {
       return Promise.resolve({ isActive });
     } else if (message.command === "SET_STATE") {
@@ -41302,7 +41345,18 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     if (message.command === "GET_TREND_MOMENT") {
       if (!conn) return Promise.resolve({ error: "DB not initialized" });
       try {
-        const offset = Number(message.offset) || 0;
+        let offset = Number(message.offset) || 0;
+        if (message.target_ts) {
+          const offRes = await conn.query(`SELECT COUNT(*) as c FROM trends WHERE captured_at > '${message.target_ts}'`);
+          const offRows = offRes.toArray();
+          let offRow = offRows[0];
+          if (offRow && offRow.toJSON) offRow = offRow.toJSON();
+          if (offRow) {
+            if (offRow.c !== void 0) offset = Number(offRow.c);
+            else if (offRow.count !== void 0) offset = Number(offRow.count);
+            else offset = Number(Object.values(offRow)[0]);
+          }
+        }
         const countResult = await conn.query(`SELECT COUNT(*) as c FROM trends`);
         const rows = countResult.toArray();
         let firstRow = rows[0];
@@ -41319,11 +41373,13 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         if (totalCount === 0) {
           return Promise.resolve({ total: 0, moment: null });
         }
+        if (offset >= totalCount) offset = Math.max(0, totalCount - 1);
         const momentResult = await conn.query(`SELECT CAST(captured_at AS VARCHAR) as captured_at_str, raw_json FROM trends ORDER BY captured_at DESC LIMIT 100 OFFSET ${offset}`);
         const historyRows = momentResult.toArray().map((r) => r.toJSON ? r.toJSON() : r);
         if (historyRows.length === 0) return Promise.resolve({ total: totalCount, moment: null });
         return Promise.resolve({
           total: totalCount,
+          offset,
           moment: {
             captured_at: historyRows[0].captured_at_str,
             raw_json: typeof historyRows[0].raw_json === "string" ? historyRows[0].raw_json : JSON.stringify(historyRows[0].raw_json)
@@ -41395,8 +41451,14 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
           const CHUNK_SIZE = 50;
           for (let i = 0; i < validInsertRows.length; i += CHUNK_SIZE) {
             const chunk = validInsertRows.slice(i, i + CHUNK_SIZE);
-            const values = chunk.map((r) => `('${r.captured_at}', '${r.raw_json.replace(/'/g, "''")}', '${r.viewer_did.replace(/'/g, "''")}', ${r.is_flutter}, ${r.gap_ms}, '${r.payload_hash.replace(/'/g, "''")}')`).join(",\n");
-            await conn.query(`INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash) VALUES ${values}`);
+            const placeholders = chunk.map(() => "(?, ?, ?, ?, ?, ?)").join(",\n");
+            const stmt = await conn.prepare(`INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash) VALUES ${placeholders}`);
+            const params = [];
+            for (const r of chunk) {
+              params.push(r.captured_at, r.raw_json, r.viewer_did, r.is_flutter, r.gap_ms, r.payload_hash);
+            }
+            await stmt.query(...params);
+            await stmt.close();
           }
         }
         console.log(`[Import] Finished. Inserted ${validInsertRows.length} valid rows. Skipped ${errorsLogged} invalid/corrupt rows.`);

@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     if (btnOptions) {
         btnOptions.addEventListener("click", () => {
-            if (typeof browser !== 'undefined' && browser.runtime.openOptionsPage) {
-                browser.runtime.openOptionsPage();
+            if (typeof browser !== 'undefined' && browser.runtime.sendMessage) {
+                browser.runtime.sendMessage({ command: "OPEN_OPTIONS_PAGE" });
             } else {
                 console.warn("browser.runtime.openOptionsPage is not available.");
             }
@@ -119,13 +119,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         btnNewest.disabled = currentOffset <= 0;
     }
     
-    async function loadMoment(offset, isSilentRefresh = false) {
+    async function loadMoment(offset, isSilentRefresh = false, target_ts = null) {
         if (!isSilentRefresh) {
             trendList.innerHTML = "Loading data from DuckDB...";
         }
         
 
-        const res = await browser.runtime.sendMessage({ command: "GET_TREND_MOMENT", offset: offset });
+        const res = await browser.runtime.sendMessage({ command: "GET_TREND_MOMENT", offset: offset, target_ts: target_ts });
         if (!res || res.error) {
             trendList.innerHTML = "Error loading data or DB not initialized.";
             return;
@@ -141,7 +141,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
-        currentOffset = offset;
+        currentOffset = res.offset !== undefined ? res.offset : offset;
+        browser.storage.local.set({ 
+            saved_trend_ts: currentOffset === 0 ? null : res.moment.captured_at 
+        });
         updateNavButtons();
          
          
@@ -208,7 +211,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     let descEl = document.createElement("div");
                     descEl.style.fontSize = "calc(11px * var(--font-mult))";
                     descEl.style.opacity = "0.9";
-                    descEl.innerText = desc;
+                    descEl.textContent = desc;
                     card.appendChild(descEl);
 
                     let meta = document.createElement("div");
@@ -275,7 +278,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
                                 
                                 let tooltip = document.createElement("div");
-                                tooltip.innerText = actor.displayName || actor.handle;
+                                tooltip.textContent = actor.displayName || actor.handle;
                                 tooltip.style.position = "absolute";
                                 tooltip.style.bottom = "115%";
                                 tooltip.style.left = "50%";
@@ -329,7 +332,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     init.style.alignItems = "center";
                                     init.style.justifyContent = "center";
                                     init.style.fontWeight = "bold";
-                                    init.innerText = (actor.displayName || actor.handle).charAt(0).toUpperCase();
+                                    init.textContent = (actor.displayName || actor.handle).charAt(0).toUpperCase();
                                     avContainer.appendChild(init);
                                 }
                                 wrapper.appendChild(avContainer);
@@ -368,13 +371,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                             
                             document.getElementById('app').appendChild(activePopover);
                             const rect = actorsSpan.getBoundingClientRect();
-                            activePopover.style.top = (rect.bottom + 8) + "px";
-                            let left = rect.left;
                             const popRect = activePopover.getBoundingClientRect();
+                            
+                            let left = rect.left;
                             if (left + popRect.width > window.innerWidth - 10) {
                                 left = window.innerWidth - popRect.width - 10;
                             }
-                            activePopover.style.left = left + "px";
+                            activePopover.style.left = Math.max(10, left) + "px";
+                            
+                            let top = rect.bottom + 8;
+                            if (top + popRect.height > window.innerHeight - 10) {
+                                top = rect.top - popRect.height - 8;
+                            }
+                            activePopover.style.top = top + "px";
                         };
                     }
                     meta.appendChild(actorsSpan);
@@ -382,7 +391,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     
                     if (link) {
                         let linkBtn = document.createElement("button");
-                        linkBtn.innerText = "View Topic ↗";
+                        linkBtn.textContent = "View Topic ↗";
                         linkBtn.style.background = "none";
                         linkBtn.style.border = "none";
                         linkBtn.style.color = "#1185fe";
@@ -398,7 +407,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     
                     if (t.timeInTop20Ms !== undefined) {
                         let badge = document.createElement("span");
-                        badge.innerText = `⏱️ ${formatDuration(t.timeInTop20Ms)}`;
+                        badge.textContent = `⏱️ ${formatDuration(t.timeInTop20Ms)}`;
                         badge.style.marginLeft = "auto";
                         badge.style.opacity = "0.8";
                         badge.title = "Total time tracked in Top 20";
@@ -443,7 +452,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         loadMoment(0, true);
     });
 
-    loadMoment(0, false);
+    browser.storage.local.get("saved_trend_ts").then(data => {
+        if (data.saved_trend_ts) {
+            loadMoment(0, false, data.saved_trend_ts);
+        } else {
+            loadMoment(0, false);
+        }
+    });
 
 
 let currentRateLimit = null;

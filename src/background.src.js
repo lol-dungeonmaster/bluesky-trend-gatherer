@@ -7,6 +7,7 @@ const { TrendPayloadSchema, DatabaseRowSchema } = require('./schemas.js');
 
 
 let db, conn;
+let isInitializing = false;
 let isActive = false;
 let eventCount = 0;
 
@@ -207,7 +208,10 @@ const MIN_DELAY = 75000;
 const MAX_DELAY = 105000;
 
 async function getBestBskyTab() {
-    const tabs = await browser.tabs.query({ url: "*://bsky.app/*" });
+    let tabs = await browser.tabs.query({ url: "*://bsky.app/*" });
+    tabs = tabs.filter(t => {
+        try { return new URL(t.url).hostname === "bsky.app"; } catch(e) { return false; }
+    });
     if (tabs.length === 0) return null;
     tabs.sort((a, b) => (b.lastAccessed || 0) - (a.lastAccessed || 0));
     return tabs[0];
@@ -324,11 +328,15 @@ async function startMonitor() {
 browser.tabs.onActivated.addListener(async (activeInfo) => {
     if (!isActive) return;
     const tab = await browser.tabs.get(activeInfo.tabId).catch(()=>{});
-    if (tab && tab.url && tab.url.includes("bsky.app")) {
-        if (activeBskyTabId !== tab.id) {
-            activeBskyTabId = tab.id;
-            lastMigrationTime = Date.now();
-            console.log(`[${new Date().toISOString()}] [Monitor] Migrated targeting to tab ${activeBskyTabId}.`);
+    if (tab && tab.url) {
+        let isBskyApp = false;
+        try { isBskyApp = new URL(tab.url).hostname === "bsky.app"; } catch(e){}
+        if (isBskyApp) {
+            if (activeBskyTabId !== tab.id) {
+                activeBskyTabId = tab.id;
+                lastMigrationTime = Date.now();
+                console.log(`[${new Date().toISOString()}] [Monitor] Migrated targeting to tab ${activeBskyTabId}.`);
+            }
         }
     }
 });
@@ -357,7 +365,8 @@ browser.tabs.onReplaced.addListener(async (addedTabId, removedTabId) => {
 
 // --- 0. INITIALIZE DUCKDB ---
 async function initDatabase(skipLongevity = false) {
-    if (db) return;
+    if (db || isInitializing) return;
+    isInitializing = true;
     try {
         console.log(`[${new Date().toISOString()}] Initializing DuckDB-Wasm...`);
         
@@ -371,71 +380,78 @@ async function initDatabase(skipLongevity = false) {
         const bundle = await duckdb.selectBundle(MANUAL_BUNDLES);
         const worker = new Worker(bundle.mainWorker);
         const logger = new duckdb.VoidLogger();
-        db = new duckdb.AsyncDuckDB(logger, worker);
-        await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+        let localDb = new duckdb.AsyncDuckDB(logger, worker);
+        await localDb.instantiate(bundle.mainModule, bundle.pthreadWorker);
         
         
         let retries = 5;
-    let connected = false;
-    while (retries > 0 && !connected) {
-        try {
-            await db.open({ path: 'opfs://bluesky_trends.db', accessMode: 3 /* READ_WRITE */ });
-            conn = await db.connect();
-            await conn.query("SET max_expression_depth TO 10000");
-            // Test write access explicitly
-            await conn.query("CREATE TABLE IF NOT EXISTS _lock_test (id INT); DROP TABLE _lock_test;");
-            connected = true;
-        } catch(e) {
-            console.error("DuckDB locked or failed. Retries left: " + retries, e);
-            if (conn) { try { await conn.close(); } catch(e2){} conn = null; }
-            retries--;
-            if (retries === 0) {
-                // Try renaming the file as a final fallback if removeEntry fails
-                console.log("Nuclear OPFS wipe due to hanging locks...");
-                try {
-                    const root = await navigator.storage.getDirectory();
-                    try { await root.removeEntry('bluesky_trends.db', { recursive: true }); } catch(err){}
-                    try { await root.removeEntry('bluesky_trends.db.wal', { recursive: true }); } catch(err){}
-                } catch(e3) {}
-                await db.open({ path: 'opfs://bluesky_trends.db', accessMode: 3 });
-                conn = await db.connect();
-            await conn.query("SET max_expression_depth TO 10000");
+        let connected = false;
+        let localConn = null;
+        while (retries > 0 && !connected) {
+            try {
+                await localDb.open({ path: 'opfs://bluesky_trends.db', accessMode: 3 /* READ_WRITE */ });
+                localConn = await localDb.connect();
+                await localConn.query("SET max_expression_depth TO 10000");
+                // Test write access explicitly
+                await localConn.query("CREATE TABLE IF NOT EXISTS _lock_test (id INT); DROP TABLE _lock_test;");
                 connected = true;
-            } else {
-                console.log("Waiting 3 seconds for Firefox to release the OPFS lock...");
-                await new Promise(r => setTimeout(r, 3000));
-            }
-        }
-    }
-        
-        if (navigator.storage && navigator.storage.estimate) {
-                const est = await navigator.storage.estimate();
-                if (est.usage && est.quota && (est.usage / est.quota) > 0.95) {
-                    console.log(`[${new Date().toISOString()}] OPFS Quota > 95%. Culling oldest 10% of trends.`);
-                    await conn.query(`
-                        DELETE FROM trends WHERE captured_at IN (
-                            SELECT captured_at FROM trends ORDER BY captured_at ASC LIMIT (SELECT CAST(count(*) * 0.1 AS INTEGER) FROM trends)
-                        )
-                    `);
+            } catch(e) {
+                console.error("DuckDB locked or failed. Retries left: " + retries, e);
+                if (localConn) { try { await localConn.close(); } catch(e2){} localConn = null; }
+                retries--;
+                if (retries === 0) {
+                    // Try renaming the file as a final fallback if removeEntry fails
+                    console.log("Nuclear OPFS wipe due to hanging locks...");
+                    try {
+                        const root = await navigator.storage.getDirectory();
+                        try { await root.removeEntry('bluesky_trends.db', { recursive: true }); } catch(err){}
+                        try { await root.removeEntry('bluesky_trends.db.wal', { recursive: true }); } catch(err){}
+                    } catch(e3) {}
+                    await localDb.open({ path: 'opfs://bluesky_trends.db', accessMode: 3 });
+                    localConn = await localDb.connect();
+                    await localConn.query("SET max_expression_depth TO 10000");
+                    connected = true;
+                } else {
+                    console.log("Waiting 3 seconds for Firefox to release the OPFS lock...");
+                    await new Promise(r => setTimeout(r, 3000));
                 }
             }
-            await conn.query(`
+        }
+        
+        if (navigator.storage && navigator.storage.estimate) {
+            const est = await navigator.storage.estimate();
+            if (est.usage && est.quota && (est.usage / est.quota) > 0.95) {
+                console.log(`[${new Date().toISOString()}] OPFS Quota > 95%. Culling oldest 10% of trends.`);
+                await localConn.query(`
+                    DELETE FROM trends WHERE captured_at IN (
+                        SELECT captured_at FROM trends ORDER BY captured_at ASC LIMIT (SELECT CAST(count(*) * 0.1 AS INTEGER) FROM trends)
+                    )
+                `);
+            }
+        }
+        await localConn.query(`
             CREATE TABLE IF NOT EXISTS trends (
                 captured_at TIMESTAMP,
                 raw_json VARCHAR
             );
         `);
-        const colRes = await conn.query("SELECT column_name FROM information_schema.columns WHERE table_name = 'trends'");
+        const colRes = await localConn.query("SELECT column_name FROM information_schema.columns WHERE table_name = 'trends'");
         const columns = colRes.toArray().map(r => r.toJSON().column_name);
-        if (!columns.includes('viewer_did')) await conn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR");
-        if (!columns.includes('is_flutter')) await conn.query("ALTER TABLE trends ADD COLUMN is_flutter BOOLEAN");
-        if (!columns.includes('gap_ms')) await conn.query("ALTER TABLE trends ADD COLUMN gap_ms INTEGER");
-        if (!columns.includes('payload_hash')) await conn.query("ALTER TABLE trends ADD COLUMN payload_hash VARCHAR");
+        if (!columns.includes('viewer_did')) await localConn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR");
+        if (!columns.includes('is_flutter')) await localConn.query("ALTER TABLE trends ADD COLUMN is_flutter BOOLEAN");
+        if (!columns.includes('gap_ms')) await localConn.query("ALTER TABLE trends ADD COLUMN gap_ms INTEGER");
+        if (!columns.includes('payload_hash')) await localConn.query("ALTER TABLE trends ADD COLUMN payload_hash VARCHAR");
         
+        await localConn.query(`CREATE INDEX IF NOT EXISTS idx_captured_at ON trends(captured_at DESC);`);
+        
+        db = localDb;
+        conn = localConn;
         console.log(`[${new Date().toISOString()}] DuckDB successfully initialized on OPFS!`);
         if (!skipLongevity) await rebuildLongevityState();
     } catch (e) {
         console.error(`[${new Date().toISOString()}] Failed to initialize DuckDB`, e);
+    } finally {
+        isInitializing = false;
     }
 }
 
@@ -552,10 +568,12 @@ browser.webRequest.onBeforeRequest.addListener(
         
         if (conn) {
             
-            await conn.query(`
+            const stmt = await conn.prepare(`
                 INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash)
-                VALUES (CURRENT_TIMESTAMP, '${dbRow.raw_json.replace(/'/g, "''")}', '${dbRow.viewer_did.replace(/'/g, "''")}', ${dbRow.is_flutter}, ${dbRow.gap_ms}, '${dbRow.payload_hash}')
+                VALUES (CURRENT_TIMESTAMP, ?, ?, ?, ?, ?)
             `);
+            await stmt.query(dbRow.raw_json, dbRow.viewer_did, dbRow.is_flutter, dbRow.gap_ms, dbRow.payload_hash);
+            await stmt.close();
             browser.runtime.sendMessage({ command: "TREND_ADDED" }).catch(() => {});
             
             
@@ -590,6 +608,25 @@ browser.webRequest.onBeforeRequest.addListener(
 
 // --- 3. LISTEN FOR EXPORT/CLEAR COMMANDS ---
 browser.runtime.onMessage.addListener(async (message) => {
+    if (message.command === "OPEN_OPTIONS_PAGE") {
+        (async () => {
+            try {
+                if (activeBskyTabId) {
+                    const tab = await browser.tabs.get(activeBskyTabId);
+                    if (tab && tab.windowId !== undefined) {
+                        await browser.tabs.create({
+                            url: browser.runtime.getURL("src/options.html"),
+                            windowId: tab.windowId,
+                            index: tab.index + 1
+                        });
+                        return;
+                    }
+                }
+            } catch (e) { }
+            browser.runtime.openOptionsPage();
+        })();
+        return Promise.resolve({ success: true });
+    }
     if (message.command === "GET_STATE") {
       return Promise.resolve({ isActive });
     } else if (message.command === "SET_STATE") {
@@ -620,7 +657,18 @@ browser.runtime.onMessage.addListener(async (message) => {
     if (message.command === "GET_TREND_MOMENT") {
       if (!conn) return Promise.resolve({ error: "DB not initialized" });
       try {
-          const offset = Number(message.offset) || 0;
+          let offset = Number(message.offset) || 0;
+          if (message.target_ts) {
+              const offRes = await conn.query(`SELECT COUNT(*) as c FROM trends WHERE captured_at > '${message.target_ts}'`);
+              const offRows = offRes.toArray();
+              let offRow = offRows[0];
+              if (offRow && offRow.toJSON) offRow = offRow.toJSON();
+              if (offRow) {
+                  if (offRow.c !== undefined) offset = Number(offRow.c);
+                  else if (offRow.count !== undefined) offset = Number(offRow.count);
+                  else offset = Number(Object.values(offRow)[0]);
+              }
+          }
           const countResult = await conn.query(`SELECT COUNT(*) as c FROM trends`);
           const rows = countResult.toArray();
           let firstRow = rows[0];
@@ -639,6 +687,7 @@ browser.runtime.onMessage.addListener(async (message) => {
               return Promise.resolve({ total: 0, moment: null });
           }
           
+          if (offset >= totalCount) offset = Math.max(0, totalCount - 1);
           const momentResult = await conn.query(`SELECT CAST(captured_at AS VARCHAR) as captured_at_str, raw_json FROM trends ORDER BY captured_at DESC LIMIT 100 OFFSET ${offset}`);
           const historyRows = momentResult.toArray().map(r => r.toJSON ? r.toJSON() : r);
           
@@ -646,6 +695,7 @@ browser.runtime.onMessage.addListener(async (message) => {
           
           return Promise.resolve({
               total: totalCount,
+              offset: offset,
               moment: { 
                   captured_at: historyRows[0].captured_at_str, 
                   raw_json: typeof historyRows[0].raw_json === 'string' ? historyRows[0].raw_json : JSON.stringify(historyRows[0].raw_json) 
@@ -729,8 +779,16 @@ browser.runtime.onMessage.addListener(async (message) => {
                 const CHUNK_SIZE = 50;
                 for (let i = 0; i < validInsertRows.length; i += CHUNK_SIZE) {
                     const chunk = validInsertRows.slice(i, i + CHUNK_SIZE);
-                    const values = chunk.map(r => `('${r.captured_at}', '${r.raw_json.replace(/'/g, "''")}', '${r.viewer_did.replace(/'/g, "''")}', ${r.is_flutter}, ${r.gap_ms}, '${r.payload_hash.replace(/'/g, "''")}')`).join(',\n');
-                    await conn.query(`INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash) VALUES ${values}`);
+                    const placeholders = chunk.map(() => "(?, ?, ?, ?, ?, ?)").join(',\n');
+                    const stmt = await conn.prepare(`INSERT INTO trends (captured_at, raw_json, viewer_did, is_flutter, gap_ms, payload_hash) VALUES ${placeholders}`);
+                    
+                    const params = [];
+                    for (const r of chunk) {
+                        params.push(r.captured_at, r.raw_json, r.viewer_did, r.is_flutter, r.gap_ms, r.payload_hash);
+                    }
+                    
+                    await stmt.query(...params);
+                    await stmt.close();
                 }
             }
             
