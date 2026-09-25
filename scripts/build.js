@@ -13,11 +13,10 @@ buildSync({
 
 let code = fs.readFileSync('dist/background.bundle.js', 'utf8');
 
-// Suppress Zod's CSP-violating environment check
-code = code.replace(/const F = Function;\n\s*new F\(\"\"\);\n\s*return true;/g, 'return false; // Suppressed CSP violation');
-code = code.replace(/const F2 = Function;\n\s*new F2\(\"\"\);\n\s*return true;/g, 'return false; // Suppressed CSP violation');
-
-code = code.replace(/return new Function\(\`x\`, \`\$\{fnBody\}\nreturn true;\`\);/g, 'return function(x) { return true; }; // Suppressed CSP violation');
+// Suppress Zod's CSP-violating environment check (if it survived tree-shaking)
+code = code.replace(/new Function\(\"\"\)/g, 'function(){return true} /* Suppressed CSP violation */');
+// Suppress Apache Arrow's JIT compilation
+code = code.replace(/new Function\(\"x\",[\s\S]*?\)/g, 'function(x) { return true; } /* Suppressed CSP violation */');
 
 fs.writeFileSync('dist/background.bundle.js', code);
 
