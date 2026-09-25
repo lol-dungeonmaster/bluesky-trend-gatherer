@@ -1,14 +1,13 @@
 globalThis.__zod_globalConfig = { jitless: true };
 const duckdb = require('@duckdb/duckdb-wasm');
 const { z } = require('zod');
-const { writeParquet, readParquet, Table, WriterPropertiesBuilder, Compression } = require('parquet-wasm/esm/parquet_wasm.js');
-const initParquetWasm = require('parquet-wasm/esm/parquet_wasm.js').default;
-const { tableToIPC, tableFromIPC } = require('apache-arrow');
+
 
 // Ensure parquet-wasm is initialized before use
 let parquetWasmInitialized = false;
 async function initParquet() {
     if (!parquetWasmInitialized) {
+        const initParquetWasm = require('parquet-wasm/esm/parquet_wasm.js').default;
         await initParquetWasm({ module_or_path: browser.runtime.getURL('dist/parquet_wasm_bg.wasm') });
         parquetWasmInitialized = true;
     }
@@ -447,6 +446,7 @@ async function initDatabase(skipLongevity = false) {
                 raw_json VARCHAR
             );
         `);
+        await localConn.query("CREATE INDEX IF NOT EXISTS idx_captured_at ON trends(captured_at);");
         const colRes = await localConn.query("SELECT column_name FROM information_schema.columns WHERE table_name = 'trends'");
         const columns = colRes.toArray().map(r => r.toJSON().column_name);
         if (!columns.includes('viewer_did')) await localConn.query("ALTER TABLE trends ADD COLUMN viewer_did VARCHAR");
@@ -740,8 +740,10 @@ browser.runtime.onMessage.addListener(async (message) => {
             await initParquet();
             
             const parquetBuffer = new Uint8Array(await message.file.arrayBuffer());
+            const { readParquet } = require('parquet-wasm/esm/parquet_wasm.js');
             const wasmTable = readParquet(parquetBuffer);
             const ipcStream = wasmTable.intoIPCStream();
+            const { tableFromIPC } = require('apache-arrow');
             const arrowTable = tableFromIPC(ipcStream);
             
             // Read all existing timestamps for deduplication
@@ -860,9 +862,11 @@ browser.runtime.onMessage.addListener(async (message) => {
                 const cleanTable = new ArrowTable({ captured_at, raw_json });
                 
                 // Serialize to IPC stream
+                const { tableToIPC } = require('apache-arrow');
                 const ipcStream = tableToIPC(cleanTable, "stream");
                 
                 // Load into parquet-wasm and encode to Parquet
+                const { writeParquet, Table, WriterPropertiesBuilder, Compression } = require('parquet-wasm/esm/parquet_wasm.js');
                 const wasmTable = Table.fromIPCStream(ipcStream);
                 const writerProps = new WriterPropertiesBuilder().setCompression(Compression.ZSTD).build();
                 const parquetBytes = writeParquet(wasmTable, writerProps);

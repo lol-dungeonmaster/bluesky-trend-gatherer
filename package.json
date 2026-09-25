@@ -14,7 +14,6 @@
   "dependencies": {
     "@duckdb/duckdb-wasm": "^1.32.0",
     "apache-arrow": "^17.0.0",
-    "duckdb": "^1.4.4",
     "parquet-wasm": "^0.8.0",
     "webextension-polyfill": "^0.12.0",
     "zod": "^4.6.5"

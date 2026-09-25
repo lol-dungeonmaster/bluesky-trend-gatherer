@@ -211,6 +211,7 @@ describe("Popup UI", () => {
         
         // Open popover
         actorsSpan.click();
+        await new Promise(r => setTimeout(r, 200));
         await new Promise(r => setTimeout(r, 10));
         
         // Because bottom (550) + popRect.height (50) > innerHeight - 10 (590), it should render! Wait, 550 + 50 = 600 > 590, yes.
@@ -225,13 +226,16 @@ describe("Popup UI", () => {
         
         // Click outside to close
         document.dispatchEvent(new Event("click"));
+        await new Promise(r => setTimeout(r, 200));
         expect(document.getElementById('app').contains(popover)).toBe(false);
         
         // Click again to reopen, then click itself to toggle close
         actorsSpan.click();
+        await new Promise(r => setTimeout(r, 200));
         await new Promise(r => setTimeout(r, 10));
         expect(document.getElementById('app').lastChild.style.position).toBe("absolute");
         actorsSpan.click();
+        await new Promise(r => setTimeout(r, 200));
         await new Promise(r => setTimeout(r, 10));
         // Should be closed now
         

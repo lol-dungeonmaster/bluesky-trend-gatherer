@@ -5,6 +5,8 @@ buildSync({
   entryPoints: ['src/background.src.js'],
   inject: ['scripts/zod-config.js'],
   bundle: true,
+  minify: true,
+  treeShaking: true,
   outfile: 'dist/background.bundle.js',
   format: 'iife'
 });

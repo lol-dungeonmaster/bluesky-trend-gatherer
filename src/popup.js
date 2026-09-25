@@ -1,5 +1,7 @@
 
 
+
+
 function getCategoryColor(categoryStr) {
     if (!categoryStr || categoryStr === "Uncategorized") return { bg: "color-mix(in srgb, CanvasText 10%, transparent)", border: "color-mix(in srgb, CanvasText 30%, transparent)" };
     const knownCats = {
@@ -49,7 +51,15 @@ function formatDuration(ms) {
 }
 
 let activePopover = null;
-function closePopover() { if (activePopover) { activePopover.remove(); activePopover = null; } }
+function closePopover() { 
+    if (activePopover) { 
+        let el = activePopover; 
+        activePopover = null; 
+        el.style.opacity = "0"; 
+        el.style.transform = el.dataset.isFlipped === "true" ? "translateY(8px) scale(0.95)" : "translateY(-8px) scale(0.95)"; 
+        setTimeout(() => el.remove(), 150); 
+    } 
+}
 document.addEventListener("click", closePopover);
 document.addEventListener("DOMContentLoaded", async () => {
     const fontBtns = document.querySelectorAll(".font-btn");
@@ -108,14 +118,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     const trendList = document.getElementById("trendList");
     const scrollTopBtn = document.getElementById("scrollTopBtn");
 
+    let isScrolling = false;
     trendList.addEventListener("scroll", () => {
-        closePopover();
-        if (trendList.scrollTop > 100) {
-            scrollTopBtn.classList.add("visible");
-        } else {
-            scrollTopBtn.classList.remove("visible");
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                closePopover();
+                if (trendList.scrollTop > 100) {
+                    scrollTopBtn.classList.add("visible");
+                } else {
+                    scrollTopBtn.classList.remove("visible");
+                }
+                isScrolling = false;
+            });
+            isScrolling = true;
         }
-    });
+    }, { passive: true });
 
     scrollTopBtn.addEventListener("click", () => {
         const start = trendList.scrollTop;
@@ -188,7 +205,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const newContent = document.createElement("div");
             
             if (!Array.isArray(trends)) {
-                newContent.innerHTML = `<pre style="margin:0; font-family:inherit; font-size: calc(10px * var(--font-mult));">${JSON.stringify(trends, null, 2)}</pre>`;
+                newContent.innerHTML = `<pre style="margin:0; font-family:inherit; font-size: calc(10px * var(--font-mult));">${escapeHTML(JSON.stringify(trends, null, 2))}</pre>`;
             } else {
                 let history = [];
             if (res.history) {
@@ -326,7 +343,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     meta.style.marginTop = "6px";
                     meta.style.fontSize = "calc(10px * var(--font-mult))";
                     meta.style.opacity = "0.7";
-                    meta.innerHTML = `<span style="min-width: 170px; display: inline-block; white-space: nowrap;">💬 ${pc.toLocaleString()} posts ${pcDiffStr}</span>`;
+                    meta.innerHTML = `<span style="min-width: 220px; display: inline-block; white-space: nowrap;">💬 ${pc.toLocaleString()} posts ${pcDiffStr}</span>`;
                     let actorsSpan = document.createElement("span");
                     actorsSpan.className = 'actors-trigger';
                     actorsSpan.style.minWidth = "170px";
@@ -361,6 +378,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             activePopover.style.display = "flex";
                             activePopover.style.flexDirection = "column";
                             activePopover.style.gap = "8px";
+                            activePopover.style.opacity = "0";
+                            activePopover.style.transform = "translateY(-8px) scale(0.95)";
+                            activePopover.style.transformOrigin = "top center";
+                            activePopover.style.transition = "all 0.15s cubic-bezier(0.2, 0, 0, 1)";
                             activePopover.onclick = (e) => e.stopPropagation();
                             
                             function buildActorAvatar(actor, outlineColor) {
@@ -483,10 +504,26 @@ document.addEventListener("DOMContentLoaded", async () => {
                             activePopover.style.left = Math.max(10, left) + "px";
                             
                             let top = rect.bottom + 8;
+                            let isFlipped = false;
                             if (top + popRect.height > window.innerHeight - 10) {
                                 top = rect.top - popRect.height - 8;
+                                isFlipped = true;
                             }
                             activePopover.style.top = top + "px";
+                            
+                            // Apply speech bubble arrow class based on flip state
+                            activePopover.classList.add(isFlipped ? "speech-bubble-down" : "speech-bubble-up");
+                            if (isFlipped) {
+                                activePopover.style.transform = "translateY(8px) scale(0.95)";
+                                activePopover.style.transformOrigin = "bottom center";
+                                activePopover.dataset.isFlipped = "true";
+                            }
+                            
+                            // Trigger open animation
+                            requestAnimationFrame(() => {
+                                activePopover.style.opacity = "1";
+                                activePopover.style.transform = "translateY(0) scale(1)";
+                            });
                         };
                     }
                     meta.appendChild(actorsSpan);
