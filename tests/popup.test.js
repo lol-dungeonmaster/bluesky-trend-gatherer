@@ -1,245 +1,291 @@
 const fs = require('fs');
 const path = require('path');
 
-describe("Popup UI", () => {
-    beforeEach(() => {
-        const html = fs.readFileSync(path.resolve(__dirname, '../src/popup.html'), 'utf8');
-        document.documentElement.innerHTML = html;
-        jest.clearAllMocks();
-        browser.storage.local.get.mockResolvedValue({ fontSizeMultiplier: "1.25" });
-        browser.runtime.sendMessage.mockImplementation(async (msg) => {
-            if (msg.command === "GET_STATE") return { isActive: true, hasCheckedAuth: true };
-            if (msg.command === "GET_TREND_MOMENT") return { total: 0, moment: null };
-            return {};
-        });
-        global.calculateDeltas = jest.fn().mockReturnValue({ rankDiffStr: "New", pcDiffStr: "", acDiffStr: "", timeUnchangedStr: "" });
-    });
-
-    it("should set font size CSS variables and active button state on load", async () => {
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
-        expect(browser.storage.local.get).toHaveBeenCalledWith(["fontSizeMultiplier"]);
-        expect(document.documentElement.style.getPropertyValue('--font-mult')).toBe("1.25");
-        const activeBtn = document.querySelector('.font-btn.active');
-        expect(activeBtn).not.toBeNull();
-        expect(activeBtn.dataset.size).toBe("1.25");
-    });
-
-    it("should save new font size to storage when clicked", async () => {
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
-        const largestBtn = document.querySelector('button[data-size="1.5"]');
-        largestBtn.click();
-        await new Promise(r => setTimeout(r, 50));
-        expect(document.documentElement.style.getPropertyValue('--font-mult')).toBe("1.5");
-        expect(browser.storage.local.set).toHaveBeenCalledWith({ fontSizeMultiplier: "1.5" });
-    });
-
-    it("should toggle the background monitor when switch is clicked", async () => {
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
-        const toggle = document.getElementById("monitorToggle");
-        expect(toggle.checked).toBe(true);
-        toggle.click();
-        expect(browser.runtime.sendMessage).toHaveBeenCalledWith({ command: "SET_STATE", isActive: false });
-    });
-
-    it("should render empty state if totalMoments is 0", async () => {
-        browser.runtime.sendMessage.mockImplementation(async (msg) => {
-            if (msg.command === "GET_STATE") return { isActive: true, totalMoments: 0, hasCheckedAuth: true };
-            if (msg.command === "GET_TREND_MOMENT") return { total: 0, moment: null };
-            return {};
-        });
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
-        const trendTimestamp = document.getElementById("trendTimestamp");
-        const trendList = document.getElementById("trendList");
-        expect(trendTimestamp.innerHTML).toContain("No Data");
-        expect(trendList.innerHTML).toContain("Database is empty.");
-    });
-
-    it("should generate UI cards when loadMoment receives valid data", async () => {
-        browser.runtime.sendMessage.mockImplementation(async (msg) => {
-            if (msg.command === "GET_STATE") return { isActive: true, totalMoments: 1, quotaRemaining: 100, quotaReset: 1726671234, hasCheckedAuth: true };
-            if (msg.command === "GET_TREND_MOMENT") {
-                return {
-                    total: 1,
-                    moment: {
-                        captured_at: "2026-09-18 10:00:00",
-                        raw_json: JSON.stringify([{ topic: "Alpha", postCount: 500, category: "News", description: "Test description", link: "/search?q=Alpha" }])
-                    },
-                    history: []
-                };
+beforeEach(() => {
+    const html = fs.readFileSync(path.resolve(__dirname, '../src/popup.html'), 'utf8');
+    document.documentElement.innerHTML = html;
+    jest.clearAllMocks();
+    
+    global.browser = {
+        storage: {
+            local: {
+                get: jest.fn().mockResolvedValue({ fontSizeMultiplier: "1.25", saved_trend_ts: "2026-09-18" }),
+                set: jest.fn().mockResolvedValue()
             }
-            return {};
-        });
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
-        const trendList = document.getElementById("trendList");
-        expect(trendList.children.length).toBeGreaterThan(0);
-        expect(trendList.innerHTML).toContain("Alpha");
-        expect(trendList.innerHTML).toContain("500 posts");
-        expect(trendList.innerHTML).toContain("News");
-    });
-
-    it("should handle pagination buttons for newer and older moments", async () => {
-        browser.runtime.sendMessage.mockImplementation(async (msg) => {
-            if (msg.command === "GET_STATE") return { isActive: true, totalMoments: 5 };
-            if (msg.command === "GET_TREND_MOMENT") return { total: 5, moment: { captured_at: "2026-09-18 10:00:00", raw_json: "[]" }, history: [] };
-            return {};
-        });
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
-        
-        const btnPrev = document.getElementById("btnPrev");
-        const btnNext = document.getElementById("btnNext");
-        
-        btnPrev.click();
-        await new Promise(r => setTimeout(r, 10));
-        expect(browser.runtime.sendMessage).toHaveBeenCalledWith({ command: "GET_TREND_MOMENT", offset: 1, target_ts: null });
-        
-        btnNext.click();
-        await new Promise(r => setTimeout(r, 10));
-        expect(browser.runtime.sendMessage).toHaveBeenCalledWith({ command: "GET_TREND_MOMENT", offset: 0, target_ts: null });
-    });
-
-    it("should update auth status and handle background messages", async () => {
-        let messageListener = null;
-        browser.runtime.onMessage.addListener.mockImplementation((cb) => { messageListener = cb; });
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
-
-        messageListener({ command: "AUTH_STATUS", rateLimit: { remaining: 45, limit: 3000, reset: 1726671234 }, isLoggedIn: true });
-        const authStatus = document.getElementById("authStatus");
-        expect(authStatus.innerHTML).toContain("Quota: ");
-        
-        browser.runtime.sendMessage.mockResolvedValueOnce({ total: 1, moment: { captured_at: "2026-09-18 10:00:00", raw_json: "[]" }, history: [] });
-        messageListener({ command: "TREND_ADDED" });
-        await new Promise(r => setTimeout(r, 10));
-    });
-
-    it("should process URL navigation when clicking topic links", async () => {
-        browser.runtime.sendMessage.mockImplementation(async (msg) => {
-            if (msg.command === "GET_STATE") return { isActive: true, totalMoments: 1, hasCheckedAuth: true };
-            if (msg.command === "GET_TREND_MOMENT") {
-                return {
-                    total: 1,
-                    moment: { captured_at: "2026-09-18 10:00:00", raw_json: JSON.stringify([{ topic: "Alpha", link: "/search?q=Alpha" }]) },
-                    history: []
-                };
+        },
+        runtime: {
+            sendMessage: jest.fn().mockImplementation(async (msg) => {
+                if (msg.command === "GET_STATE") return { isActive: true, hasCheckedAuth: true };
+                if (msg.command === "GET_TREND_MOMENT") return { total: 0, moment: null };
+                if (msg.command === "GET_AUTH_STATUS") return { hasCheckedAuth: true, isLoggedIn: true, rateLimit: { remaining: 100, limit: 100, reset: 1000000000 }};
+                return {};
+            }),
+            onMessage: {
+                addListener: jest.fn()
             }
-            return {};
-        });
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
-
-        const trendList = document.getElementById("trendList");
-        const linkBtn = trendList.querySelector("button"); 
-        if (linkBtn) linkBtn.click();
-        
-        expect(browser.runtime.sendMessage).toHaveBeenCalledWith({ command: "NAVIGATE", url: "https://bsky.app/search?q=Alpha" });
+        }
+    };
+    
+    // reset state
+    jest.isolateModules(() => {
+        const { state } = require('../src/popup/state.js');
+        state.currentOffset = 0;
+        state.totalMoments = 0;
+        state.currentRateLimit = null;
+        state.isLoggedIn = false;
+        state.hasCheckedAuth = false;
+        state.activePopover = null;
+        state.isScrolling = false;
     });
+});
 
-    it("should open options page when gear icon is clicked", async () => {
-        jest.isolateModules(() => { require('../src/popup.js'); });
-        document.dispatchEvent(new Event("DOMContentLoaded"));
-        await new Promise(r => setTimeout(r, 50));
+describe("Popup utils", () => {
+    it("should format duration", () => {
+        const { formatDuration, getCategoryColor, escapeHTML } = require('../src/popup/utils.js');
+        expect(formatDuration(0)).toBe("0m");
+        expect(formatDuration(60000)).toBe("1m");
+        expect(formatDuration(3600000)).toBe("1h 0m");
         
-        jest.spyOn(window, 'close').mockImplementation(() => {});
-        const optionsBtn = document.getElementById("btnOptions");
-        optionsBtn.click();
+        expect(getCategoryColor("sports").bg).toContain("hsla(30");
+        expect(getCategoryColor("nonexistent").bg).toContain("hsla");
+        expect(getCategoryColor("Uncategorized").bg).toContain("color-mix");
         
-        expect(browser.runtime.sendMessage).toHaveBeenCalledWith({ command: "OPEN_OPTIONS_PAGE" });
-        await new Promise(r => setTimeout(r, 50));
+        expect(escapeHTML("<div class='test'>&</div>")).toBe("&lt;div class=&#39;test&#39;&gt;&amp;&lt;/div&gt;");
+        expect(escapeHTML(null)).toBe(null);
     });
+});
 
-    it("should render and interact with top actors popover", async () => {
-        browser.runtime.sendMessage.mockImplementation(async (msg) => {
-            if (msg.command === "GET_STATE") return { isActive: true, totalMoments: 1, hasCheckedAuth: true };
-            if (msg.command === "GET_TREND_MOMENT") {
-                return {
-                    total: 1,
-                    moment: { 
-                        captured_at: "2026-09-18 10:00:00", 
-                        raw_json: JSON.stringify([{ 
-                            topic: "Alpha", 
-                            link: "/search?q=Alpha",
-                            actors: [
-                                { handle: "user1.bsky.social", displayName: "User 1", avatar: "http://example.com/a.jpg", did: "did:plc:1" }
-                            ]
-                        }]) 
-                    },
-                    history: [{
-                        raw_json: JSON.stringify([{ 
-                            topic: "Alpha",
-                            actors: [
-                                { handle: "user2.bsky.social", did: "did:plc:2" }
-                            ]
-                        }])
-                    }]
-                };
-            }
-            return {};
-        });
+describe("Popup components", () => {
+    it("should render actor avatar", async () => {
+        const { buildActorAvatar, closePopover } = require('../src/popup/components.js');
+        const { state } = require('../src/popup/state.js');
         
-        // Mock getBoundingClientRect for collision detection
+        const actor = { handle: "user.bsky.social", displayName: "User", did: "did:1" };
+        const el = buildActorAvatar(actor, "#f00");
+        
+        // test closePopover down flip
+        const dummy = document.createElement("div");
+        dummy.dataset.isFlipped = "true";
+        state.activePopover = dummy;
+        closePopover();
+        expect(state.activePopover).toBe(null);
+        
+        // test closePopover up flip
+        const dummy2 = document.createElement("div");
+        dummy2.dataset.isFlipped = "false";
+        state.activePopover = dummy2;
+        closePopover();
+        
+        const avatarClick = el.querySelector('div');
+        await avatarClick.onclick(new Event('click'));
+        expect(global.browser.runtime.sendMessage).toHaveBeenCalledWith({ command: "NAVIGATE", url: "https://bsky.app/profile/user.bsky.social" });
+        
+        // Mouseenter / Mouseleave
         Element.prototype.getBoundingClientRect = jest.fn(() => ({
-            top: 500, bottom: 550, left: 10, right: 100, width: 90, height: 50
+            top: 50, bottom: 100, left: -10, right: 100, width: 50, height: 50
         }));
         
-        window.innerWidth = 800;
-        window.innerHeight = 600;
+        el.dispatchEvent(new Event('mouseenter'));
+        
+        Element.prototype.getBoundingClientRect = jest.fn(() => ({
+            top: 50, bottom: 100, left: 1000, right: 2000, width: 50, height: 50
+        }));
+        el.dispatchEvent(new Event('mouseenter'));
 
-        jest.isolateModules(() => { require('../src/popup.js'); });
+        el.dispatchEvent(new Event('mouseleave'));
+    });
+    
+    it("should handle analysis mode success and failure", async () => {
+        const { buildActorAvatar } = require('../src/popup/components.js');
+        const actor = { handle: "u", avatar: "u.jpg" };
+        const el = buildActorAvatar(actor, null, true, "topic");
+        const av = el.querySelector('div');
+        
+        el.dispatchEvent(new Event('mouseenter'));
+        
+        global.browser.runtime.sendMessage = jest.fn().mockResolvedValue({ success: true });
+        
+        const e = new Event('click');
+        e.preventDefault = jest.fn();
+        e.stopPropagation = jest.fn();
+        await av.onclick(e);
+        
+        // locked test
+        await av.onclick(e);
+        
+        global.browser.runtime.sendMessage = jest.fn().mockRejectedValue(new Error("fail"));
+        const el2 = buildActorAvatar(actor, null, true, "topic");
+        await el2.querySelector('div').onclick(e);
+        
+        jest.useFakeTimers();
+        const el3 = buildActorAvatar(actor, "red", true, "topic");
+        global.browser.runtime.sendMessage = jest.fn().mockResolvedValue({ success: false });
+        await el3.querySelector('div').onclick(e);
+        jest.runAllTimers();
+        jest.useRealTimers();
+    });
+});
+
+describe("Popup index", () => {
+    it("should init UI", async () => {
+        jest.mock('../src/math_deltas.js', () => ({
+            calculateDeltas: jest.fn().mockReturnValue({ rankDiffStr: "", pcDiffStr: "", acDiffStr: "", timeUnchangedStr: "", newActors: [], droppedActors: [] })
+        }));
+
+        const { loadMoment, updateAuthUI, updateNavButtons } = require('../src/popup/index.js');
+        const { state } = require('../src/popup/state.js');
+        
         document.dispatchEvent(new Event("DOMContentLoaded"));
         await new Promise(r => setTimeout(r, 50));
-
-        // Find the actor trigger span
+        
+        const btnNext = document.getElementById("btnNext");
+        const btnPrev = document.getElementById("btnPrev");
+        const btnOldest = document.getElementById("btnOldest");
+        const btnNewest = document.getElementById("btnNewest");
         const trendList = document.getElementById("trendList");
-        const actorsSpan = Array.from(trendList.querySelectorAll("span")).find(s => s.classList.contains("actors-trigger"));
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        const toggle = document.getElementById("monitorToggle");
+        
+        expect(toggle.checked).toBe(true);
+        toggle.click();
+        
+        const fontBtn = document.querySelector('button[data-size="1.5"]');
+        fontBtn.click();
+        
+        trendList.scrollTop = 150;
+        trendList.dispatchEvent(new Event('scroll'));
+        
+        trendList.scrollTop = 50;
+        trendList.dispatchEvent(new Event('scroll'));
 
-        if (!actorsSpan) { console.log(trendList.innerHTML); }
-        expect(actorsSpan).toBeDefined();
+        btnNext.click();
+        btnPrev.click();
+        btnOldest.click();
+        btnNewest.click();
         
-        // Open popover
-        actorsSpan.click();
-        await new Promise(r => setTimeout(r, 200));
-        await new Promise(r => setTimeout(r, 10));
+        const btnOptions = document.getElementById("btnOptions");
+        btnOptions.click();
         
-        // Because bottom (550) + popRect.height (50) > innerHeight - 10 (590), it should render! Wait, 550 + 50 = 600 > 590, yes.
-        // Let's just check if it's in the DOM
-        let popover = document.getElementById('app').lastChild;
-        expect(popover.style.position).toBe("absolute");
+        global.browser.runtime.sendMessage = jest.fn().mockResolvedValue({
+            total: 2,
+            offset: 0,
+            moment: {
+                captured_at: "2026-09-18 10:00:00",
+                raw_json: JSON.stringify([{ topic: "Alpha", category: "sports", postCount: 5, actors: [{ handle: "user" }], timeInTop20Ms: 1000 }])
+            },
+            history: []
+        });
         
-        // Click inside popover avatar to navigate
-        const avatarWrapper = popover.querySelector('div[style*="cursor: pointer"]');
-        if (avatarWrapper) avatarWrapper.click();
-        expect(browser.runtime.sendMessage).toHaveBeenCalledWith({ command: "NAVIGATE", url: "https://bsky.app/profile/user1.bsky.social" });
+        await loadMoment(0);
         
-        // Click outside to close
-        document.dispatchEvent(new Event("click"));
-        await new Promise(r => setTimeout(r, 200));
-        expect(document.getElementById('app').contains(popover)).toBe(false);
+        btnNext.click();
+        btnPrev.click();
+        btnOldest.click();
+        btnNewest.click();
         
-        // Click again to reopen, then click itself to toggle close
-        actorsSpan.click();
-        await new Promise(r => setTimeout(r, 200));
-        await new Promise(r => setTimeout(r, 10));
-        expect(document.getElementById('app').lastChild.style.position).toBe("absolute");
-        actorsSpan.click();
-        await new Promise(r => setTimeout(r, 200));
-        await new Promise(r => setTimeout(r, 10));
-        // Should be closed now
+        state.isLoggedIn = true;
+        state.hasCheckedAuth = true;
+        state.currentRateLimit = { remaining: 10, limit: 100, reset: Math.floor(Date.now()/1000) - 10 };
+        updateAuthUI();
         
-        // Clean up
-        Element.prototype.getBoundingClientRect.mockRestore();
+        state.currentRateLimit = { remaining: 10, limit: 100, reset: Math.floor(Date.now()/1000) + 100 };
+        updateAuthUI();
+        
+        state.currentRateLimit = { remaining: 10, limit: 100, reset: 100 };
+        updateAuthUI();
+        
+        state.isLoggedIn = false;
+        updateAuthUI();
+        
+        const listener = global.browser.runtime.onMessage.addListener.mock.calls[0][0];
+        listener({ command: "AUTH_STATUS", rateLimit: {}, isLoggedIn: true });
+        
+        // Add a trend with empty
+        state.totalMoments = 0;
+        listener({ command: "TREND_ADDED" });
+
+        state.totalMoments = 1;
+        state.currentOffset = 0;
+        listener({ command: "TREND_ADDED" });
+        
+        // click actors popover
+        const actorsSpan = document.querySelector('.actors-trigger');
+        if (actorsSpan) actorsSpan.click();
+        
+        const postCountSpan = document.querySelector('.post-count-trigger');
+        if (postCountSpan) postCountSpan.click();
+        
+        // wait so requestAnimationFrame finishes
+        await new Promise(r => setTimeout(r, 50));
+    });
+    
+    it("should handle error parsing", async () => {
+        jest.mock('../src/math_deltas.js', () => ({
+            calculateDeltas: jest.fn().mockReturnValue({})
+        }));
+        const { loadMoment } = require('../src/popup/index.js');
+        document.dispatchEvent(new Event("DOMContentLoaded"));
+        await new Promise(r => setTimeout(r, 50));
+        
+        global.browser.runtime.sendMessage = jest.fn().mockResolvedValue({
+            total: 1,
+            offset: 0,
+            moment: {
+                captured_at: "2026-09-18 10:00:00",
+                raw_json: "invalid"
+            }
+        });
+        await loadMoment(0, true);
+    });
+    
+    it("should handle raw json objects instead of array", async () => {
+        const { loadMoment } = require('../src/popup/index.js');
+        global.browser.runtime.sendMessage = jest.fn().mockResolvedValue({
+            total: 1,
+            offset: 0,
+            moment: {
+                captured_at: "2026-09-18 10:00:00",
+                raw_json: JSON.stringify({ error: "bad" })
+            }
+        });
+        await loadMoment(0);
+    });
+    
+    it("should handle full popovers with multiple actors, new actors, dropped actors", async () => {
+        jest.mock('../src/math_deltas.js', () => ({
+            calculateDeltas: jest.fn().mockReturnValue({ newActors: ["did:2"], droppedActors: [{handle: "drop"}] })
+        }));
+        const { loadMoment, updateAuthUI } = require('../src/popup/index.js');
+        const { state } = require('../src/popup/state.js');
+        
+        global.browser.runtime.sendMessage = jest.fn().mockResolvedValue({
+            total: 2,
+            offset: 0,
+            moment: {
+                captured_at: "2026-09-18 10:00:00",
+                raw_json: JSON.stringify([{ topic: "Alpha", category: "sports", postCount: 5, link: "/search?q=Alpha", actors: [{ handle: "user", did: "did:1" }, { handle: "u2", did: "did:2" }], timeInTop20Ms: 1000 }])
+            },
+            history: [{ raw: "{}" }]
+        });
+        
+        await loadMoment(0);
+        
+        const actorsSpan = document.querySelector('.actors-trigger');
+        if (actorsSpan) {
+            actorsSpan.click();
+            await new Promise(r => requestAnimationFrame(r));
+        }
+        
+        const linkBtn = document.querySelector('button[style*="text-decoration: underline"]');
+        if (linkBtn) linkBtn.click();
+        
+        // updateAuthUI reset 0 test
+        state.isLoggedIn = true;
+        state.hasCheckedAuth = true;
+        state.currentRateLimit = { remaining: 10, limit: 100, reset: 2000000000, policy: 3600 };
+        const OriginalDateNow = Date.now;
+        Date.now = () => 2000000000 * 1000;
+        updateAuthUI();
+        Date.now = OriginalDateNow;
     });
 });

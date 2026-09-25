@@ -2,7 +2,7 @@
 const script = document.createElement('script');
 script.textContent = `
     window.addEventListener('extension-flutter', () => {
-        // 1. Temporarily spoof visibility
+        // 1. Temporarily simulate visibility
         Object.defineProperty(document, 'visibilityState', { value: 'visible', configurable: true });
         Object.defineProperty(document, 'hidden', { value: false, configurable: true });
         
@@ -20,7 +20,7 @@ script.remove(); // Clean up the DOM
 
 browser.runtime.onMessage.addListener((message) => {
     if (message.command === "FLUTTER") {
-        // Trigger the main-world script to do its temporary spoofing routine
+        // Trigger the main-world script to do its temporary simulation routine
         window.dispatchEvent(new CustomEvent('extension-flutter'));
     }
 });

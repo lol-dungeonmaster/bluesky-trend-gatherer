@@ -1,3 +1,30 @@
+
+// Load existing credentials
+browser.storage.local.get(["bskyHandle", "bskyPassword"]).then(data => {
+    if (data.bskyHandle) document.getElementById('bsky-handle').value = data.bskyHandle;
+    if (data.bskyPassword) document.getElementById('bsky-password').value = data.bskyPassword;
+});
+
+document.getElementById('btn-save-auth').addEventListener('click', async () => {
+    const handle = document.getElementById('bsky-handle').value.trim();
+    const password = document.getElementById('bsky-password').value.trim();
+    const statusMsg = document.getElementById('auth-status-msg');
+    
+    if (!handle && !password) {
+        await browser.storage.local.remove(["bskyHandle", "bskyPassword"]);
+        statusMsg.textContent = "Cleared (Falling back to passive capability)";
+        statusMsg.style.color = "#ef4444";
+        browser.runtime.sendMessage({ command: "AUTH_CREDENTIALS_UPDATED" });
+    } else {
+        await browser.storage.local.set({ bskyHandle: handle, bskyPassword: password });
+        statusMsg.textContent = "Saved! Authenticating in background...";
+        statusMsg.style.color = "#4ade80";
+        browser.runtime.sendMessage({ command: "AUTH_CREDENTIALS_UPDATED" });
+    }
+    
+    setTimeout(() => { statusMsg.textContent = ""; }, 3000);
+});
+
 document.getElementById('btn-export').addEventListener('click', () => {
     browser.runtime.sendMessage({ command: "EXPORT" }).then((res) => {
         if (res && res.success) {

@@ -215,6 +215,7 @@ let lastFlutterTime = null;
 let lastMigrationTime = null;
 let totalScheduledDelayMs = 0;
 let monitorTimeoutId = null;
+browser.alarms.onAlarm.addListener((alarm) => { if (alarm.name === "flutterAlarm") triggerFlutter(); });
 const MIN_DELAY = 75000;
 const MAX_DELAY = 105000;
 
@@ -251,7 +252,7 @@ async function triggerFlutter() {
             nextDelay = nextDelay - skipAgeMs;
             totalScheduledDelayMs += nextDelay;
             console.log(`[${new Date().toISOString()}] [Monitor] Skipped fluttering because ${skipReason} was ${Math.round(skipAgeMs/1000)}s ago. Next event in ${Math.round(nextDelay/1000)}s.`);
-            monitorTimeoutId = setTimeout(triggerFlutter, nextDelay);
+            browser.alarms.create("flutterAlarm", { when: Date.now() + nextDelay });
             return;
         }
 
@@ -261,7 +262,7 @@ async function triggerFlutter() {
         totalScheduledDelayMs += nextDelay;
         const ts = new Date().toISOString();
         console.log(`[${ts}] [Monitor] Fluttering (${activeBskyTabId}), next event in ${Math.round(nextDelay/1000)}s`);
-        monitorTimeoutId = setTimeout(triggerFlutter, nextDelay);
+        browser.alarms.create("flutterAlarm", { when: Date.now() + nextDelay });
     } catch (e) {
         console.log(`[${new Date().toISOString()}] [Monitor] Target tab unresponsive. Auto-disabling.`);
         autoDisable();
@@ -281,10 +282,7 @@ async function terminateDatabase() {
 }
 
 async function stopMonitor() {
-    if (monitorTimeoutId) {
-        clearTimeout(monitorTimeoutId);
-        monitorTimeoutId = null;
-    }
+    browser.alarms.clear("flutterAlarm");
     if (activeBskyTabId !== null) {
         activeBskyTabId = null;
         console.log(`[${new Date().toISOString()}] [Monitor] Stopped.`);
@@ -438,6 +436,9 @@ async function initDatabase(skipLongevity = false) {
                         SELECT captured_at FROM trends ORDER BY captured_at ASC LIMIT (SELECT CAST(count(*) * 0.1 AS INTEGER) FROM trends)
                     )
                 `);
+                await localConn.query("VACUUM");
+                await localConn.query("CHECKPOINT");
+                console.log(`[${new Date().toISOString()}] OPFS database vacuumed and checkpointed.`);
             }
         }
         await localConn.query(`
@@ -467,11 +468,171 @@ async function initDatabase(skipLongevity = false) {
     }
 }
 
-// --- 2. THE INTERCEPTOR ---
+// --- 2. THE NETWORK LISTENER ---
 
 let currentRateLimit = null;
 let isLoggedIn = false;
 let hasCheckedAuth = false;
+
+
+// ==========================================
+// AUTHENTICATION STATE (DUAL-LAYERED)
+// ==========================================
+let activeAuthHeaders = null; // Passive fallback
+let appPasswordHeaders = null; // Primary (Autonomous)
+
+async function bootstrapAppPassword() {
+    const data = await browser.storage.local.get(["bskyHandle", "bskyPassword"]);
+    if (data.bskyHandle && data.bskyPassword) {
+        try {
+            const res = await fetch("https://bsky.social/xrpc/com.atproto.server.createSession", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ identifier: data.bskyHandle, password: data.bskyPassword })
+            });
+            if (res.ok) {
+                const session = await res.json();
+                appPasswordHeaders = {
+                    'Authorization': `Bearer ${session.accessJwt}`,
+                    'Accept': 'application/json'
+                };
+                console.log(`[${new Date().toISOString()}] [Auth] App Password authentication successful. Switching to autonomous mode.`);
+            } else {
+                console.warn(`[${new Date().toISOString()}] [Auth] App Password authentication failed (${res.status}). Falling back to passive sniffing.`);
+                appPasswordHeaders = null;
+            }
+        } catch (e) {
+            console.warn(`[${new Date().toISOString()}] [Auth] App Password network error. Falling back to passive sniffing.`);
+            appPasswordHeaders = null;
+        }
+    } else {
+        appPasswordHeaders = null;
+    }
+}
+// Boot check
+bootstrapAppPassword();
+
+
+browser.webRequest.onBeforeSendHeaders.addListener(
+  (details) => {
+    // OPTIMIZATION: If we already bootstrapped the token, avoid wasting CPU cycles 
+    // parsing headers on every timeline scroll. Only refresh the token when checking trends.
+    if (activeAuthHeaders && !details.url.includes("getTrendingTopics")) {
+      return { requestHeaders: details.requestHeaders };
+    }
+
+    let authVal, clientVal, uaVal;
+    // O(n) single pass instead of O(3n) Array.find() passes
+    for (let i = 0; i < details.requestHeaders.length; i++) {
+      let name = details.requestHeaders[i].name.toLowerCase();
+      if (name === 'authorization') authVal = details.requestHeaders[i].value;
+      else if (name === 'x-bsky-client') clientVal = details.requestHeaders[i].value;
+      else if (name === 'user-agent') uaVal = details.requestHeaders[i].value;
+    }
+
+    if (authVal && authVal.startsWith('Bearer')) {
+      activeAuthHeaders = {
+        'Authorization': authVal,
+        'Accept': 'application/json'
+      };
+      if (clientVal) activeAuthHeaders['x-bsky-client'] = clientVal;
+      if (uaVal) activeAuthHeaders['User-Agent'] = uaVal;
+    }
+    return { requestHeaders: details.requestHeaders };
+  },
+  { urls: ["*://*.bsky.app/xrpc/*", "*://*.bsky.network/xrpc/*"] },
+  ["requestHeaders"]
+);
+
+// Utility function ready for advanced analysis tasks
+async function fetchWithAuth(url) {
+  let headersToUse = appPasswordHeaders || activeAuthHeaders;
+  if (!headersToUse) {
+    throw new Error("[Auth] Warning: No active Bearer token. Please configure an App Password or wait for bootstrap.");
+  }
+  
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: headersToUse
+  });
+  
+  if (response.status === 401 || response.status === 403) {
+    if (appPasswordHeaders && headersToUse === appPasswordHeaders) {
+        appPasswordHeaders = null;
+        bootstrapAppPassword(); // Try to renew it asynchronously
+        throw new Error(`[Auth] Warning: App Password session expired (${response.status}). Attempting re-auth and falling back to passive capability.`);
+    } else {
+        activeAuthHeaders = null; // Force the passive listener to parse the very next request
+        throw new Error(`[Auth] Warning: API returned ${response.status}. The Bearer token is stale. Purging token to re-enter bootstrap mode.`);
+    }
+  }
+  
+  return response.json();
+}
+// ==========================================
+
+// ==========================================
+// ADVANCED TOPIC ANALYSIS
+// ==========================================
+async function analyzeTopActorThread(topicQuery, actorDid) {
+  try {
+    console.log(`[${new Date().toISOString()}] [Analysis] Starting thread analysis for topic: "${topicQuery}", actor: ${actorDid}`);
+    
+    // Step 1: Find the exact post using Advanced Search syntax
+    let query = encodeURIComponent(`${topicQuery} from:${actorDid}`);
+    let searchUrl = `https://bsky.social/xrpc/app.bsky.feed.searchPosts?q=${query}&limit=1`;
+    
+    let searchData = await fetchWithAuth(searchUrl);
+    
+    let postUri = null;
+    let postText = "";
+    if (!searchData.posts || searchData.posts.length === 0) {
+      console.warn(`[${new Date().toISOString()}] [Analysis] Search query missed exact phrase. Falling back to getAuthorFeed for actor ${actorDid}`);
+      let authorFeedUrl = `https://bsky.social/xrpc/app.bsky.feed.getAuthorFeed?actor=${actorDid}&limit=1`;
+      let authorData = await fetchWithAuth(authorFeedUrl);
+      if (authorData && authorData.feed && authorData.feed.length > 0) {
+          postUri = authorData.feed[0].post.uri;
+          postText = authorData.feed[0].post.record.text;
+      } else {
+          console.warn(`[${new Date().toISOString()}] [Analysis] Failure: No posts found for actor ${actorDid}`);
+          return null;
+      }
+    } else {
+      postUri = searchData.posts[0].uri;
+      postText = searchData.posts[0].record.text;
+    }
+    
+    // Snippet the text to 60 characters for clean logging
+    let snippet = postText.replace(/\n/g, ' ');
+    if (snippet.length > 60) snippet = snippet.substring(0, 60) + "...";
+    
+    console.log(`[${new Date().toISOString()}] [Analysis] Success: Found post (${postUri})`);
+    console.log(`[${new Date().toISOString()}] [Analysis] Post Content: "${snippet}"`);
+    
+    // Step 2: Pull the full thread (comments/replies) for that post
+    let threadUrl = `https://bsky.social/xrpc/app.bsky.feed.getPostThread?uri=${encodeURIComponent(postUri)}`;
+    let threadData = await fetchWithAuth(threadUrl);
+    
+    if (threadData && threadData.thread) {
+      let replyCount = threadData.thread.replies ? threadData.thread.replies.length : 0;
+      console.log(`[${new Date().toISOString()}] [Analysis] Success: Pulled thread with ${replyCount} top-level replies.`);
+      return threadData.thread;
+    } else {
+      console.warn(`[${new Date().toISOString()}] [Analysis] Failure: Thread data malformed or empty.`);
+      return null;
+    }
+    
+  } catch (err) {
+    if (err.message.includes("[Auth] Warning:")) {
+      console.warn(`[${new Date().toISOString()}] ${err.message}`);
+    } else {
+      console.error(`[${new Date().toISOString()}] [Analysis] Fatal Error during thread analysis:`, err);
+    }
+    return null;
+  }
+}
+// ==========================================
+
 
 browser.webRequest.onHeadersReceived.addListener(
   (details) => {
@@ -586,6 +747,7 @@ browser.webRequest.onBeforeRequest.addListener(
             `);
             await stmt.query(dbRow.raw_json, dbRow.viewer_did, dbRow.is_flutter, dbRow.gap_ms, dbRow.payload_hash);
             await stmt.close();
+            await conn.query("CHECKPOINT");
             browser.runtime.sendMessage({ command: "TREND_ADDED" }).catch(() => {});
             
             
@@ -597,13 +759,11 @@ browser.webRequest.onBeforeRequest.addListener(
             console.log(`[${captureTime}] Successfully saved trend update #${eventCount}!`);
             
             if (timeSinceFlutterMs > 5000) {
-                if (monitorTimeoutId) {
-                    clearTimeout(monitorTimeoutId);
-                }
+                browser.alarms.clear("flutterAlarm");
                 let nextDelay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
                 totalScheduledDelayMs = nextDelay;
                 console.log(`[${new Date().toISOString()}] [Monitor] Updated fluttering interval. Next event in ${Math.round(nextDelay/1000)}s.`);
-                monitorTimeoutId = setTimeout(triggerFlutter, nextDelay);
+                browser.alarms.create("flutterAlarm", { when: Date.now() + nextDelay });
             }
         } else {
             console.error(`[${new Date().toISOString()}] DuckDB not connected yet!`);
@@ -620,6 +780,17 @@ browser.webRequest.onBeforeRequest.addListener(
 
 // --- 3. LISTEN FOR EXPORT/CLEAR COMMANDS ---
 browser.runtime.onMessage.addListener(async (message) => {
+    if (message.command === "AUTH_CREDENTIALS_UPDATED") {
+        bootstrapAppPassword();
+        return { status: "updating" };
+    }
+    if (message.command === "ANALYZE_THREAD") {
+        console.log(`[${new Date().toISOString()}] [Analysis] Received command from popup UI.`);
+        return analyzeTopActorThread(message.topic, message.actorDid).then(res => {
+            return { status: "complete", success: !!res };
+        });
+    }
+
     if (message.command === "OPEN_OPTIONS_PAGE") {
         (async () => {
             try {
@@ -874,13 +1045,20 @@ browser.runtime.onMessage.addListener(async (message) => {
                 const blob = new Blob([parquetBytes], { type: 'application/vnd.apache.parquet' });
                 const url = URL.createObjectURL(blob);
                 
-                await browser.downloads.download({
+                const downloadId = await browser.downloads.download({
                     url: url,
                     filename: `bluesky_trends_${new Date().getTime()}.parquet`,
                     saveAs: false
                 });
                 
-                setTimeout(() => URL.revokeObjectURL(url), 10000);
+                const listener = (delta) => {
+                    if (delta.id === downloadId && delta.state && delta.state.current !== 'in_progress') {
+                        URL.revokeObjectURL(url);
+                        browser.downloads.onChanged.removeListener(listener);
+                        console.log(`[${new Date().toISOString()}] Parquet export ${downloadId} completed, revoked ObjectURL from memory.`);
+                    }
+                };
+                browser.downloads.onChanged.addListener(listener);
                 
                 if (wasSleeping) { await terminateDatabase().catch(()=>{}); }
                 resolve({ success: true });

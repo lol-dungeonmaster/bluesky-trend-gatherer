@@ -2,12 +2,21 @@ const { buildSync } = require('esbuild');
 const fs = require('fs');
 
 buildSync({
-  entryPoints: ['src/background.src.js'],
+  entryPoints: ['src/background/index.js'],
   inject: ['scripts/zod-config.js'],
   bundle: true,
   minify: true,
   treeShaking: true,
   outfile: 'dist/background.bundle.js',
+  format: 'iife'
+});
+
+buildSync({
+  entryPoints: ['src/popup/index.js'],
+  bundle: true,
+  minify: true,
+  treeShaking: true,
+  outfile: 'dist/popup.bundle.js',
   format: 'iife'
 });
 

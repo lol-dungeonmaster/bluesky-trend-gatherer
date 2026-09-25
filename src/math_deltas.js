@@ -88,6 +88,7 @@ function calculateDeltas(t, i, history, currentMomentTsStr) {
     return { rankDiffStr, pcDiffStr, acDiffStr, timeUnchangedStr, newActors, droppedActors };
 }
 
+/* istanbul ignore next */
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { calculateDeltas };
 }

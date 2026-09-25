@@ -63,6 +63,25 @@
   </style>
 </head>
 <body>
+  
+  <h2>Authentication (Optional)</h2>
+  <div class="settings-group">
+    <p>By default, this extension synchronizes with your active Bluesky tab to bypass rate limits. If you want the extension to run completely autonomously in the background (even when the Bluesky tab is closed), you can provide an official App Password.</p>
+    
+    <div style="margin-bottom: 10px;">
+      <label for="bsky-handle" style="display: block; font-weight: 600; margin-bottom: 5px;">Bluesky Handle</label>
+      <input type="text" id="bsky-handle" placeholder="e.g., alice.bsky.social" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); background: Canvas; color: CanvasText;">
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+      <label for="bsky-password" style="display: block; font-weight: 600; margin-bottom: 5px;">App Password</label>
+      <input type="password" id="bsky-password" placeholder="abcd-efgh-ijkl-mnop" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); background: Canvas; color: CanvasText;">
+    </div>
+    
+    <button id="btn-save-auth" class="primary">Save Credentials</button>
+    <span id="auth-status-msg" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
   <h2>Database Management</h2>
   
   <div class="settings-group">

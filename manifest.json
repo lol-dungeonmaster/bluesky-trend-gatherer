@@ -12,13 +12,14 @@
     "96": "assets/icon-on.svg"
   },
   "description": "Gathers and visualizes Bluesky trending data using DuckDB-Wasm and OPFS.",
-  "content_security_policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://cdn.bsky.app data:; connect-src 'self'; object-src 'none';",
+  "content_security_policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://cdn.bsky.app data:; connect-src 'self' https://public.api.bsky.app https://bsky.network https://bsky.social; object-src 'none';",
   "permissions": [
     "webRequest",
     "webRequestBlocking",
     "storage",
     "tabs",
     "downloads",
+    "alarms",
     "*://*.bsky.network/*",
     "*://bsky.app/*"
   ],
