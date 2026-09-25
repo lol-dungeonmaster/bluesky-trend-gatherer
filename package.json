@@ -1,7 +1,7 @@
 {
   "name": "bluesky-trend-gatherer",
   "version": "1.0.0",
-  "description": "A lightweight, privacy-first Firefox extension designed to archive and analyze temporal trend data from the Bluesky network.",
+  "description": "Gathers and visualizes Bluesky trending data using DuckDB-Wasm and OPFS.",
   "main": "background.js",
   "scripts": {
     "test": "jest --coverage",
@@ -13,8 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "@duckdb/duckdb-wasm": "^1.32.0",
-    "apache-arrow": "^21.2.0",
+    "apache-arrow": "^17.0.0",
     "duckdb": "^1.4.4",
+    "parquet-wasm": "^0.8.0",
     "webextension-polyfill": "^0.12.0",
     "zod": "^4.6.5"
   },

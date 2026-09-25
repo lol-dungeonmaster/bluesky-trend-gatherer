@@ -1,8 +1,49 @@
+
+jest.mock('parquet-wasm/esm/parquet_wasm.js', () => {
+    return {
+        __esModule: true,
+        default: jest.fn().mockResolvedValue(true),
+        writeParquet: jest.fn().mockReturnValue(new Uint8Array(10)),
+        readParquet: jest.fn().mockReturnValue({ intoIPCStream: jest.fn().mockReturnValue(new Uint8Array(10)) }),
+        Table: { fromIPCStream: jest.fn().mockReturnValue({}) },
+        WriterPropertiesBuilder: class { setCompression() { return this; } build() { return {}; } },
+        Compression: { ZSTD: 1, SNAPPY: 2 }
+    };
+}, { virtual: true });
+
+jest.mock('apache-arrow', () => ({
+    tableToIPC: jest.fn().mockReturnValue(new Uint8Array(10)),
+    tableFromIPC: jest.fn().mockReturnValue({ toArray: jest.fn().mockReturnValue([]) }),
+    vectorFromArray: jest.fn().mockReturnValue({}),
+    Table: class {}
+}));
 const { TextEncoder, TextDecoder } = require("util");
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 HTMLCanvasElement.prototype.getContext = jest.fn(() => ({ fillStyle: "", beginPath: jest.fn(), moveTo: jest.fn(), lineTo: jest.fn(), quadraticCurveTo: jest.fn(), closePath: jest.fn(), fill: jest.fn(), font: "", textAlign: "", textBaseline: "", stroke: jest.fn(), fillText: jest.fn(), getImageData: jest.fn(() => ({ data: [] })) }));
-global.mockQuery = jest.fn().mockResolvedValue({ toArray: () => [] });
+global.mockQuery = jest.fn().mockImplementation((sql) => {
+    if (sql && sql.includes("gap_ms, raw_json FROM trends ORDER BY captured_at ASC")) {
+        return Promise.resolve({ toArray: () => [
+            { captured_at: 1000, gap_ms: 10000, raw_json: JSON.stringify([{topic: "test1"}]) },
+            { captured_at: 2000, gap_ms: 5000, raw_json: JSON.stringify([{topic: "test1"}, {topic: "test2"}]) }
+        ]});
+    }
+    if (sql && sql.includes("COUNT(*) as total")) {
+        return Promise.resolve({ toArray: () => [{ total: 10 }] });
+    }
+    if (sql && sql.includes("LIMIT 1 OFFSET")) {
+        return Promise.resolve({ toArray: () => [{ captured_at: 1000, raw_json: JSON.stringify([{topic: "test"}]) }] });
+    }
+    if (sql && sql.includes("SELECT * FROM trends")) {
+        return Promise.resolve({ 
+            toArray: () => [{ captured_at: 1000, gap_ms: 0, raw_json: JSON.stringify([{topic: "export_test"}]) }] 
+        });
+    }
+    if (sql && sql.includes("SELECT COUNT(*) as c FROM trends")) {
+        return Promise.resolve({ toArray: () => [{ c: 1 }] });
+    }
+    return Promise.resolve({ toArray: () => [] });
+});
 const fs = require('fs');
 const path = require('path');
 
@@ -140,6 +181,7 @@ describe("Background Script", () => {
         // Get State
         const resGet = await onMessage({ command: "GET_STATE" }, {}, sendResponse);
         expect(resGet.isActive).toBe(true);
+        await onMessage({ command: "SET_STATE", isActive: false }, {}, jest.fn());
     });
 
     it("should handle NAVIGATE commands", async () => {

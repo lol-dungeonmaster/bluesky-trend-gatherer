@@ -565,9 +565,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/utf8.js
+  // node_modules/apache-arrow/util/utf8.js
   var require_utf8 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/utf8.js"(exports) {
+    "node_modules/apache-arrow/util/utf8.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -581,9 +581,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/compat.js
+  // node_modules/apache-arrow/util/compat.js
   var require_compat = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/compat.js"(exports) {
+    "node_modules/apache-arrow/util/compat.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -661,9 +661,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/buffer.js
+  // node_modules/apache-arrow/util/buffer.js
   var require_buffer = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/buffer.js"(exports) {
+    "node_modules/apache-arrow/util/buffer.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -891,9 +891,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/adapters.js
+  // node_modules/apache-arrow/io/adapters.js
   var require_adapters = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/adapters.js"(exports) {
+    "node_modules/apache-arrow/io/adapters.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1144,9 +1144,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/metadata-version.js
+  // node_modules/apache-arrow/fb/metadata-version.js
   var require_metadata_version = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/metadata-version.js"(exports) {
+    "node_modules/apache-arrow/fb/metadata-version.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1162,9 +1162,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/union-mode.js
+  // node_modules/apache-arrow/fb/union-mode.js
   var require_union_mode = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/union-mode.js"(exports) {
+    "node_modules/apache-arrow/fb/union-mode.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1177,9 +1177,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/precision.js
+  // node_modules/apache-arrow/fb/precision.js
   var require_precision = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/precision.js"(exports) {
+    "node_modules/apache-arrow/fb/precision.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1193,9 +1193,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/date-unit.js
+  // node_modules/apache-arrow/fb/date-unit.js
   var require_date_unit = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/date-unit.js"(exports) {
+    "node_modules/apache-arrow/fb/date-unit.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1208,9 +1208,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/time-unit.js
+  // node_modules/apache-arrow/fb/time-unit.js
   var require_time_unit = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/time-unit.js"(exports) {
+    "node_modules/apache-arrow/fb/time-unit.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1225,9 +1225,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/interval-unit.js
+  // node_modules/apache-arrow/fb/interval-unit.js
   var require_interval_unit = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/interval-unit.js"(exports) {
+    "node_modules/apache-arrow/fb/interval-unit.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1241,9 +1241,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/constants.js
+  // node_modules/flatbuffers/js/constants.js
   var require_constants = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/constants.js"(exports) {
+    "node_modules/flatbuffers/js/constants.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1255,9 +1255,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/utils.js
+  // node_modules/flatbuffers/js/utils.js
   var require_utils = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/utils.js"(exports) {
+    "node_modules/flatbuffers/js/utils.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1269,24 +1269,24 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/encoding.js
+  // node_modules/flatbuffers/js/encoding.js
   var require_encoding = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/encoding.js"(exports) {
+    "node_modules/flatbuffers/js/encoding.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Encoding = void 0;
-      var Encoding;
-      (function(Encoding2) {
-        Encoding2[Encoding2["UTF8_BYTES"] = 1] = "UTF8_BYTES";
-        Encoding2[Encoding2["UTF16_STRING"] = 2] = "UTF16_STRING";
-      })(Encoding || (exports.Encoding = Encoding = {}));
+      var Encoding2;
+      (function(Encoding3) {
+        Encoding3[Encoding3["UTF8_BYTES"] = 1] = "UTF8_BYTES";
+        Encoding3[Encoding3["UTF16_STRING"] = 2] = "UTF16_STRING";
+      })(Encoding2 || (exports.Encoding = Encoding2 = {}));
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/byte-buffer.js
+  // node_modules/flatbuffers/js/byte-buffer.js
   var require_byte_buffer = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/byte-buffer.js"(exports) {
+    "node_modules/flatbuffers/js/byte-buffer.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -1540,9 +1540,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/builder.js
+  // node_modules/flatbuffers/js/builder.js
   var require_builder = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/builder.js"(exports) {
+    "node_modules/flatbuffers/js/builder.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2048,9 +2048,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/flatbuffers.js
+  // node_modules/flatbuffers/js/flatbuffers.js
   var require_flatbuffers = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/flatbuffers/js/flatbuffers.js"(exports) {
+    "node_modules/flatbuffers/js/flatbuffers.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2099,9 +2099,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/body-compression-method.js
+  // node_modules/apache-arrow/fb/body-compression-method.js
   var require_body_compression_method = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/body-compression-method.js"(exports) {
+    "node_modules/apache-arrow/fb/body-compression-method.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2113,9 +2113,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/compression-type.js
+  // node_modules/apache-arrow/fb/compression-type.js
   var require_compression_type = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/compression-type.js"(exports) {
+    "node_modules/apache-arrow/fb/compression-type.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2128,9 +2128,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/body-compression.js
+  // node_modules/apache-arrow/fb/body-compression.js
   var require_body_compression = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/body-compression.js"(exports) {
+    "node_modules/apache-arrow/fb/body-compression.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2194,9 +2194,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/buffer.js
+  // node_modules/apache-arrow/fb/buffer.js
   var require_buffer2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/buffer.js"(exports) {
+    "node_modules/apache-arrow/fb/buffer.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2242,9 +2242,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/field-node.js
+  // node_modules/apache-arrow/fb/field-node.js
   var require_field_node = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/field-node.js"(exports) {
+    "node_modules/apache-arrow/fb/field-node.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2288,9 +2288,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/record-batch.js
+  // node_modules/apache-arrow/fb/record-batch.js
   var require_record_batch = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/record-batch.js"(exports) {
+    "node_modules/apache-arrow/fb/record-batch.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2299,7 +2299,7 @@
       var body_compression_js_1 = require_body_compression();
       var buffer_js_1 = require_buffer2();
       var field_node_js_1 = require_field_node();
-      var RecordBatch = class _RecordBatch {
+      var RecordBatch2 = class _RecordBatch {
         constructor() {
           this.bb = null;
           this.bb_pos = 0;
@@ -2384,13 +2384,13 @@
           return offset;
         }
       };
-      exports.RecordBatch = RecordBatch;
+      exports.RecordBatch = RecordBatch2;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/dictionary-batch.js
+  // node_modules/apache-arrow/fb/dictionary-batch.js
   var require_dictionary_batch = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/dictionary-batch.js"(exports) {
+    "node_modules/apache-arrow/fb/dictionary-batch.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2452,9 +2452,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/endianness.js
+  // node_modules/apache-arrow/fb/endianness.js
   var require_endianness = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/endianness.js"(exports) {
+    "node_modules/apache-arrow/fb/endianness.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2467,9 +2467,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/dictionary-kind.js
+  // node_modules/apache-arrow/fb/dictionary-kind.js
   var require_dictionary_kind = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/dictionary-kind.js"(exports) {
+    "node_modules/apache-arrow/fb/dictionary-kind.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2481,9 +2481,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/int.js
+  // node_modules/apache-arrow/fb/int.js
   var require_int = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/int.js"(exports) {
+    "node_modules/apache-arrow/fb/int.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2538,9 +2538,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/dictionary-encoding.js
+  // node_modules/apache-arrow/fb/dictionary-encoding.js
   var require_dictionary_encoding = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/dictionary-encoding.js"(exports) {
+    "node_modules/apache-arrow/fb/dictionary-encoding.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2623,9 +2623,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/key-value.js
+  // node_modules/apache-arrow/fb/key-value.js
   var require_key_value = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/key-value.js"(exports) {
+    "node_modules/apache-arrow/fb/key-value.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2680,9 +2680,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/binary.js
+  // node_modules/apache-arrow/fb/binary.js
   var require_binary = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/binary.js"(exports) {
+    "node_modules/apache-arrow/fb/binary.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2721,9 +2721,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/bool.js
+  // node_modules/apache-arrow/fb/bool.js
   var require_bool = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/bool.js"(exports) {
+    "node_modules/apache-arrow/fb/bool.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2762,9 +2762,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/date.js
+  // node_modules/apache-arrow/fb/date.js
   var require_date = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/date.js"(exports) {
+    "node_modules/apache-arrow/fb/date.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2812,9 +2812,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/decimal.js
+  // node_modules/apache-arrow/fb/decimal.js
   var require_decimal = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/decimal.js"(exports) {
+    "node_modules/apache-arrow/fb/decimal.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2887,9 +2887,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/duration.js
+  // node_modules/apache-arrow/fb/duration.js
   var require_duration = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/duration.js"(exports) {
+    "node_modules/apache-arrow/fb/duration.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2937,9 +2937,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/fixed-size-binary.js
+  // node_modules/apache-arrow/fb/fixed-size-binary.js
   var require_fixed_size_binary = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/fixed-size-binary.js"(exports) {
+    "node_modules/apache-arrow/fb/fixed-size-binary.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -2989,9 +2989,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/fixed-size-list.js
+  // node_modules/apache-arrow/fb/fixed-size-list.js
   var require_fixed_size_list = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/fixed-size-list.js"(exports) {
+    "node_modules/apache-arrow/fb/fixed-size-list.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3041,9 +3041,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/floating-point.js
+  // node_modules/apache-arrow/fb/floating-point.js
   var require_floating_point = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/floating-point.js"(exports) {
+    "node_modules/apache-arrow/fb/floating-point.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3091,9 +3091,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/interval.js
+  // node_modules/apache-arrow/fb/interval.js
   var require_interval = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/interval.js"(exports) {
+    "node_modules/apache-arrow/fb/interval.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3141,9 +3141,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/large-binary.js
+  // node_modules/apache-arrow/fb/large-binary.js
   var require_large_binary = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/large-binary.js"(exports) {
+    "node_modules/apache-arrow/fb/large-binary.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3182,9 +3182,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/large-list.js
+  // node_modules/apache-arrow/fb/large-list.js
   var require_large_list = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/large-list.js"(exports) {
+    "node_modules/apache-arrow/fb/large-list.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3223,9 +3223,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/large-utf8.js
+  // node_modules/apache-arrow/fb/large-utf8.js
   var require_large_utf8 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/large-utf8.js"(exports) {
+    "node_modules/apache-arrow/fb/large-utf8.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3264,9 +3264,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/list.js
+  // node_modules/apache-arrow/fb/list.js
   var require_list = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/list.js"(exports) {
+    "node_modules/apache-arrow/fb/list.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3305,9 +3305,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/map.js
+  // node_modules/apache-arrow/fb/map.js
   var require_map = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/map.js"(exports) {
+    "node_modules/apache-arrow/fb/map.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3357,9 +3357,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/null.js
+  // node_modules/apache-arrow/fb/null.js
   var require_null = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/null.js"(exports) {
+    "node_modules/apache-arrow/fb/null.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3398,9 +3398,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/run-end-encoded.js
+  // node_modules/apache-arrow/fb/run-end-encoded.js
   var require_run_end_encoded = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/run-end-encoded.js"(exports) {
+    "node_modules/apache-arrow/fb/run-end-encoded.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3439,9 +3439,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/struct-.js
+  // node_modules/apache-arrow/fb/struct-.js
   var require_struct = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/struct-.js"(exports) {
+    "node_modules/apache-arrow/fb/struct-.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3480,9 +3480,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/time.js
+  // node_modules/apache-arrow/fb/time.js
   var require_time = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/time.js"(exports) {
+    "node_modules/apache-arrow/fb/time.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3538,9 +3538,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/timestamp.js
+  // node_modules/apache-arrow/fb/timestamp.js
   var require_timestamp = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/timestamp.js"(exports) {
+    "node_modules/apache-arrow/fb/timestamp.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3596,9 +3596,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/union.js
+  // node_modules/apache-arrow/fb/union.js
   var require_union = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/union.js"(exports) {
+    "node_modules/apache-arrow/fb/union.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3672,9 +3672,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/utf8.js
+  // node_modules/apache-arrow/fb/utf8.js
   var require_utf82 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/utf8.js"(exports) {
+    "node_modules/apache-arrow/fb/utf8.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3713,9 +3713,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/type.js
+  // node_modules/apache-arrow/fb/type.js
   var require_type = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/type.js"(exports) {
+    "node_modules/apache-arrow/fb/type.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -3877,9 +3877,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/field.js
+  // node_modules/apache-arrow/fb/field.js
   var require_field = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/field.js"(exports) {
+    "node_modules/apache-arrow/fb/field.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4010,9 +4010,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/schema.js
+  // node_modules/apache-arrow/fb/schema.js
   var require_schema = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/schema.js"(exports) {
+    "node_modules/apache-arrow/fb/schema.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4021,7 +4021,7 @@
       var endianness_js_1 = require_endianness();
       var field_js_1 = require_field();
       var key_value_js_1 = require_key_value();
-      var Schema = class _Schema {
+      var Schema2 = class _Schema {
         constructor() {
           this.bb = null;
           this.bb_pos = 0;
@@ -4138,13 +4138,13 @@
           return _Schema.endSchema(builder);
         }
       };
-      exports.Schema = Schema;
+      exports.Schema = Schema2;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-matrix-compressed-axis.js
+  // node_modules/apache-arrow/fb/sparse-matrix-compressed-axis.js
   var require_sparse_matrix_compressed_axis = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-matrix-compressed-axis.js"(exports) {
+    "node_modules/apache-arrow/fb/sparse-matrix-compressed-axis.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4157,9 +4157,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-matrix-index-csx.js
+  // node_modules/apache-arrow/fb/sparse-matrix-index-csx.js
   var require_sparse_matrix_index_csx = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-matrix-index-csx.js"(exports) {
+    "node_modules/apache-arrow/fb/sparse-matrix-index-csx.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4281,9 +4281,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-tensor-index-coo.js
+  // node_modules/apache-arrow/fb/sparse-tensor-index-coo.js
   var require_sparse_tensor_index_coo = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-tensor-index-coo.js"(exports) {
+    "node_modules/apache-arrow/fb/sparse-tensor-index-coo.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4381,9 +4381,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-tensor-index-csf.js
+  // node_modules/apache-arrow/fb/sparse-tensor-index-csf.js
   var require_sparse_tensor_index_csf = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-tensor-index-csf.js"(exports) {
+    "node_modules/apache-arrow/fb/sparse-tensor-index-csf.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4565,9 +4565,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-tensor-index.js
+  // node_modules/apache-arrow/fb/sparse-tensor-index.js
   var require_sparse_tensor_index = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-tensor-index.js"(exports) {
+    "node_modules/apache-arrow/fb/sparse-tensor-index.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4615,9 +4615,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/tensor-dim.js
+  // node_modules/apache-arrow/fb/tensor-dim.js
   var require_tensor_dim = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/tensor-dim.js"(exports) {
+    "node_modules/apache-arrow/fb/tensor-dim.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4675,9 +4675,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-tensor.js
+  // node_modules/apache-arrow/fb/sparse-tensor.js
   var require_sparse_tensor = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/sparse-tensor.js"(exports) {
+    "node_modules/apache-arrow/fb/sparse-tensor.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4806,9 +4806,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/tensor.js
+  // node_modules/apache-arrow/fb/tensor.js
   var require_tensor = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/tensor.js"(exports) {
+    "node_modules/apache-arrow/fb/tensor.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4932,9 +4932,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/message-header.js
+  // node_modules/apache-arrow/fb/message-header.js
   var require_message_header = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/message-header.js"(exports) {
+    "node_modules/apache-arrow/fb/message-header.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -4994,9 +4994,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/enum.js
+  // node_modules/apache-arrow/enum.js
   var require_enum = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/enum.js"(exports) {
+    "node_modules/apache-arrow/enum.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -5093,9 +5093,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/pretty.js
+  // node_modules/apache-arrow/util/pretty.js
   var require_pretty = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/pretty.js"(exports) {
+    "node_modules/apache-arrow/util/pretty.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -5131,9 +5131,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/bigint.js
+  // node_modules/apache-arrow/util/bigint.js
   var require_bigint = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/bigint.js"(exports) {
+    "node_modules/apache-arrow/util/bigint.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -5152,9 +5152,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/bn.js
+  // node_modules/apache-arrow/util/bn.js
   var require_bn = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/bn.js"(exports) {
+    "node_modules/apache-arrow/util/bn.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -5325,9 +5325,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/type.js
+  // node_modules/apache-arrow/type.js
   var require_type2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/type.js"(exports) {
+    "node_modules/apache-arrow/type.js"(exports) {
       "use strict";
       init_zod_config();
       var _a;
@@ -6118,9 +6118,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor.js
+  // node_modules/apache-arrow/visitor.js
   var require_visitor = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor.js"(exports) {
+    "node_modules/apache-arrow/visitor.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -6528,9 +6528,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/math.js
+  // node_modules/apache-arrow/util/math.js
   var require_math = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/math.js"(exports) {
+    "node_modules/apache-arrow/util/math.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -6578,9 +6578,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/set.js
+  // node_modules/apache-arrow/visitor/set.js
   var require_set = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/set.js"(exports) {
+    "node_modules/apache-arrow/visitor/set.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -6879,9 +6879,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/row/struct.js
+  // node_modules/apache-arrow/row/struct.js
   var require_struct2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/row/struct.js"(exports) {
+    "node_modules/apache-arrow/row/struct.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -6999,9 +6999,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/get.js
+  // node_modules/apache-arrow/visitor/get.js
   var require_get = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/get.js"(exports) {
+    "node_modules/apache-arrow/visitor/get.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -7201,9 +7201,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/row/map.js
+  // node_modules/apache-arrow/row/map.js
   var require_map2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/row/map.js"(exports) {
+    "node_modules/apache-arrow/row/map.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -7331,9 +7331,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/vector.js
+  // node_modules/apache-arrow/util/vector.js
   var require_vector = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/vector.js"(exports) {
+    "node_modules/apache-arrow/util/vector.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -7484,9 +7484,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/bit.js
+  // node_modules/apache-arrow/util/bit.js
   var require_bit = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/bit.js"(exports) {
+    "node_modules/apache-arrow/util/bit.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -7612,9 +7612,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/data.js
+  // node_modules/apache-arrow/data.js
   var require_data = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/data.js"(exports) {
+    "node_modules/apache-arrow/data.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -7952,9 +7952,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/chunk.js
+  // node_modules/apache-arrow/util/chunk.js
   var require_chunk = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/chunk.js"(exports) {
+    "node_modules/apache-arrow/util/chunk.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -8089,9 +8089,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/indexof.js
+  // node_modules/apache-arrow/visitor/indexof.js
   var require_indexof = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/indexof.js"(exports) {
+    "node_modules/apache-arrow/visitor/indexof.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -8211,9 +8211,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/iterator.js
+  // node_modules/apache-arrow/visitor/iterator.js
   var require_iterator = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/iterator.js"(exports) {
+    "node_modules/apache-arrow/visitor/iterator.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -8315,9 +8315,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/vector.js
+  // node_modules/apache-arrow/vector.js
   var require_vector2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/vector.js"(exports) {
+    "node_modules/apache-arrow/vector.js"(exports) {
       "use strict";
       init_zod_config();
       var _a;
@@ -8703,9 +8703,9 @@
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/valid.js
+  // node_modules/apache-arrow/builder/valid.js
   var require_valid = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/valid.js"(exports) {
+    "node_modules/apache-arrow/builder/valid.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -8742,9 +8742,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/buffer.js
+  // node_modules/apache-arrow/builder/buffer.js
   var require_buffer3 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/buffer.js"(exports) {
+    "node_modules/apache-arrow/builder/buffer.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -8873,9 +8873,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder.js
+  // node_modules/apache-arrow/builder.js
   var require_builder2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder.js"(exports) {
+    "node_modules/apache-arrow/builder.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -9157,9 +9157,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/block.js
+  // node_modules/apache-arrow/fb/block.js
   var require_block = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/block.js"(exports) {
+    "node_modules/apache-arrow/fb/block.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -9209,9 +9209,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/footer.js
+  // node_modules/apache-arrow/fb/footer.js
   var require_footer = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/footer.js"(exports) {
+    "node_modules/apache-arrow/fb/footer.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -9322,16 +9322,16 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/schema.js
+  // node_modules/apache-arrow/schema.js
   var require_schema2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/schema.js"(exports) {
+    "node_modules/apache-arrow/schema.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Field = exports.Schema = void 0;
       var enum_js_1 = require_enum();
       var type_js_1 = require_type2();
-      var Schema = class _Schema {
+      var Schema2 = class _Schema {
         constructor(fields = [], metadata, dictionaries, metadataVersion = enum_js_1.MetadataVersion.V5) {
           this.fields = fields || [];
           this.metadata = metadata || /* @__PURE__ */ new Map();
@@ -9385,10 +9385,10 @@ ${fnBody}`;
           return new _Schema([...curFields, ...newFields], metadata, new Map([...this.dictionaries, ...newDictionaries]));
         }
       };
-      exports.Schema = Schema;
-      Schema.prototype.fields = null;
-      Schema.prototype.metadata = null;
-      Schema.prototype.dictionaries = null;
+      exports.Schema = Schema2;
+      Schema2.prototype.fields = null;
+      Schema2.prototype.metadata = null;
+      Schema2.prototype.dictionaries = null;
       var Field = class _Field {
         /** @nocollapse */
         static new(...args) {
@@ -9450,9 +9450,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/metadata/file.js
+  // node_modules/apache-arrow/ipc/metadata/file.js
   var require_file = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/metadata/file.js"(exports) {
+    "node_modules/apache-arrow/ipc/metadata/file.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -9582,9 +9582,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/interfaces.js
+  // node_modules/apache-arrow/io/interfaces.js
   var require_interfaces = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/interfaces.js"(exports) {
+    "node_modules/apache-arrow/io/interfaces.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -9718,9 +9718,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/stream.js
+  // node_modules/apache-arrow/io/stream.js
   var require_stream = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/stream.js"(exports) {
+    "node_modules/apache-arrow/io/stream.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -9910,9 +9910,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/file.js
+  // node_modules/apache-arrow/io/file.js
   var require_file2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/file.js"(exports) {
+    "node_modules/apache-arrow/io/file.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10046,9 +10046,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/int.js
+  // node_modules/apache-arrow/util/int.js
   var require_int2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/int.js"(exports) {
+    "node_modules/apache-arrow/util/int.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10367,9 +10367,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/vectorloader.js
+  // node_modules/apache-arrow/visitor/vectorloader.js
   var require_vectorloader = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/vectorloader.js"(exports) {
+    "node_modules/apache-arrow/visitor/vectorloader.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10538,9 +10538,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/binary.js
+  // node_modules/apache-arrow/builder/binary.js
   var require_binary2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/binary.js"(exports) {
+    "node_modules/apache-arrow/builder/binary.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10583,9 +10583,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/largebinary.js
+  // node_modules/apache-arrow/builder/largebinary.js
   var require_largebinary = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/largebinary.js"(exports) {
+    "node_modules/apache-arrow/builder/largebinary.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10628,9 +10628,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/bool.js
+  // node_modules/apache-arrow/builder/bool.js
   var require_bool2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/bool.js"(exports) {
+    "node_modules/apache-arrow/builder/bool.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10650,9 +10650,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/date.js
+  // node_modules/apache-arrow/builder/date.js
   var require_date2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/date.js"(exports) {
+    "node_modules/apache-arrow/builder/date.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10674,9 +10674,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/decimal.js
+  // node_modules/apache-arrow/builder/decimal.js
   var require_decimal2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/decimal.js"(exports) {
+    "node_modules/apache-arrow/builder/decimal.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10690,9 +10690,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/dictionary.js
+  // node_modules/apache-arrow/builder/dictionary.js
   var require_dictionary = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/dictionary.js"(exports) {
+    "node_modules/apache-arrow/builder/dictionary.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10779,9 +10779,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/fixedsizebinary.js
+  // node_modules/apache-arrow/builder/fixedsizebinary.js
   var require_fixedsizebinary = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/fixedsizebinary.js"(exports) {
+    "node_modules/apache-arrow/builder/fixedsizebinary.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10795,9 +10795,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/fixedsizelist.js
+  // node_modules/apache-arrow/builder/fixedsizelist.js
   var require_fixedsizelist = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/fixedsizelist.js"(exports) {
+    "node_modules/apache-arrow/builder/fixedsizelist.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10826,9 +10826,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/float.js
+  // node_modules/apache-arrow/builder/float.js
   var require_float = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/float.js"(exports) {
+    "node_modules/apache-arrow/builder/float.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10856,9 +10856,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/interval.js
+  // node_modules/apache-arrow/builder/interval.js
   var require_interval2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/interval.js"(exports) {
+    "node_modules/apache-arrow/builder/interval.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10880,9 +10880,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/duration.js
+  // node_modules/apache-arrow/builder/duration.js
   var require_duration2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/duration.js"(exports) {
+    "node_modules/apache-arrow/builder/duration.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10912,9 +10912,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/int.js
+  // node_modules/apache-arrow/builder/int.js
   var require_int3 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/int.js"(exports) {
+    "node_modules/apache-arrow/builder/int.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10953,9 +10953,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/list.js
+  // node_modules/apache-arrow/builder/list.js
   var require_list2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/list.js"(exports) {
+    "node_modules/apache-arrow/builder/list.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -10998,9 +10998,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/map.js
+  // node_modules/apache-arrow/builder/map.js
   var require_map3 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/map.js"(exports) {
+    "node_modules/apache-arrow/builder/map.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11049,9 +11049,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/null.js
+  // node_modules/apache-arrow/builder/null.js
   var require_null2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/null.js"(exports) {
+    "node_modules/apache-arrow/builder/null.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11070,9 +11070,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/struct.js
+  // node_modules/apache-arrow/builder/struct.js
   var require_struct3 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/struct.js"(exports) {
+    "node_modules/apache-arrow/builder/struct.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11109,9 +11109,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/timestamp.js
+  // node_modules/apache-arrow/builder/timestamp.js
   var require_timestamp2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/timestamp.js"(exports) {
+    "node_modules/apache-arrow/builder/timestamp.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11141,9 +11141,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/time.js
+  // node_modules/apache-arrow/builder/time.js
   var require_time2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/time.js"(exports) {
+    "node_modules/apache-arrow/builder/time.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11173,9 +11173,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/union.js
+  // node_modules/apache-arrow/builder/union.js
   var require_union2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/union.js"(exports) {
+    "node_modules/apache-arrow/builder/union.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11245,9 +11245,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/utf8.js
+  // node_modules/apache-arrow/builder/utf8.js
   var require_utf83 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/utf8.js"(exports) {
+    "node_modules/apache-arrow/builder/utf8.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11280,9 +11280,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/largeutf8.js
+  // node_modules/apache-arrow/builder/largeutf8.js
   var require_largeutf8 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/builder/largeutf8.js"(exports) {
+    "node_modules/apache-arrow/builder/largeutf8.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11315,9 +11315,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/builderctor.js
+  // node_modules/apache-arrow/visitor/builderctor.js
   var require_builderctor = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/builderctor.js"(exports) {
+    "node_modules/apache-arrow/visitor/builderctor.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11501,9 +11501,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/typecomparator.js
+  // node_modules/apache-arrow/visitor/typecomparator.js
   var require_typecomparator = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/typecomparator.js"(exports) {
+    "node_modules/apache-arrow/visitor/typecomparator.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11635,9 +11635,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/factories.js
+  // node_modules/apache-arrow/factories.js
   var require_factories = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/factories.js"(exports) {
+    "node_modules/apache-arrow/factories.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11812,9 +11812,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/recordbatch.js
+  // node_modules/apache-arrow/util/recordbatch.js
   var require_recordbatch = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/util/recordbatch.js"(exports) {
+    "node_modules/apache-arrow/util/recordbatch.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -11885,9 +11885,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/table.js
+  // node_modules/apache-arrow/table.js
   var require_table = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/table.js"(exports) {
+    "node_modules/apache-arrow/table.js"(exports) {
       "use strict";
       init_zod_config();
       var _a;
@@ -11908,7 +11908,7 @@ ${fnBody}`;
       var iterator_js_1 = require_iterator();
       var vector_js_2 = require_vector();
       var recordbatch_js_2 = require_recordbatch2();
-      var Table = class _Table {
+      var Table3 = class _Table {
         constructor(...args) {
           var _b, _c;
           if (args.length === 0) {
@@ -12175,9 +12175,9 @@ ${fnBody}`;
           return new _Table(...(0, recordbatch_js_1.distributeVectorsIntoRecordBatches)(schema, columns));
         }
       };
-      exports.Table = Table;
+      exports.Table = Table3;
       _a = Symbol.toStringTag;
-      Table[_a] = ((proto) => {
+      Table3[_a] = ((proto) => {
         proto.schema = null;
         proto.batches = [];
         proto._offsets = new Uint32Array([0]);
@@ -12188,14 +12188,14 @@ ${fnBody}`;
         proto["set"] = (0, chunk_js_1.wrapChunkedCall2)(set_js_1.instance.getVisitFn(enum_js_1.Type.Struct));
         proto["indexOf"] = (0, chunk_js_1.wrapChunkedIndexOf)(indexof_js_1.instance.getVisitFn(enum_js_1.Type.Struct));
         return "Table";
-      })(Table.prototype);
+      })(Table3.prototype);
       function makeTable(input) {
         const vecs = {};
         const inputs = Object.entries(input);
         for (const [key, col] of inputs) {
           vecs[key] = (0, vector_js_1.makeVector)(col);
         }
-        return new Table(vecs);
+        return new Table3(vecs);
       }
       exports.makeTable = makeTable;
       function tableFromArrays(input) {
@@ -12204,15 +12204,15 @@ ${fnBody}`;
         for (const [key, col] of inputs) {
           vecs[key] = (0, factories_js_1.vectorFromArray)(col);
         }
-        return new Table(vecs);
+        return new Table3(vecs);
       }
       exports.tableFromArrays = tableFromArrays;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/recordbatch.js
+  // node_modules/apache-arrow/recordbatch.js
   var require_recordbatch2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/recordbatch.js"(exports) {
+    "node_modules/apache-arrow/recordbatch.js"(exports) {
       "use strict";
       init_zod_config();
       var _a;
@@ -12228,7 +12228,7 @@ ${fnBody}`;
       var set_js_1 = require_set();
       var indexof_js_1 = require_indexof();
       var iterator_js_1 = require_iterator();
-      var RecordBatch = class _RecordBatch {
+      var RecordBatch2 = class _RecordBatch {
         constructor(...args) {
           switch (args.length) {
             case 2: {
@@ -12432,13 +12432,13 @@ ${fnBody}`;
           return new _RecordBatch(schema, subset);
         }
       };
-      exports.RecordBatch = RecordBatch;
+      exports.RecordBatch = RecordBatch2;
       _a = Symbol.toStringTag;
-      RecordBatch[_a] = ((proto) => {
+      RecordBatch2[_a] = ((proto) => {
         proto._nullCount = -1;
         proto[Symbol.isConcatSpreadable] = true;
         return "RecordBatch";
-      })(RecordBatch.prototype);
+      })(RecordBatch2.prototype);
       function ensureSameLengthData(schema, chunks, maxLength = chunks.reduce((max, col) => Math.max(max, col.length), 0)) {
         var _b;
         const fields = [...schema.fields];
@@ -12484,7 +12484,7 @@ ${fnBody}`;
         }
         return dictionaries;
       }
-      var _InternalEmptyPlaceholderRecordBatch = class extends RecordBatch {
+      var _InternalEmptyPlaceholderRecordBatch = class extends RecordBatch2 {
         constructor(schema) {
           const children = schema.fields.map((f) => (0, data_js_1.makeData)({ type: f.type }));
           const data = (0, data_js_1.makeData)({ type: new type_js_1.Struct(schema.fields), nullCount: 0, children });
@@ -12495,9 +12495,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/message.js
+  // node_modules/apache-arrow/fb/message.js
   var require_message = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/fb/message.js"(exports) {
+    "node_modules/apache-arrow/fb/message.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -12599,9 +12599,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/typeassembler.js
+  // node_modules/apache-arrow/visitor/typeassembler.js
   var require_typeassembler = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/typeassembler.js"(exports) {
+    "node_modules/apache-arrow/visitor/typeassembler.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -12751,9 +12751,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/metadata/json.js
+  // node_modules/apache-arrow/ipc/metadata/json.js
   var require_json = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/metadata/json.js"(exports) {
+    "node_modules/apache-arrow/ipc/metadata/json.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -12911,9 +12911,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/metadata/message.js
+  // node_modules/apache-arrow/ipc/metadata/message.js
   var require_message2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/metadata/message.js"(exports) {
+    "node_modules/apache-arrow/ipc/metadata/message.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -12975,7 +12975,7 @@ ${fnBody}`;
           if (message.isSchema()) {
             headerOffset = schema_js_2.Schema.encode(b, message.header());
           } else if (message.isRecordBatch()) {
-            headerOffset = RecordBatch.encode(b, message.header());
+            headerOffset = RecordBatch2.encode(b, message.header());
           } else if (message.isDictionaryBatch()) {
             headerOffset = DictionaryBatch.encode(b, message.header());
           }
@@ -12992,7 +12992,7 @@ ${fnBody}`;
           if (header instanceof schema_js_2.Schema) {
             return new _Message(0, enum_js_1.MetadataVersion.V5, enum_js_1.MessageHeader.Schema, header);
           }
-          if (header instanceof RecordBatch) {
+          if (header instanceof RecordBatch2) {
             return new _Message(bodyLength, enum_js_1.MetadataVersion.V5, enum_js_1.MessageHeader.RecordBatch, header);
           }
           if (header instanceof DictionaryBatch) {
@@ -13033,7 +13033,7 @@ ${fnBody}`;
         }
       };
       exports.Message = Message;
-      var RecordBatch = class {
+      var RecordBatch2 = class {
         get nodes() {
           return this._nodes;
         }
@@ -13049,7 +13049,7 @@ ${fnBody}`;
           this._length = (0, bigint_js_1.bigIntToNumber)(length);
         }
       };
-      exports.RecordBatch = RecordBatch;
+      exports.RecordBatch = RecordBatch2;
       var DictionaryBatch = class {
         get id() {
           return this._id;
@@ -13096,7 +13096,7 @@ ${fnBody}`;
             case enum_js_1.MessageHeader.Schema:
               return schema_js_2.Schema.fromJSON(message);
             case enum_js_1.MessageHeader.RecordBatch:
-              return RecordBatch.fromJSON(message);
+              return RecordBatch2.fromJSON(message);
             case enum_js_1.MessageHeader.DictionaryBatch:
               return DictionaryBatch.fromJSON(message);
           }
@@ -13109,7 +13109,7 @@ ${fnBody}`;
             case enum_js_1.MessageHeader.Schema:
               return schema_js_2.Schema.decode(message.header(new schema_js_1.Schema()), /* @__PURE__ */ new Map(), message.version());
             case enum_js_1.MessageHeader.RecordBatch:
-              return RecordBatch.decode(message.header(new record_batch_js_1.RecordBatch()), message.version());
+              return RecordBatch2.decode(message.header(new record_batch_js_1.RecordBatch()), message.version());
             case enum_js_1.MessageHeader.DictionaryBatch:
               return DictionaryBatch.decode(message.header(new dictionary_batch_js_1.DictionaryBatch()), message.version());
           }
@@ -13122,9 +13122,9 @@ ${fnBody}`;
       schema_js_2.Schema["encode"] = encodeSchema;
       schema_js_2.Schema["decode"] = decodeSchema;
       schema_js_2.Schema["fromJSON"] = json_js_1.schemaFromJSON;
-      RecordBatch["encode"] = encodeRecordBatch;
-      RecordBatch["decode"] = decodeRecordBatch;
-      RecordBatch["fromJSON"] = json_js_1.recordBatchFromJSON;
+      RecordBatch2["encode"] = encodeRecordBatch;
+      RecordBatch2["decode"] = decodeRecordBatch;
+      RecordBatch2["fromJSON"] = json_js_1.recordBatchFromJSON;
       DictionaryBatch["encode"] = encodeDictionaryBatch;
       DictionaryBatch["decode"] = decodeDictionaryBatch;
       DictionaryBatch["fromJSON"] = json_js_1.dictionaryBatchFromJSON;
@@ -13140,10 +13140,10 @@ ${fnBody}`;
         if (batch.compression() !== null) {
           throw new Error("Record batch compression not implemented");
         }
-        return new RecordBatch(batch.length(), decodeFieldNodes(batch), decodeBuffers(batch, version));
+        return new RecordBatch2(batch.length(), decodeFieldNodes(batch), decodeBuffers(batch, version));
       }
       function decodeDictionaryBatch(batch, version = enum_js_1.MetadataVersion.V5) {
-        return new DictionaryBatch(RecordBatch.decode(batch.data(), version), batch.id(), batch.isDelta());
+        return new DictionaryBatch(RecordBatch2.decode(batch.data(), version), batch.id(), batch.isDelta());
       }
       function decodeBufferRegion(b) {
         return new BufferRegion(b.offset(), b.length());
@@ -13380,7 +13380,7 @@ ${fnBody}`;
         return record_batch_js_1.RecordBatch.endRecordBatch(b);
       }
       function encodeDictionaryBatch(b, dictionaryBatch) {
-        const dataOffset = RecordBatch.encode(b, dictionaryBatch.data);
+        const dataOffset = RecordBatch2.encode(b, dictionaryBatch.data);
         dictionary_batch_js_1.DictionaryBatch.startDictionaryBatch(b);
         dictionary_batch_js_1.DictionaryBatch.addId(b, BigInt(dictionaryBatch.id));
         dictionary_batch_js_1.DictionaryBatch.addIsDelta(b, dictionaryBatch.isDelta);
@@ -13406,9 +13406,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/message.js
+  // node_modules/apache-arrow/ipc/message.js
   var require_message3 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/message.js"(exports) {
+    "node_modules/apache-arrow/ipc/message.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -13682,9 +13682,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/reader.js
+  // node_modules/apache-arrow/ipc/reader.js
   var require_reader = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/reader.js"(exports) {
+    "node_modules/apache-arrow/ipc/reader.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -14282,8 +14282,8 @@ ${fnBody}`;
           return new vectorloader_js_1.JSONVectorLoader(body, header.nodes, header.buffers, this.dictionaries, this.schema.metadataVersion).visitMany(types);
         }
       };
-      function shouldAutoDestroy(self, options) {
-        return options && typeof options["autoDestroy"] === "boolean" ? options["autoDestroy"] : self["autoDestroy"];
+      function shouldAutoDestroy(self2, options) {
+        return options && typeof options["autoDestroy"] === "boolean" ? options["autoDestroy"] : self2["autoDestroy"];
       }
       function* readAllSync(source) {
         const reader = RecordBatchReader.from(source);
@@ -14341,9 +14341,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/vectorassembler.js
+  // node_modules/apache-arrow/visitor/vectorassembler.js
   var require_vectorassembler = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/vectorassembler.js"(exports) {
+    "node_modules/apache-arrow/visitor/vectorassembler.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -14512,9 +14512,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/jsontypeassembler.js
+  // node_modules/apache-arrow/visitor/jsontypeassembler.js
   var require_jsontypeassembler = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/jsontypeassembler.js"(exports) {
+    "node_modules/apache-arrow/visitor/jsontypeassembler.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -14598,9 +14598,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/jsonvectorassembler.js
+  // node_modules/apache-arrow/visitor/jsonvectorassembler.js
   var require_jsonvectorassembler = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/visitor/jsonvectorassembler.js"(exports) {
+    "node_modules/apache-arrow/visitor/jsonvectorassembler.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -14725,9 +14725,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/writer.js
+  // node_modules/apache-arrow/ipc/writer.js
   var require_writer = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/writer.js"(exports) {
+    "node_modules/apache-arrow/ipc/writer.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -15144,9 +15144,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/whatwg/iterable.js
+  // node_modules/apache-arrow/io/whatwg/iterable.js
   var require_iterable = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/whatwg/iterable.js"(exports) {
+    "node_modules/apache-arrow/io/whatwg/iterable.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -15239,9 +15239,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/whatwg/builder.js
+  // node_modules/apache-arrow/io/whatwg/builder.js
   var require_builder3 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/whatwg/builder.js"(exports) {
+    "node_modules/apache-arrow/io/whatwg/builder.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -15331,9 +15331,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/whatwg/reader.js
+  // node_modules/apache-arrow/io/whatwg/reader.js
   var require_reader2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/whatwg/reader.js"(exports) {
+    "node_modules/apache-arrow/io/whatwg/reader.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -15385,9 +15385,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/whatwg/writer.js
+  // node_modules/apache-arrow/io/whatwg/writer.js
   var require_writer2 = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/io/whatwg/writer.js"(exports) {
+    "node_modules/apache-arrow/io/whatwg/writer.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -15434,9 +15434,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/serialization.js
+  // node_modules/apache-arrow/ipc/serialization.js
   var require_serialization = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/ipc/serialization.js"(exports) {
+    "node_modules/apache-arrow/ipc/serialization.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -15445,27 +15445,27 @@ ${fnBody}`;
       var compat_js_1 = require_compat();
       var reader_js_1 = require_reader();
       var writer_js_1 = require_writer();
-      function tableFromIPC(input) {
+      function tableFromIPC2(input) {
         const reader = reader_js_1.RecordBatchReader.from(input);
         if ((0, compat_js_1.isPromise)(reader)) {
-          return reader.then((reader2) => tableFromIPC(reader2));
+          return reader.then((reader2) => tableFromIPC2(reader2));
         }
         if (reader.isAsync()) {
           return reader.readAll().then((xs) => new table_js_1.Table(xs));
         }
         return new table_js_1.Table(reader.readAll());
       }
-      exports.tableFromIPC = tableFromIPC;
-      function tableToIPC(table, type = "stream") {
+      exports.tableFromIPC = tableFromIPC2;
+      function tableToIPC2(table, type = "stream") {
         return (type === "stream" ? writer_js_1.RecordBatchStreamWriter : writer_js_1.RecordBatchFileWriter).writeAll(table).toUint8Array(true);
       }
-      exports.tableToIPC = tableToIPC;
+      exports.tableToIPC = tableToIPC2;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/Arrow.js
+  // node_modules/apache-arrow/Arrow.js
   var require_Arrow = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/Arrow.js"(exports) {
+    "node_modules/apache-arrow/Arrow.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -15969,9 +15969,9 @@ ${fnBody}`;
     }
   });
 
-  // node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/Arrow.dom.js
+  // node_modules/apache-arrow/Arrow.dom.js
   var require_Arrow_dom = __commonJS({
-    "node_modules/@duckdb/duckdb-wasm/node_modules/apache-arrow/Arrow.dom.js"(exports) {
+    "node_modules/apache-arrow/Arrow.dom.js"(exports) {
       "use strict";
       init_zod_config();
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -37332,15 +37332,15 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         if (_installedErrorProtos.has(proto))
           return;
         _installedErrorProtos.add(proto);
-        _lazyMethod(proto, "format", (self) => (mapper) => core.formatError(self, mapper));
-        _lazyMethod(proto, "flatten", (self) => (mapper) => core.flattenError(self, mapper));
-        _lazyMethod(proto, "addIssue", (self) => (issue) => {
-          self.issues.push(issue);
-          self.message = JSON.stringify(self.issues, util.jsonStringifyReplacer, 2);
+        _lazyMethod(proto, "format", (self2) => (mapper) => core.formatError(self2, mapper));
+        _lazyMethod(proto, "flatten", (self2) => (mapper) => core.flattenError(self2, mapper));
+        _lazyMethod(proto, "addIssue", (self2) => (issue) => {
+          self2.issues.push(issue);
+          self2.message = JSON.stringify(self2.issues, util.jsonStringifyReplacer, 2);
         });
-        _lazyMethod(proto, "addIssues", (self) => (issues2) => {
-          self.issues.push(...issues2);
-          self.message = JSON.stringify(self.issues, util.jsonStringifyReplacer, 2);
+        _lazyMethod(proto, "addIssues", (self2) => (issues2) => {
+          self2.issues.push(...issues2);
+          self2.message = JSON.stringify(self2.issues, util.jsonStringifyReplacer, 2);
         });
         Object.defineProperty(proto, "isEmpty", {
           configurable: true,
@@ -38407,7 +38407,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         core.$ZodObjectJIT.init(inst, def);
         exports.ZodType.init(inst, def);
         inst._zod.processJSONSchema = (ctx, json2, params) => processors.objectProcessor(inst, ctx, json2, params);
-        index_js_1.util.installLazyProp(inst, "shape", (self) => self._zod.def.shape, false);
+        index_js_1.util.installLazyProp(inst, "shape", (self2) => self2._zod.def.shape, false);
       }, {
         keyof() {
           return _enum(Object.keys(this._zod.def.shape));
@@ -40693,6 +40693,2509 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     }
   });
 
+  // node_modules/parquet-wasm/esm/parquet_wasm.js
+  var parquet_wasm_exports = {};
+  __export(parquet_wasm_exports, {
+    ColumnChunkMetaData: () => ColumnChunkMetaData,
+    Compression: () => Compression,
+    EnabledStatistics: () => EnabledStatistics,
+    Encoding: () => Encoding,
+    FFIData: () => FFIData,
+    FFISchema: () => FFISchema,
+    FFIStream: () => FFIStream,
+    FileMetaData: () => FileMetaData,
+    IntoUnderlyingByteSource: () => IntoUnderlyingByteSource,
+    IntoUnderlyingSink: () => IntoUnderlyingSink,
+    IntoUnderlyingSource: () => IntoUnderlyingSource,
+    ParquetFile: () => ParquetFile,
+    ParquetMetaData: () => ParquetMetaData,
+    RecordBatch: () => RecordBatch,
+    RowGroupMetaData: () => RowGroupMetaData,
+    Schema: () => Schema,
+    Table: () => Table,
+    WriterProperties: () => WriterProperties,
+    WriterPropertiesBuilder: () => WriterPropertiesBuilder,
+    WriterVersion: () => WriterVersion,
+    _functionTable: () => _functionTable,
+    default: () => __wbg_init,
+    initSync: () => initSync,
+    readParquet: () => readParquet,
+    readParquetStream: () => readParquetStream,
+    readSchema: () => readSchema,
+    transformParquetStream: () => transformParquetStream,
+    wasmMemory: () => wasmMemory,
+    writeParquet: () => writeParquet
+  });
+  function _functionTable() {
+    const ret = wasm._functionTable();
+    return ret;
+  }
+  function readParquet(parquet_file, options) {
+    const ptr0 = passArray8ToWasm0(parquet_file, wasm.__wbindgen_malloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.readParquet(ptr0, len0, isLikeNone(options) ? 0 : addToExternrefTable0(options));
+    if (ret[2]) {
+      throw takeFromExternrefTable0(ret[1]);
+    }
+    return Table.__wrap(ret[0]);
+  }
+  function readParquetStream(url, content_length) {
+    const ptr0 = passStringToWasm0(url, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.readParquetStream(ptr0, len0, isLikeNone(content_length) ? Number.MAX_SAFE_INTEGER : content_length >>> 0);
+    return ret;
+  }
+  function readSchema(parquet_file) {
+    const ptr0 = passArray8ToWasm0(parquet_file, wasm.__wbindgen_malloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.readSchema(ptr0, len0);
+    if (ret[2]) {
+      throw takeFromExternrefTable0(ret[1]);
+    }
+    return Schema.__wrap(ret[0]);
+  }
+  function transformParquetStream(stream, writer_properties) {
+    let ptr0 = 0;
+    if (!isLikeNone(writer_properties)) {
+      _assertClass(writer_properties, WriterProperties);
+      ptr0 = writer_properties.__destroy_into_raw();
+    }
+    const ret = wasm.transformParquetStream(stream, ptr0);
+    return ret;
+  }
+  function wasmMemory() {
+    const ret = wasm.wasmMemory();
+    return ret;
+  }
+  function writeParquet(table, writer_properties) {
+    _assertClass(table, Table);
+    var ptr0 = table.__destroy_into_raw();
+    let ptr1 = 0;
+    if (!isLikeNone(writer_properties)) {
+      _assertClass(writer_properties, WriterProperties);
+      ptr1 = writer_properties.__destroy_into_raw();
+    }
+    const ret = wasm.writeParquet(ptr0, ptr1);
+    if (ret[3]) {
+      throw takeFromExternrefTable0(ret[2]);
+    }
+    var v3 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
+    wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+    return v3;
+  }
+  function __wbg_get_imports() {
+    const import0 = {
+      __proto__: null,
+      __wbg_Error_67e7344beaa85059: function(arg0, arg1) {
+        const ret = Error(getStringFromWasm0(arg0, arg1));
+        return ret;
+      },
+      __wbg_Number_c54e7112a3fa7e3e: function(arg0) {
+        const ret = Number(arg0);
+        return ret;
+      },
+      __wbg_String_8564e559799eccda: function(arg0, arg1) {
+        const ret = String(arg1);
+        const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len1 = WASM_VECTOR_LEN;
+        getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
+        getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
+      },
+      __wbg___wbindgen_bigint_get_as_i64_b482365c149396c8: function(arg0, arg1) {
+        const v = arg1;
+        const ret = typeof v === "bigint" ? v : void 0;
+        getDataViewMemory0().setBigInt64(arg0 + 8 * 1, isLikeNone(ret) ? BigInt(0) : ret, true);
+        getDataViewMemory0().setInt32(arg0 + 4 * 0, !isLikeNone(ret), true);
+      },
+      __wbg___wbindgen_boolean_get_7a12af2b3f899c5a: function(arg0) {
+        const v = arg0;
+        const ret = typeof v === "boolean" ? v : void 0;
+        return isLikeNone(ret) ? 16777215 : ret ? 1 : 0;
+      },
+      __wbg___wbindgen_debug_string_0e68cf47c9cbd9b0: function(arg0, arg1) {
+        const ret = debugString(arg1);
+        const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len1 = WASM_VECTOR_LEN;
+        getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
+        getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
+      },
+      __wbg___wbindgen_function_table_69595ae5c7f77628: function() {
+        const ret = wasm.__wbindgen_export;
+        return ret;
+      },
+      __wbg___wbindgen_in_50072d4d6e45c193: function(arg0, arg1) {
+        const ret = arg0 in arg1;
+        return ret;
+      },
+      __wbg___wbindgen_is_bigint_60fc0336cb14f5d7: function(arg0) {
+        const ret = typeof arg0 === "bigint";
+        return ret;
+      },
+      __wbg___wbindgen_is_function_fcda5e3902d732fe: function(arg0) {
+        const ret = typeof arg0 === "function";
+        return ret;
+      },
+      __wbg___wbindgen_is_object_edb6b15aa3afe12e: function(arg0) {
+        const val = arg0;
+        const ret = typeof val === "object" && val !== null;
+        return ret;
+      },
+      __wbg___wbindgen_is_string_c4f7cb494a2a21f1: function(arg0) {
+        const ret = typeof arg0 === "string";
+        return ret;
+      },
+      __wbg___wbindgen_is_undefined_8c687d0b90d5b524: function(arg0) {
+        const ret = arg0 === void 0;
+        return ret;
+      },
+      __wbg___wbindgen_jsval_eq_9fdcd3c0a860dd3b: function(arg0, arg1) {
+        const ret = arg0 === arg1;
+        return ret;
+      },
+      __wbg___wbindgen_jsval_loose_eq_3c30021c243b64cd: function(arg0, arg1) {
+        const ret = arg0 == arg1;
+        return ret;
+      },
+      __wbg___wbindgen_memory_3f8442e22540244f: function() {
+        const ret = wasm.memory;
+        return ret;
+      },
+      __wbg___wbindgen_number_get_1dc732b810cb937c: function(arg0, arg1) {
+        const obj = arg1;
+        const ret = typeof obj === "number" ? obj : void 0;
+        getDataViewMemory0().setFloat64(arg0 + 8 * 1, isLikeNone(ret) ? 0 : ret, true);
+        getDataViewMemory0().setInt32(arg0 + 4 * 0, !isLikeNone(ret), true);
+      },
+      __wbg___wbindgen_string_get_92ab86bb19cbc12f: function(arg0, arg1) {
+        const obj = arg1;
+        const ret = typeof obj === "string" ? obj : void 0;
+        var ptr1 = isLikeNone(ret) ? 0 : passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        var len1 = WASM_VECTOR_LEN;
+        getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
+        getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
+      },
+      __wbg___wbindgen_throw_5d9e815e6fdf150f: function(arg0, arg1) {
+        throw new Error(getStringFromWasm0(arg0, arg1));
+      },
+      __wbg__wbg_cb_unref_997e73d32238e655: function(arg0) {
+        arg0._wbg_cb_unref();
+      },
+      __wbg_abort_03f8c5804715cb9a: function(arg0, arg1) {
+        arg0.abort(arg1);
+      },
+      __wbg_abort_76dea11221098ae5: function(arg0) {
+        arg0.abort();
+      },
+      __wbg_append_8e87c13f0f08f8cd: function() {
+        return handleError(function(arg0, arg1, arg2, arg3, arg4) {
+          arg0.append(getStringFromWasm0(arg1, arg2), getStringFromWasm0(arg3, arg4));
+        }, arguments);
+      },
+      __wbg_arrayBuffer_06f3da76f071d37f: function() {
+        return handleError(function(arg0) {
+          const ret = arg0.arrayBuffer();
+          return ret;
+        }, arguments);
+      },
+      __wbg_arrayBuffer_432de2b072afe7fb: function(arg0) {
+        const ret = arg0.arrayBuffer();
+        return ret;
+      },
+      __wbg_buffer_4a989bded7035f57: function(arg0) {
+        const ret = arg0.buffer;
+        return ret;
+      },
+      __wbg_byobRequest_f161fc37241dd3d4: function(arg0) {
+        const ret = arg0.byobRequest;
+        return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
+      },
+      __wbg_byteLength_0ddb1795e2c7e689: function(arg0) {
+        const ret = arg0.byteLength;
+        return ret;
+      },
+      __wbg_byteOffset_46eb015f52b6ad7d: function(arg0) {
+        const ret = arg0.byteOffset;
+        return ret;
+      },
+      __wbg_call_269c5566fbede3eb: function() {
+        return handleError(function(arg0, arg1) {
+          const ret = arg0.call(arg1);
+          return ret;
+        }, arguments);
+      },
+      __wbg_call_6bcf8d3e20937e46: function() {
+        return handleError(function(arg0, arg1, arg2) {
+          const ret = arg0.call(arg1, arg2);
+          return ret;
+        }, arguments);
+      },
+      __wbg_cancel_c076350a7e8954be: function(arg0) {
+        const ret = arg0.cancel();
+        return ret;
+      },
+      __wbg_catch_e2134ef6dcdb69ed: function(arg0, arg1) {
+        const ret = arg0.catch(arg1);
+        return ret;
+      },
+      __wbg_clearTimeout_333bba87532ab9d3: function(arg0) {
+        const ret = clearTimeout(arg0);
+        return ret;
+      },
+      __wbg_close_22882088c136df25: function() {
+        return handleError(function(arg0) {
+          arg0.close();
+        }, arguments);
+      },
+      __wbg_close_5c3f1f028070f2f7: function(arg0) {
+        const ret = arg0.close();
+        return ret;
+      },
+      __wbg_close_8b609460dd26e367: function() {
+        return handleError(function(arg0) {
+          arg0.close();
+        }, arguments);
+      },
+      __wbg_columnchunkmetadata_new: function(arg0) {
+        const ret = ColumnChunkMetaData.__wrap(arg0);
+        return ret;
+      },
+      __wbg_done_cffed884d87aa22e: function(arg0) {
+        const ret = arg0.done;
+        return ret;
+      },
+      __wbg_enqueue_6cb545d22db14f33: function() {
+        return handleError(function(arg0, arg1) {
+          arg0.enqueue(arg1);
+        }, arguments);
+      },
+      __wbg_entries_972a87586902cf87: function(arg0) {
+        const ret = Object.entries(arg0);
+        return ret;
+      },
+      __wbg_entries_f9de04c09a57314e: function(arg0) {
+        const ret = arg0.entries();
+        return ret;
+      },
+      __wbg_fetch_074561c3e313c86f: function(arg0) {
+        const ret = fetch(arg0);
+        return ret;
+      },
+      __wbg_fetch_920242d59bac2026: function(arg0, arg1) {
+        const ret = arg0.fetch(arg1);
+        return ret;
+      },
+      __wbg_getReader_9facd4f899beac89: function() {
+        return handleError(function(arg0) {
+          const ret = arg0.getReader();
+          return ret;
+        }, arguments);
+      },
+      __wbg_getWriter_5a3d7baaf32780c4: function() {
+        return handleError(function(arg0) {
+          const ret = arg0.getWriter();
+          return ret;
+        }, arguments);
+      },
+      __wbg_get_6cf5a4d4d8ad3c5a: function() {
+        return handleError(function(arg0, arg1) {
+          const ret = Reflect.get(arg0, arg1);
+          return ret;
+        }, arguments);
+      },
+      __wbg_get_b1f0ab13c737f856: function(arg0, arg1) {
+        const ret = arg0[arg1 >>> 0];
+        return ret;
+      },
+      __wbg_get_done_a668aa62d81fad70: function(arg0) {
+        const ret = arg0.done;
+        return isLikeNone(ret) ? 16777215 : ret ? 1 : 0;
+      },
+      __wbg_get_unchecked_363572bdd397d473: function(arg0, arg1) {
+        const ret = arg0[arg1 >>> 0];
+        return ret;
+      },
+      __wbg_get_value_6c62a77c168d825a: function(arg0) {
+        const ret = arg0.value;
+        return ret;
+      },
+      __wbg_get_with_ref_key_6412cf3094599694: function(arg0, arg1) {
+        const ret = arg0[arg1];
+        return ret;
+      },
+      __wbg_has_464f8b9416279d65: function() {
+        return handleError(function(arg0, arg1) {
+          const ret = Reflect.has(arg0, arg1);
+          return ret;
+        }, arguments);
+      },
+      __wbg_headers_2594464ff62969f3: function(arg0) {
+        const ret = arg0.headers;
+        return ret;
+      },
+      __wbg_instanceof_ArrayBuffer_d4ff01f8247925ae: function(arg0) {
+        let result;
+        try {
+          result = arg0 instanceof ArrayBuffer;
+        } catch (_) {
+          result = false;
+        }
+        const ret = result;
+        return ret;
+      },
+      __wbg_instanceof_Response_6366a785e400039b: function(arg0) {
+        let result;
+        try {
+          result = arg0 instanceof Response;
+        } catch (_) {
+          result = false;
+        }
+        const ret = result;
+        return ret;
+      },
+      __wbg_instanceof_Uint8Array_598adc0fef426aa8: function(arg0) {
+        let result;
+        try {
+          result = arg0 instanceof Uint8Array;
+        } catch (_) {
+          result = false;
+        }
+        const ret = result;
+        return ret;
+      },
+      __wbg_isArray_5674713bb7b79043: function(arg0) {
+        const ret = Array.isArray(arg0);
+        return ret;
+      },
+      __wbg_isSafeInteger_8f51c743827d1ec5: function(arg0) {
+        const ret = Number.isSafeInteger(arg0);
+        return ret;
+      },
+      __wbg_iterator_22ddeb808cf55a6f: function() {
+        const ret = Symbol.iterator;
+        return ret;
+      },
+      __wbg_length_31bdaf014f5fbde2: function(arg0) {
+        const ret = arg0.length;
+        return ret;
+      },
+      __wbg_length_4e1adc0d42e23620: function(arg0) {
+        const ret = arg0.length;
+        return ret;
+      },
+      __wbg_new_0afe64b4dc16ab74: function() {
+        return handleError(function() {
+          const ret = new Headers();
+          return ret;
+        }, arguments);
+      },
+      __wbg_new_1da3429bc3c4541c: function(arg0) {
+        const ret = new Uint8Array(arg0);
+        return ret;
+      },
+      __wbg_new_4f1be85c9b3162d4: function() {
+        return handleError(function() {
+          const ret = new TransformStream();
+          return ret;
+        }, arguments);
+      },
+      __wbg_new_8d36e20aa758e411: function() {
+        const ret = /* @__PURE__ */ new Map();
+        return ret;
+      },
+      __wbg_new_a32a1ab6c6655abe: function(arg0, arg1) {
+        const ret = new Error(getStringFromWasm0(arg0, arg1));
+        return ret;
+      },
+      __wbg_new_baa0a0207935dd43: function() {
+        return handleError(function() {
+          const ret = new AbortController();
+          return ret;
+        }, arguments);
+      },
+      __wbg_new_bebc3f4757acf305: function() {
+        const ret = new Object();
+        return ret;
+      },
+      __wbg_new_from_slice_4ee02165f9de919e: function(arg0, arg1) {
+        const ret = new Uint8Array(getArrayU8FromWasm0(arg0, arg1));
+        return ret;
+      },
+      __wbg_new_typed_6f8b0d724fe26c07: function(arg0, arg1) {
+        try {
+          var state0 = { a: arg0, b: arg1 };
+          var cb0 = (arg02, arg12) => {
+            const a = state0.a;
+            state0.a = 0;
+            try {
+              return wasm_bindgen_10d777147657a598___convert__closures_____invoke___js_sys_47eb2ff9ef171f78___Function_fn_wasm_bindgen_10d777147657a598___JsValue_____wasm_bindgen_10d777147657a598___sys__Undefined___js_sys_47eb2ff9ef171f78___Function_fn_wasm_bindgen_10d777147657a598___JsValue_____wasm_bindgen_10d777147657a598___sys__Undefined_______true_(a, state0.b, arg02, arg12);
+            } finally {
+              state0.a = a;
+            }
+          };
+          const ret = new Promise(cb0);
+          return ret;
+        } finally {
+          state0.a = 0;
+        }
+      },
+      __wbg_new_with_byte_offset_aede39235d71ca64: function(arg0, arg1) {
+        const ret = new Uint8Array(arg0, arg1 >>> 0);
+        return ret;
+      },
+      __wbg_new_with_byte_offset_and_length_492c969e8b5da8a4: function(arg0, arg1, arg2) {
+        const ret = new Uint8Array(arg0, arg1 >>> 0, arg2 >>> 0);
+        return ret;
+      },
+      __wbg_new_with_into_underlying_source_fd904252f385f59c: function(arg0, arg1) {
+        const ret = new ReadableStream(IntoUnderlyingSource.__wrap(arg0), arg1);
+        return ret;
+      },
+      __wbg_new_with_str_and_init_2f31a77deda127fd: function() {
+        return handleError(function(arg0, arg1, arg2) {
+          const ret = new Request(getStringFromWasm0(arg0, arg1), arg2);
+          return ret;
+        }, arguments);
+      },
+      __wbg_next_95053e306b1c3aed: function(arg0) {
+        const ret = arg0.next;
+        return ret;
+      },
+      __wbg_next_f31ecb8646d2c605: function() {
+        return handleError(function(arg0) {
+          const ret = arg0.next();
+          return ret;
+        }, arguments);
+      },
+      __wbg_parquetfile_new: function(arg0) {
+        const ret = ParquetFile.__wrap(arg0);
+        return ret;
+      },
+      __wbg_prototypesetcall_ae9f5e7459250748: function(arg0, arg1, arg2) {
+        Uint8Array.prototype.set.call(getArrayU8FromWasm0(arg0, arg1), arg2);
+      },
+      __wbg_queueMicrotask_85c90f6987555d65: function(arg0) {
+        const ret = arg0.queueMicrotask;
+        return ret;
+      },
+      __wbg_queueMicrotask_f6a1fa10b81d1fc0: function(arg0) {
+        queueMicrotask(arg0);
+      },
+      __wbg_read_31091533ffadf971: function(arg0) {
+        const ret = arg0.read();
+        return ret;
+      },
+      __wbg_readable_dd742feaf61adcb9: function(arg0) {
+        const ret = arg0.readable;
+        return ret;
+      },
+      __wbg_ready_196967f79af47b0d: function(arg0) {
+        const ret = arg0.ready;
+        return ret;
+      },
+      __wbg_recordbatch_new: function(arg0) {
+        const ret = RecordBatch.__wrap(arg0);
+        return ret;
+      },
+      __wbg_recordbatch_unwrap: function(arg0) {
+        const ret = RecordBatch.__unwrap(arg0);
+        return ret;
+      },
+      __wbg_releaseLock_1538945f5f183d9f: function(arg0) {
+        arg0.releaseLock();
+      },
+      __wbg_releaseLock_508d9818266235f2: function(arg0) {
+        arg0.releaseLock();
+      },
+      __wbg_resolve_35ec7e0c6af4c82c: function(arg0) {
+        const ret = Promise.resolve(arg0);
+        return ret;
+      },
+      __wbg_respond_83a71686e927ca32: function() {
+        return handleError(function(arg0, arg1) {
+          arg0.respond(arg1 >>> 0);
+        }, arguments);
+      },
+      __wbg_rowgroupmetadata_new: function(arg0) {
+        const ret = RowGroupMetaData.__wrap(arg0);
+        return ret;
+      },
+      __wbg_setTimeout_3a808dd861dd3c12: function(arg0, arg1) {
+        const ret = setTimeout(arg0, arg1);
+        return ret;
+      },
+      __wbg_set_5f2ad37e5e02dc7b: function(arg0, arg1, arg2) {
+        arg0.set(getArrayU8FromWasm0(arg1, arg2));
+      },
+      __wbg_set_6be42768c690e380: function(arg0, arg1, arg2) {
+        arg0[arg1] = arg2;
+      },
+      __wbg_set_bf6dde4923b9b059: function(arg0, arg1, arg2) {
+        const ret = arg0.set(arg1, arg2);
+        return ret;
+      },
+      __wbg_set_body_f39cee72c74a5b02: function(arg0, arg1) {
+        arg0.body = arg1;
+      },
+      __wbg_set_cache_6e8c35a5ed76edb1: function(arg0, arg1) {
+        arg0.cache = __wbindgen_enum_RequestCache[arg1];
+      },
+      __wbg_set_credentials_bf1d3e014213a571: function(arg0, arg1) {
+        arg0.credentials = __wbindgen_enum_RequestCredentials[arg1];
+      },
+      __wbg_set_headers_31d373f68f28bf76: function(arg0, arg1) {
+        arg0.headers = arg1;
+      },
+      __wbg_set_high_water_mark_089e3476522036ad: function(arg0, arg1) {
+        arg0.highWaterMark = arg1;
+      },
+      __wbg_set_method_82e6c3c083da0734: function(arg0, arg1, arg2) {
+        arg0.method = getStringFromWasm0(arg1, arg2);
+      },
+      __wbg_set_mode_f7e56ed768d0ade0: function(arg0, arg1) {
+        arg0.mode = __wbindgen_enum_RequestMode[arg1];
+      },
+      __wbg_set_signal_f4b32f40f19786f4: function(arg0, arg1) {
+        arg0.signal = arg1;
+      },
+      __wbg_signal_45367c6c2255877a: function(arg0) {
+        const ret = arg0.signal;
+        return ret;
+      },
+      __wbg_size_338f1717fbf84c4e: function(arg0) {
+        const ret = arg0.size;
+        return ret;
+      },
+      __wbg_slice_49f10e038e37aae3: function() {
+        return handleError(function(arg0, arg1, arg2) {
+          const ret = arg0.slice(arg1, arg2);
+          return ret;
+        }, arguments);
+      },
+      __wbg_static_accessor_GLOBAL_8eb4cd83130a11a0: function() {
+        const ret = typeof global === "undefined" ? null : global;
+        return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
+      },
+      __wbg_static_accessor_GLOBAL_THIS_1e7044f654e934db: function() {
+        const ret = typeof globalThis === "undefined" ? null : globalThis;
+        return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
+      },
+      __wbg_static_accessor_SELF_d8b50611246a6d92: function() {
+        const ret = typeof self === "undefined" ? null : self;
+        return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
+      },
+      __wbg_static_accessor_WINDOW_fd0bc376bf0f8b42: function() {
+        const ret = typeof window === "undefined" ? null : window;
+        return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
+      },
+      __wbg_status_88ccc72fe7bea621: function(arg0) {
+        const ret = arg0.status;
+        return ret;
+      },
+      __wbg_table_new: function(arg0) {
+        const ret = Table.__wrap(arg0);
+        return ret;
+      },
+      __wbg_then_7a850dae4493f353: function(arg0, arg1, arg2) {
+        const ret = arg0.then(arg1, arg2);
+        return ret;
+      },
+      __wbg_then_b830475380919203: function(arg0, arg1) {
+        const ret = arg0.then(arg1);
+        return ret;
+      },
+      __wbg_toString_794a30e85c994f2a: function(arg0) {
+        const ret = arg0.toString();
+        return ret;
+      },
+      __wbg_url_f1948b0d7f881e02: function(arg0, arg1) {
+        const ret = arg1.url;
+        const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len1 = WASM_VECTOR_LEN;
+        getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
+        getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
+      },
+      __wbg_value_c227f843d21da141: function(arg0) {
+        const ret = arg0.value;
+        return ret;
+      },
+      __wbg_view_d8c7b26e4d4650f1: function(arg0) {
+        const ret = arg0.view;
+        return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
+      },
+      __wbg_writable_bf33d3f9fb228429: function(arg0) {
+        const ret = arg0.writable;
+        return ret;
+      },
+      __wbg_write_d32d19927af3f942: function(arg0, arg1) {
+        const ret = arg0.write(arg1);
+        return ret;
+      },
+      __wbindgen_generic_0000000000000001: function(arg0, arg1) {
+        const ret = makeMutClosure(arg0, arg1, wasm_bindgen_10d777147657a598___convert__closures_____invoke___wasm_bindgen_10d777147657a598___JsValue______true_);
+        return ret;
+      },
+      __wbindgen_generic_0000000000000002: function(arg0, arg1) {
+        const ret = makeMutClosure(arg0, arg1, wasm_bindgen_10d777147657a598___convert__closures_____invoke___wasm_bindgen_10d777147657a598___JsValue__core_ed718c3d60ebd546___result__Result_____wasm_bindgen_10d777147657a598___JsError___true_);
+        return ret;
+      },
+      __wbindgen_generic_0000000000000003: function(arg0, arg1) {
+        const ret = makeMutClosure(arg0, arg1, wasm_bindgen_10d777147657a598___convert__closures_____invoke_______true_);
+        return ret;
+      },
+      __wbindgen_generic_0000000000000004: function(arg0) {
+        const ret = arg0;
+        return ret;
+      },
+      __wbindgen_generic_0000000000000005: function(arg0, arg1) {
+        const ret = getStringFromWasm0(arg0, arg1);
+        return ret;
+      },
+      __wbindgen_generic_0000000000000006: function(arg0) {
+        const ret = BigInt.asUintN(64, arg0);
+        return ret;
+      },
+      __wbindgen_init_externref_table: function() {
+        const table = wasm.__wbindgen_externrefs;
+        const offset = table.grow(4);
+        table.set(0, void 0);
+        table.set(offset + 0, void 0);
+        table.set(offset + 1, null);
+        table.set(offset + 2, true);
+        table.set(offset + 3, false);
+      }
+    };
+    return {
+      __proto__: null,
+      "./parquet_wasm_bg.js": import0
+    };
+  }
+  function wasm_bindgen_10d777147657a598___convert__closures_____invoke_______true_(arg0, arg1) {
+    wasm.wasm_bindgen_10d777147657a598___convert__closures_____invoke_______true_(arg0, arg1);
+  }
+  function wasm_bindgen_10d777147657a598___convert__closures_____invoke___wasm_bindgen_10d777147657a598___JsValue______true_(arg0, arg1, arg2) {
+    wasm.wasm_bindgen_10d777147657a598___convert__closures_____invoke___wasm_bindgen_10d777147657a598___JsValue______true_(arg0, arg1, arg2);
+  }
+  function wasm_bindgen_10d777147657a598___convert__closures_____invoke___wasm_bindgen_10d777147657a598___JsValue__core_ed718c3d60ebd546___result__Result_____wasm_bindgen_10d777147657a598___JsError___true_(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen_10d777147657a598___convert__closures_____invoke___wasm_bindgen_10d777147657a598___JsValue__core_ed718c3d60ebd546___result__Result_____wasm_bindgen_10d777147657a598___JsError___true_(arg0, arg1, arg2);
+    if (ret[1]) {
+      throw takeFromExternrefTable0(ret[0]);
+    }
+  }
+  function wasm_bindgen_10d777147657a598___convert__closures_____invoke___js_sys_47eb2ff9ef171f78___Function_fn_wasm_bindgen_10d777147657a598___JsValue_____wasm_bindgen_10d777147657a598___sys__Undefined___js_sys_47eb2ff9ef171f78___Function_fn_wasm_bindgen_10d777147657a598___JsValue_____wasm_bindgen_10d777147657a598___sys__Undefined_______true_(arg0, arg1, arg2, arg3) {
+    wasm.wasm_bindgen_10d777147657a598___convert__closures_____invoke___js_sys_47eb2ff9ef171f78___Function_fn_wasm_bindgen_10d777147657a598___JsValue_____wasm_bindgen_10d777147657a598___sys__Undefined___js_sys_47eb2ff9ef171f78___Function_fn_wasm_bindgen_10d777147657a598___JsValue_____wasm_bindgen_10d777147657a598___sys__Undefined_______true_(arg0, arg1, arg2, arg3);
+  }
+  function addToExternrefTable0(obj) {
+    const idx = wasm.__externref_table_alloc();
+    wasm.__wbindgen_externrefs.set(idx, obj);
+    return idx;
+  }
+  function _assertClass(instance, klass) {
+    if (!(instance instanceof klass)) {
+      throw new Error(`expected instance of ${klass.name}`);
+    }
+  }
+  function debugString(val) {
+    const type = typeof val;
+    if (type == "number" || type == "boolean" || val == null) {
+      return `${val}`;
+    }
+    if (type == "string") {
+      return `"${val}"`;
+    }
+    if (type == "symbol") {
+      const description = val.description;
+      if (description == null) {
+        return "Symbol";
+      } else {
+        return `Symbol(${description})`;
+      }
+    }
+    if (type == "function") {
+      const name = val.name;
+      if (typeof name == "string" && name.length > 0) {
+        return `Function(${name})`;
+      } else {
+        return "Function";
+      }
+    }
+    if (Array.isArray(val)) {
+      const length = val.length;
+      let debug = "[";
+      if (length > 0) {
+        debug += debugString(val[0]);
+      }
+      for (let i = 1; i < length; i++) {
+        debug += ", " + debugString(val[i]);
+      }
+      debug += "]";
+      return debug;
+    }
+    const builtInMatches = /\[object ([^\]]+)\]/.exec(toString.call(val));
+    let className;
+    if (builtInMatches && builtInMatches.length > 1) {
+      className = builtInMatches[1];
+    } else {
+      return toString.call(val);
+    }
+    if (className == "Object") {
+      try {
+        return "Object(" + JSON.stringify(val) + ")";
+      } catch (_) {
+        return "Object";
+      }
+    }
+    if (val instanceof Error) {
+      return `${val.name}: ${val.message}
+${val.stack}`;
+    }
+    return className;
+  }
+  function getArrayJsValueFromWasm0(ptr, len) {
+    ptr = ptr >>> 0;
+    const mem = getDataViewMemory0();
+    const result = [];
+    for (let i = ptr; i < ptr + 4 * len; i += 4) {
+      result.push(wasm.__wbindgen_externrefs.get(mem.getUint32(i, true)));
+    }
+    wasm.__externref_drop_slice(ptr, len);
+    return result;
+  }
+  function getArrayU32FromWasm0(ptr, len) {
+    ptr = ptr >>> 0;
+    return getUint32ArrayMemory0().subarray(ptr / 4, ptr / 4 + len);
+  }
+  function getArrayU8FromWasm0(ptr, len) {
+    ptr = ptr >>> 0;
+    return getUint8ArrayMemory0().subarray(ptr / 1, ptr / 1 + len);
+  }
+  function getDataViewMemory0() {
+    if (cachedDataViewMemory0 === null || cachedDataViewMemory0.buffer.detached === true || cachedDataViewMemory0.buffer.detached === void 0 && cachedDataViewMemory0.buffer !== wasm.memory.buffer) {
+      cachedDataViewMemory0 = new DataView(wasm.memory.buffer);
+    }
+    return cachedDataViewMemory0;
+  }
+  function getStringFromWasm0(ptr, len) {
+    return decodeText(ptr >>> 0, len);
+  }
+  function getUint32ArrayMemory0() {
+    if (cachedUint32ArrayMemory0 === null || cachedUint32ArrayMemory0.byteLength === 0) {
+      cachedUint32ArrayMemory0 = new Uint32Array(wasm.memory.buffer);
+    }
+    return cachedUint32ArrayMemory0;
+  }
+  function getUint8ArrayMemory0() {
+    if (cachedUint8ArrayMemory0 === null || cachedUint8ArrayMemory0.byteLength === 0) {
+      cachedUint8ArrayMemory0 = new Uint8Array(wasm.memory.buffer);
+    }
+    return cachedUint8ArrayMemory0;
+  }
+  function handleError(f, args) {
+    try {
+      return f.apply(this, args);
+    } catch (e) {
+      const idx = addToExternrefTable0(e);
+      wasm.__wbindgen_exn_store(idx);
+    }
+  }
+  function isLikeNone(x) {
+    return x === void 0 || x === null;
+  }
+  function makeMutClosure(arg0, arg1, f) {
+    const state = { a: arg0, b: arg1, cnt: 1 };
+    const real = (...args) => {
+      state.cnt++;
+      const a = state.a;
+      state.a = 0;
+      try {
+        return f(a, state.b, ...args);
+      } finally {
+        state.a = a;
+        real._wbg_cb_unref();
+      }
+    };
+    real._wbg_cb_unref = () => {
+      if (--state.cnt === 0) {
+        wasm.__wbindgen_destroy_closure(state.a, state.b);
+        state.a = 0;
+        CLOSURE_DTORS.unregister(state);
+      }
+    };
+    CLOSURE_DTORS.register(real, state, state);
+    return real;
+  }
+  function passArray8ToWasm0(arg, malloc) {
+    const ptr = malloc(arg.length * 1, 1) >>> 0;
+    getUint8ArrayMemory0().set(arg, ptr / 1);
+    WASM_VECTOR_LEN = arg.length;
+    return ptr;
+  }
+  function passStringToWasm0(arg, malloc, realloc) {
+    if (realloc === void 0) {
+      const buf = cachedTextEncoder.encode(arg);
+      const ptr2 = malloc(buf.length, 1) >>> 0;
+      getUint8ArrayMemory0().subarray(ptr2, ptr2 + buf.length).set(buf);
+      WASM_VECTOR_LEN = buf.length;
+      return ptr2;
+    }
+    let len = arg.length;
+    let ptr = malloc(len, 1) >>> 0;
+    const mem = getUint8ArrayMemory0();
+    let offset = 0;
+    for (; offset < len; offset++) {
+      const code = arg.charCodeAt(offset);
+      if (code > 127) break;
+      mem[ptr + offset] = code;
+    }
+    if (offset !== len) {
+      if (offset !== 0) {
+        arg = arg.slice(offset);
+      }
+      ptr = realloc(ptr, len, len = offset + arg.length * 3, 1) >>> 0;
+      const view = getUint8ArrayMemory0().subarray(ptr + offset, ptr + len);
+      const ret = cachedTextEncoder.encodeInto(arg, view);
+      offset += ret.written;
+      ptr = realloc(ptr, len, offset, 1) >>> 0;
+    }
+    WASM_VECTOR_LEN = offset;
+    return ptr;
+  }
+  function takeFromExternrefTable0(idx) {
+    const value = wasm.__wbindgen_externrefs.get(idx);
+    wasm.__externref_table_dealloc(idx);
+    return value;
+  }
+  function decodeText(ptr, len) {
+    numBytesDecoded += len;
+    if (numBytesDecoded >= MAX_SAFARI_DECODE_BYTES) {
+      cachedTextDecoder = new TextDecoder("utf-8", { ignoreBOM: true, fatal: true });
+      cachedTextDecoder.decode();
+      numBytesDecoded = len;
+    }
+    return cachedTextDecoder.decode(getUint8ArrayMemory0().subarray(ptr, ptr + len));
+  }
+  function __wbg_finalize_init(instance, module) {
+    wasmInstance = instance;
+    wasm = instance.exports;
+    wasmModule = module;
+    cachedDataViewMemory0 = null;
+    cachedUint32ArrayMemory0 = null;
+    cachedUint8ArrayMemory0 = null;
+    wasm.__wbindgen_start();
+    return wasm;
+  }
+  async function __wbg_load(module, imports) {
+    if (typeof Response === "function" && module instanceof Response) {
+      if (!module.ok) {
+        throw new Error(`failed to fetch Wasm: ${module.status} ${module.statusText} fetching '${module.url}'`);
+      }
+      if (typeof WebAssembly.instantiateStreaming === "function") {
+        try {
+          return await WebAssembly.instantiateStreaming(module, imports);
+        } catch (e) {
+          const validResponse = expectedResponseType(module.type);
+          if (validResponse && module.headers.get("Content-Type") !== "application/wasm") {
+            console.warn("`WebAssembly.instantiateStreaming` failed because your server does not serve Wasm with `application/wasm` MIME type. Falling back to `WebAssembly.instantiate` which is slower. Original error:\n", e);
+          } else {
+            throw e;
+          }
+        }
+      }
+      const bytes = await module.arrayBuffer();
+      return await WebAssembly.instantiate(bytes, imports);
+    } else {
+      const instance = await WebAssembly.instantiate(module, imports);
+      if (instance instanceof WebAssembly.Instance) {
+        return { instance, module };
+      } else {
+        return instance;
+      }
+    }
+    function expectedResponseType(type) {
+      switch (type) {
+        case "basic":
+        case "cors":
+        case "default":
+          return true;
+      }
+      return false;
+    }
+  }
+  function initSync(module) {
+    if (wasm !== void 0) return wasm;
+    if (module !== void 0) {
+      if (Object.getPrototypeOf(module) === Object.prototype) {
+        ({ module } = module);
+      } else {
+        console.warn("using deprecated parameters for `initSync()`; pass a single object instead");
+      }
+    }
+    const imports = __wbg_get_imports();
+    if (!(module instanceof WebAssembly.Module)) {
+      module = new WebAssembly.Module(module);
+    }
+    const instance = new WebAssembly.Instance(module, imports);
+    return __wbg_finalize_init(instance, module);
+  }
+  async function __wbg_init(module_or_path) {
+    if (wasm !== void 0) return wasm;
+    if (module_or_path !== void 0) {
+      if (Object.getPrototypeOf(module_or_path) === Object.prototype) {
+        ({ module_or_path } = module_or_path);
+      } else {
+        console.warn("using deprecated parameters for the initialization function; pass a single object instead");
+      }
+    }
+    if (module_or_path === void 0) {
+      module_or_path = new URL("parquet_wasm_bg.wasm", import_meta.url);
+    }
+    const imports = __wbg_get_imports();
+    if (typeof module_or_path === "string" || typeof Request === "function" && module_or_path instanceof Request || typeof URL === "function" && module_or_path instanceof URL) {
+      module_or_path = fetch(module_or_path);
+    }
+    const { instance, module } = await __wbg_load(await module_or_path, imports);
+    return __wbg_finalize_init(instance, module);
+  }
+  var import_meta, ColumnChunkMetaData, Compression, EnabledStatistics, Encoding, FFIData, FFISchema, FFIStream, FileMetaData, IntoUnderlyingByteSource, IntoUnderlyingSink, IntoUnderlyingSource, ParquetFile, ParquetMetaData, RecordBatch, RowGroupMetaData, Schema, Table, WriterProperties, WriterPropertiesBuilder, WriterVersion, __wbindgen_enum_ReadableStreamType, __wbindgen_enum_RequestCache, __wbindgen_enum_RequestCredentials, __wbindgen_enum_RequestMode, ColumnChunkMetaDataFinalization, FFIDataFinalization, FFISchemaFinalization, FFIStreamFinalization, FileMetaDataFinalization, IntoUnderlyingByteSourceFinalization, IntoUnderlyingSinkFinalization, IntoUnderlyingSourceFinalization, ParquetFileFinalization, ParquetMetaDataFinalization, RecordBatchFinalization, RowGroupMetaDataFinalization, SchemaFinalization, TableFinalization, WriterPropertiesFinalization, WriterPropertiesBuilderFinalization, CLOSURE_DTORS, cachedDataViewMemory0, cachedUint32ArrayMemory0, cachedUint8ArrayMemory0, cachedTextDecoder, MAX_SAFARI_DECODE_BYTES, numBytesDecoded, cachedTextEncoder, WASM_VECTOR_LEN, wasmModule, wasmInstance, wasm;
+  var init_parquet_wasm = __esm({
+    "node_modules/parquet-wasm/esm/parquet_wasm.js"() {
+      init_zod_config();
+      import_meta = {};
+      ColumnChunkMetaData = class _ColumnChunkMetaData {
+        static __wrap(ptr) {
+          const obj = Object.create(_ColumnChunkMetaData.prototype);
+          obj.__wbg_ptr = ptr;
+          ColumnChunkMetaDataFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          ColumnChunkMetaDataFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_columnchunkmetadata_free(ptr, 0);
+        }
+        /**
+         * Path (or identifier) of this column.
+         * @returns {string[]}
+         */
+        columnPath() {
+          const ret = wasm.columnchunkmetadata_columnPath(this.__wbg_ptr);
+          var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]);
+          wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+          return v1;
+        }
+        /**
+         * Returns the total compressed data size of this column chunk.
+         * @returns {number}
+         */
+        compressedSize() {
+          const ret = wasm.columnchunkmetadata_compressedSize(this.__wbg_ptr);
+          return ret;
+        }
+        /**
+         * Compression for this column.
+         * @returns {Compression}
+         */
+        compression() {
+          const ret = wasm.columnchunkmetadata_compression(this.__wbg_ptr);
+          return ret;
+        }
+        /**
+         * All encodings used for this column.
+         * @returns {Encoding[]}
+         */
+        encodings() {
+          const ret = wasm.columnchunkmetadata_encodings(this.__wbg_ptr);
+          var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]);
+          wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+          return v1;
+        }
+        /**
+         * Byte offset in `file_path()`.
+         * @returns {bigint}
+         */
+        fileOffset() {
+          const ret = wasm.columnchunkmetadata_fileOffset(this.__wbg_ptr);
+          return ret;
+        }
+        /**
+         * File where the column chunk is stored.
+         *
+         * If not set, assumed to belong to the same file as the metadata.
+         * This path is relative to the current file.
+         * @returns {string | undefined}
+         */
+        filePath() {
+          const ret = wasm.columnchunkmetadata_filePath(this.__wbg_ptr);
+          let v1;
+          if (ret[0] !== 0) {
+            v1 = getStringFromWasm0(ret[0], ret[1]);
+            wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+          }
+          return v1;
+        }
+        /**
+         * Total number of values in this column chunk.
+         * @returns {number}
+         */
+        numValues() {
+          const ret = wasm.columnchunkmetadata_numValues(this.__wbg_ptr);
+          return ret;
+        }
+        /**
+         * Returns the total uncompressed data size of this column chunk.
+         * @returns {number}
+         */
+        uncompressedSize() {
+          const ret = wasm.columnchunkmetadata_uncompressedSize(this.__wbg_ptr);
+          return ret;
+        }
+      };
+      if (Symbol.dispose) ColumnChunkMetaData.prototype[Symbol.dispose] = ColumnChunkMetaData.prototype.free;
+      Compression = Object.freeze({
+        UNCOMPRESSED: 0,
+        "0": "UNCOMPRESSED",
+        SNAPPY: 1,
+        "1": "SNAPPY",
+        GZIP: 2,
+        "2": "GZIP",
+        BROTLI: 3,
+        "3": "BROTLI",
+        /**
+         * @deprecated as of Parquet 2.9.0.
+         * Switch to LZ4_RAW
+         */
+        LZ4: 4,
+        "4": "LZ4",
+        ZSTD: 5,
+        "5": "ZSTD",
+        LZ4_RAW: 6,
+        "6": "LZ4_RAW",
+        LZO: 7,
+        "7": "LZO"
+      });
+      EnabledStatistics = Object.freeze({
+        /**
+         * Compute no statistics
+         */
+        None: 0,
+        "0": "None",
+        /**
+         * Compute chunk-level statistics but not page-level
+         */
+        Chunk: 1,
+        "1": "Chunk",
+        /**
+         * Compute page-level and chunk-level statistics
+         */
+        Page: 2,
+        "2": "Page"
+      });
+      Encoding = Object.freeze({
+        /**
+         * Default byte encoding.
+         * - BOOLEAN - 1 bit per value, 0 is false; 1 is true.
+         * - INT32 - 4 bytes per value, stored as little-endian.
+         * - INT64 - 8 bytes per value, stored as little-endian.
+         * - FLOAT - 4 bytes per value, stored as little-endian.
+         * - DOUBLE - 8 bytes per value, stored as little-endian.
+         * - BYTE_ARRAY - 4 byte length stored as little endian, followed by bytes.
+         * - FIXED_LEN_BYTE_ARRAY - just the bytes are stored.
+         */
+        PLAIN: 0,
+        "0": "PLAIN",
+        /**
+         * **Deprecated** dictionary encoding.
+         *
+         * The values in the dictionary are encoded using PLAIN encoding.
+         * Since it is deprecated, RLE_DICTIONARY encoding is used for a data page, and
+         * PLAIN encoding is used for dictionary page.
+         */
+        PLAIN_DICTIONARY: 1,
+        "1": "PLAIN_DICTIONARY",
+        /**
+         * Group packed run length encoding.
+         *
+         * Usable for definition/repetition levels encoding and boolean values.
+         */
+        RLE: 2,
+        "2": "RLE",
+        /**
+         * Bit packed encoding.
+         *
+         * This can only be used if the data has a known max width.
+         * Usable for definition/repetition levels encoding.
+         */
+        BIT_PACKED: 3,
+        "3": "BIT_PACKED",
+        /**
+         * Delta encoding for integers, either INT32 or INT64.
+         *
+         * Works best on sorted data.
+         */
+        DELTA_BINARY_PACKED: 4,
+        "4": "DELTA_BINARY_PACKED",
+        /**
+         * Encoding for byte arrays to separate the length values and the data.
+         *
+         * The lengths are encoded using DELTA_BINARY_PACKED encoding.
+         */
+        DELTA_LENGTH_BYTE_ARRAY: 5,
+        "5": "DELTA_LENGTH_BYTE_ARRAY",
+        /**
+         * Incremental encoding for byte arrays.
+         *
+         * Prefix lengths are encoded using DELTA_BINARY_PACKED encoding.
+         * Suffixes are stored using DELTA_LENGTH_BYTE_ARRAY encoding.
+         */
+        DELTA_BYTE_ARRAY: 6,
+        "6": "DELTA_BYTE_ARRAY",
+        /**
+         * Dictionary encoding.
+         *
+         * The ids are encoded using the RLE encoding.
+         */
+        RLE_DICTIONARY: 7,
+        "7": "RLE_DICTIONARY",
+        /**
+         * Encoding for floating-point data.
+         *
+         * K byte-streams are created where K is the size in bytes of the data type.
+         * The individual bytes of an FP value are scattered to the corresponding stream and
+         * the streams are concatenated.
+         * This itself does not reduce the size of the data but can lead to better compression
+         * afterwards.
+         */
+        BYTE_STREAM_SPLIT: 8,
+        "8": "BYTE_STREAM_SPLIT"
+      });
+      FFIData = class _FFIData {
+        static __wrap(ptr) {
+          const obj = Object.create(_FFIData.prototype);
+          obj.__wbg_ptr = ptr;
+          FFIDataFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          FFIDataFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_ffidata_free(ptr, 0);
+        }
+        /**
+         * Access the pointer to the
+         * [`ArrowArray`](https://arrow.apache.org/docs/format/CDataInterface.html#structure-definitions)
+         * struct. This can be viewed or copied (without serialization) to an Arrow JS `RecordBatch` by
+         * using [`arrow-js-ffi`](https://github.com/kylebarron/arrow-js-ffi). You can access the
+         * [`WebAssembly.Memory`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Memory)
+         * instance by using {@linkcode wasmMemory}.
+         *
+         * **Example**:
+         *
+         * ```ts
+         * import { parseRecordBatch } from "arrow-js-ffi";
+         *
+         * const wasmRecordBatch: FFIRecordBatch = ...
+         * const wasmMemory: WebAssembly.Memory = wasmMemory();
+         *
+         * // Pass `true` to copy arrays across the boundary instead of creating views.
+         * const jsRecordBatch = parseRecordBatch(
+         *   wasmMemory.buffer,
+         *   wasmRecordBatch.arrayAddr(),
+         *   wasmRecordBatch.schemaAddr(),
+         *   true
+         * );
+         * ```
+         * @returns {number}
+         */
+        arrayAddr() {
+          const ret = wasm.ffidata_arrayAddr(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * Access the pointer to the
+         * [`ArrowSchema`](https://arrow.apache.org/docs/format/CDataInterface.html#structure-definitions)
+         * struct. This can be viewed or copied (without serialization) to an Arrow JS `Field` by
+         * using [`arrow-js-ffi`](https://github.com/kylebarron/arrow-js-ffi). You can access the
+         * [`WebAssembly.Memory`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Memory)
+         * instance by using {@linkcode wasmMemory}.
+         *
+         * **Example**:
+         *
+         * ```ts
+         * import { parseRecordBatch } from "arrow-js-ffi";
+         *
+         * const wasmRecordBatch: FFIRecordBatch = ...
+         * const wasmMemory: WebAssembly.Memory = wasmMemory();
+         *
+         * // Pass `true` to copy arrays across the boundary instead of creating views.
+         * const jsRecordBatch = parseRecordBatch(
+         *   wasmMemory.buffer,
+         *   wasmRecordBatch.arrayAddr(),
+         *   wasmRecordBatch.schemaAddr(),
+         *   true
+         * );
+         * ```
+         * @returns {number}
+         */
+        schemaAddr() {
+          const ret = wasm.ffidata_schemaAddr(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+      };
+      if (Symbol.dispose) FFIData.prototype[Symbol.dispose] = FFIData.prototype.free;
+      FFISchema = class _FFISchema {
+        static __wrap(ptr) {
+          const obj = Object.create(_FFISchema.prototype);
+          obj.__wbg_ptr = ptr;
+          FFISchemaFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          FFISchemaFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_ffischema_free(ptr, 0);
+        }
+        /**
+         * Access the pointer to the
+         * [`ArrowSchema`](https://arrow.apache.org/docs/format/CDataInterface.html#structure-definitions)
+         * struct. This can be viewed or copied (without serialization) to an Arrow JS `Field` by
+         * using [`arrow-js-ffi`](https://github.com/kylebarron/arrow-js-ffi). You can access the
+         * [`WebAssembly.Memory`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Memory)
+         * instance by using {@linkcode wasmMemory}.
+         *
+         * **Example**:
+         *
+         * ```ts
+         * import { parseRecordBatch } from "arrow-js-ffi";
+         *
+         * const wasmRecordBatch: FFIRecordBatch = ...
+         * const wasmMemory: WebAssembly.Memory = wasmMemory();
+         *
+         * // Pass `true` to copy arrays across the boundary instead of creating views.
+         * const jsRecordBatch = parseRecordBatch(
+         *   wasmMemory.buffer,
+         *   wasmRecordBatch.arrayAddr(),
+         *   wasmRecordBatch.schemaAddr(),
+         *   true
+         * );
+         * ```
+         * @returns {number}
+         */
+        addr() {
+          const ret = wasm.ffischema_addr(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+      };
+      if (Symbol.dispose) FFISchema.prototype[Symbol.dispose] = FFISchema.prototype.free;
+      FFIStream = class _FFIStream {
+        static __wrap(ptr) {
+          const obj = Object.create(_FFIStream.prototype);
+          obj.__wbg_ptr = ptr;
+          FFIStreamFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          FFIStreamFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_ffistream_free(ptr, 0);
+        }
+        /**
+         * Get the pointer to one ArrowArray FFI struct for a given chunk index and column index
+         *
+         * Access the pointer to one
+         * [`ArrowArray`](https://arrow.apache.org/docs/format/CDataInterface.html#structure-definitions)
+         * struct representing one of the internal `RecordBatch`es. This can be viewed or copied (without serialization) to an Arrow JS `RecordBatch` by
+         * using [`arrow-js-ffi`](https://github.com/kylebarron/arrow-js-ffi). You can access the
+         * [`WebAssembly.Memory`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Memory)
+         * instance by using {@linkcode wasmMemory}.
+         *
+         * **Example**:
+         *
+         * ```ts
+         * import * as arrow from "apache-arrow";
+         * import { parseRecordBatch } from "arrow-js-ffi";
+         *
+         * const wasmTable: FFITable = ...
+         * const wasmMemory: WebAssembly.Memory = wasmMemory();
+         *
+         * const jsBatches: arrow.RecordBatch[] = []
+         * for (let i = 0; i < wasmTable.numBatches(); i++) {
+         *   // Pass `true` to copy arrays across the boundary instead of creating views.
+         *   const jsRecordBatch = parseRecordBatch(
+         *     wasmMemory.buffer,
+         *     wasmTable.arrayAddr(i),
+         *     wasmTable.schemaAddr(),
+         *     true
+         *   );
+         *   jsBatches.push(jsRecordBatch);
+         * }
+         * const jsTable = new arrow.Table(jsBatches);
+         * ```
+         *
+         * @param chunk number The chunk index to use
+         * @returns number pointer to an ArrowArray FFI struct in Wasm memory
+         * @param {number} chunk
+         * @returns {number}
+         */
+        arrayAddr(chunk) {
+          const ret = wasm.ffistream_arrayAddr(this.__wbg_ptr, chunk);
+          return ret >>> 0;
+        }
+        /**
+         * @returns {Uint32Array}
+         */
+        arrayAddrs() {
+          const ret = wasm.ffistream_arrayAddrs(this.__wbg_ptr);
+          var v1 = getArrayU32FromWasm0(ret[0], ret[1]).slice();
+          wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+          return v1;
+        }
+        drop() {
+          const ptr = this.__destroy_into_raw();
+          wasm.ffistream_drop(ptr);
+        }
+        /**
+         * Get the total number of elements in this stream
+         * @returns {number}
+         */
+        numArrays() {
+          const ret = wasm.ffistream_numArrays(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * Get the pointer to the ArrowSchema FFI struct
+         * @returns {number}
+         */
+        schemaAddr() {
+          const ret = wasm.ffistream_schemaAddr(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+      };
+      if (Symbol.dispose) FFIStream.prototype[Symbol.dispose] = FFIStream.prototype.free;
+      FileMetaData = class _FileMetaData {
+        static __wrap(ptr) {
+          const obj = Object.create(_FileMetaData.prototype);
+          obj.__wbg_ptr = ptr;
+          FileMetaDataFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          FileMetaDataFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_filemetadata_free(ptr, 0);
+        }
+        /**
+         * String message for application that wrote this file.
+         *
+         * This should have the following format:
+         * `<application> version <application version> (build <application build hash>)`.
+         *
+         * ```shell
+         * parquet-mr version 1.8.0 (build 0fda28af84b9746396014ad6a415b90592a98b3b)
+         * ```
+         * @returns {string | undefined}
+         */
+        createdBy() {
+          const ret = wasm.filemetadata_createdBy(this.__wbg_ptr);
+          let v1;
+          if (ret[0] !== 0) {
+            v1 = getStringFromWasm0(ret[0], ret[1]);
+            wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+          }
+          return v1;
+        }
+        /**
+         * Returns key_value_metadata of this file.
+         * @returns {Map<any, any>}
+         */
+        keyValueMetadata() {
+          const ret = wasm.filemetadata_keyValueMetadata(this.__wbg_ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return takeFromExternrefTable0(ret[0]);
+        }
+        /**
+         * Returns number of rows in the file.
+         * @returns {number}
+         */
+        numRows() {
+          const ret = wasm.filemetadata_numRows(this.__wbg_ptr);
+          return ret;
+        }
+        /**
+         * Returns version of this file.
+         * @returns {number}
+         */
+        version() {
+          const ret = wasm.filemetadata_version(this.__wbg_ptr);
+          return ret;
+        }
+      };
+      if (Symbol.dispose) FileMetaData.prototype[Symbol.dispose] = FileMetaData.prototype.free;
+      IntoUnderlyingByteSource = class {
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          IntoUnderlyingByteSourceFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_intounderlyingbytesource_free(ptr, 0);
+        }
+        /**
+         * @returns {number}
+         */
+        get autoAllocateChunkSize() {
+          const ret = wasm.intounderlyingbytesource_autoAllocateChunkSize(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        cancel() {
+          const ptr = this.__destroy_into_raw();
+          wasm.intounderlyingbytesource_cancel(ptr);
+        }
+        /**
+         * @param {ReadableByteStreamController} controller
+         * @returns {Promise<any>}
+         */
+        pull(controller) {
+          const ret = wasm.intounderlyingbytesource_pull(this.__wbg_ptr, controller);
+          return ret;
+        }
+        /**
+         * @param {ReadableByteStreamController} controller
+         */
+        start(controller) {
+          wasm.intounderlyingbytesource_start(this.__wbg_ptr, controller);
+        }
+        /**
+         * @returns {ReadableStreamType}
+         */
+        get type() {
+          const ret = wasm.intounderlyingbytesource_type(this.__wbg_ptr);
+          return __wbindgen_enum_ReadableStreamType[ret];
+        }
+      };
+      if (Symbol.dispose) IntoUnderlyingByteSource.prototype[Symbol.dispose] = IntoUnderlyingByteSource.prototype.free;
+      IntoUnderlyingSink = class {
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          IntoUnderlyingSinkFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_intounderlyingsink_free(ptr, 0);
+        }
+        /**
+         * @param {any} reason
+         * @returns {Promise<any>}
+         */
+        abort(reason) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.intounderlyingsink_abort(ptr, reason);
+          return ret;
+        }
+        /**
+         * @returns {Promise<any>}
+         */
+        close() {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.intounderlyingsink_close(ptr);
+          return ret;
+        }
+        /**
+         * @param {any} chunk
+         * @returns {Promise<any>}
+         */
+        write(chunk) {
+          const ret = wasm.intounderlyingsink_write(this.__wbg_ptr, chunk);
+          return ret;
+        }
+      };
+      if (Symbol.dispose) IntoUnderlyingSink.prototype[Symbol.dispose] = IntoUnderlyingSink.prototype.free;
+      IntoUnderlyingSource = class _IntoUnderlyingSource {
+        static __wrap(ptr) {
+          const obj = Object.create(_IntoUnderlyingSource.prototype);
+          obj.__wbg_ptr = ptr;
+          IntoUnderlyingSourceFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          IntoUnderlyingSourceFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_intounderlyingsource_free(ptr, 0);
+        }
+        cancel() {
+          const ptr = this.__destroy_into_raw();
+          wasm.intounderlyingsource_cancel(ptr);
+        }
+        /**
+         * @param {ReadableStreamDefaultController} controller
+         * @returns {Promise<any>}
+         */
+        pull(controller) {
+          const ret = wasm.intounderlyingsource_pull(this.__wbg_ptr, controller);
+          return ret;
+        }
+      };
+      if (Symbol.dispose) IntoUnderlyingSource.prototype[Symbol.dispose] = IntoUnderlyingSource.prototype.free;
+      ParquetFile = class _ParquetFile {
+        static __wrap(ptr) {
+          const obj = Object.create(_ParquetFile.prototype);
+          obj.__wbg_ptr = ptr;
+          ParquetFileFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          ParquetFileFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_parquetfile_free(ptr, 0);
+        }
+        /**
+         * Construct a ParquetFile from a new [Blob] or [File] handle.
+         *
+         * [Blob]: https://developer.mozilla.org/en-US/docs/Web/API/Blob
+         * [File]: https://developer.mozilla.org/en-US/docs/Web/API/File
+         *
+         * Safety: Do not use this in a multi-threaded environment,
+         * (transitively depends on `!Send` `web_sys::Blob`)
+         * @param {Blob} handle
+         * @returns {Promise<ParquetFile>}
+         */
+        static fromFile(handle) {
+          const ret = wasm.parquetfile_fromFile(handle);
+          return ret;
+        }
+        /**
+         * Construct a ParquetFile from a new URL.
+         * @param {string} url
+         * @returns {Promise<ParquetFile>}
+         */
+        static fromUrl(url) {
+          const ptr0 = passStringToWasm0(url, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+          const len0 = WASM_VECTOR_LEN;
+          const ret = wasm.parquetfile_fromUrl(ptr0, len0);
+          return ret;
+        }
+        /**
+         * @returns {ParquetMetaData}
+         */
+        metadata() {
+          const ret = wasm.parquetfile_metadata(this.__wbg_ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return ParquetMetaData.__wrap(ret[0]);
+        }
+        /**
+         * Read from the Parquet file in an async fashion.
+         *
+         * @param options
+         *
+         *    Options for reading Parquet data. Optional keys include:
+         *
+         *    - `batchSize`: The number of rows in each batch. If not provided, the upstream parquet
+         *           default is 1024.
+         *    - `rowGroups`: Only read data from the provided row group indexes.
+         *    - `limit`: Provide a limit to the number of rows to be read.
+         *    - `offset`: Provide an offset to skip over the given number of rows.
+         *    - `columns`: The column names from the file to read.
+         * @param {ReaderOptions | null} [options]
+         * @returns {Promise<Table>}
+         */
+        read(options) {
+          const ret = wasm.parquetfile_read(this.__wbg_ptr, isLikeNone(options) ? 0 : addToExternrefTable0(options));
+          return ret;
+        }
+        /**
+         * @returns {Schema}
+         */
+        schema() {
+          const ret = wasm.parquetfile_schema(this.__wbg_ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return Schema.__wrap(ret[0]);
+        }
+        /**
+         * Create a readable stream of record batches.
+         *
+         * Each item in the stream will be a {@linkcode RecordBatch}.
+         *
+         * @param options
+         *
+         *    Options for reading Parquet data. Optional keys include:
+         *
+         *    - `batchSize`: The number of rows in each batch. If not provided, the upstream parquet
+         *           default is 1024.
+         *    - `rowGroups`: Only read data from the provided row group indexes.
+         *    - `limit`: Provide a limit to the number of rows to be read.
+         *    - `offset`: Provide an offset to skip over the given number of rows.
+         *    - `columns`: The column names from the file to read.
+         *    - `concurrency`: The number of concurrent requests to make
+         * @param {ReaderOptions | null} [options]
+         * @returns {Promise<ReadableStream>}
+         */
+        stream(options) {
+          const ret = wasm.parquetfile_stream(this.__wbg_ptr, isLikeNone(options) ? 0 : addToExternrefTable0(options));
+          return ret;
+        }
+      };
+      if (Symbol.dispose) ParquetFile.prototype[Symbol.dispose] = ParquetFile.prototype.free;
+      ParquetMetaData = class _ParquetMetaData {
+        static __wrap(ptr) {
+          const obj = Object.create(_ParquetMetaData.prototype);
+          obj.__wbg_ptr = ptr;
+          ParquetMetaDataFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          ParquetMetaDataFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_parquetmetadata_free(ptr, 0);
+        }
+        /**
+         * Returns file metadata as reference.
+         * @returns {FileMetaData}
+         */
+        fileMetadata() {
+          const ret = wasm.parquetmetadata_fileMetadata(this.__wbg_ptr);
+          return FileMetaData.__wrap(ret);
+        }
+        /**
+         * Returns number of row groups in this file.
+         * @returns {number}
+         */
+        numRowGroups() {
+          const ret = wasm.parquetmetadata_numRowGroups(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * Returns row group metadata for `i`th position.
+         * Position should be less than number of row groups `num_row_groups`.
+         * @param {number} i
+         * @returns {RowGroupMetaData}
+         */
+        rowGroup(i) {
+          const ret = wasm.parquetmetadata_rowGroup(this.__wbg_ptr, i);
+          return RowGroupMetaData.__wrap(ret);
+        }
+        /**
+         * Returns row group metadata for all row groups
+         * @returns {RowGroupMetaData[]}
+         */
+        rowGroups() {
+          const ret = wasm.parquetmetadata_rowGroups(this.__wbg_ptr);
+          var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]);
+          wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+          return v1;
+        }
+      };
+      if (Symbol.dispose) ParquetMetaData.prototype[Symbol.dispose] = ParquetMetaData.prototype.free;
+      RecordBatch = class _RecordBatch {
+        static __wrap(ptr) {
+          const obj = Object.create(_RecordBatch.prototype);
+          obj.__wbg_ptr = ptr;
+          RecordBatchFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        static __unwrap(jsValue) {
+          if (!(jsValue instanceof _RecordBatch)) {
+            return 0;
+          }
+          return jsValue.__destroy_into_raw();
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          RecordBatchFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_recordbatch_free(ptr, 0);
+        }
+        /**
+         * Returns the total number of bytes of memory occupied physically by this batch.
+         * @returns {number}
+         */
+        getArrayMemorySize() {
+          const ret = wasm.recordbatch_getArrayMemorySize(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * Export this RecordBatch to FFI structs according to the Arrow C Data Interface.
+         *
+         * This method **does consume** the RecordBatch, so the original RecordBatch will be
+         * inaccessible after this call. You must still call {@linkcode FFIRecordBatch.free} after
+         * you've finished using the FFIRecordBatch.
+         * @returns {FFIData}
+         */
+        intoFFI() {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.recordbatch_intoFFI(ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return FFIData.__wrap(ret[0]);
+        }
+        /**
+         * Consume this RecordBatch and convert to an Arrow IPC Stream buffer
+         * @returns {Uint8Array}
+         */
+        intoIPCStream() {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.recordbatch_intoIPCStream(ptr);
+          if (ret[3]) {
+            throw takeFromExternrefTable0(ret[2]);
+          }
+          var v1 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
+          wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+          return v1;
+        }
+        /**
+         * The number of columns in this RecordBatch.
+         * @returns {number}
+         */
+        get numColumns() {
+          const ret = wasm.recordbatch_numColumns(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * The number of rows in this RecordBatch.
+         * @returns {number}
+         */
+        get numRows() {
+          const ret = wasm.recordbatch_numRows(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * The {@linkcode Schema} of this RecordBatch.
+         * @returns {Schema}
+         */
+        get schema() {
+          const ret = wasm.recordbatch_schema(this.__wbg_ptr);
+          return Schema.__wrap(ret);
+        }
+        /**
+         * Return a new RecordBatch where each column is sliced
+         * according to `offset` and `length`
+         * @param {number} offset
+         * @param {number} length
+         * @returns {RecordBatch}
+         */
+        slice(offset, length) {
+          const ret = wasm.recordbatch_slice(this.__wbg_ptr, offset, length);
+          return _RecordBatch.__wrap(ret);
+        }
+        /**
+         * Export this RecordBatch to FFI structs according to the Arrow C Data Interface.
+         *
+         * This method **does not consume** the RecordBatch, so you must remember to call {@linkcode
+         * RecordBatch.free} to release the resources. The underlying arrays are reference counted, so
+         * this method does not copy data, it only prevents the data from being released.
+         * @returns {FFIData}
+         */
+        toFFI() {
+          const ret = wasm.recordbatch_toFFI(this.__wbg_ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return FFIData.__wrap(ret[0]);
+        }
+        /**
+         * Override the schema of this [`RecordBatch`]
+         *
+         * Returns an error if `schema` is not a superset of the current schema
+         * as determined by [`Schema::contains`]
+         * @param {Schema} schema
+         * @returns {RecordBatch}
+         */
+        withSchema(schema) {
+          _assertClass(schema, Schema);
+          var ptr0 = schema.__destroy_into_raw();
+          const ret = wasm.recordbatch_withSchema(this.__wbg_ptr, ptr0);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return _RecordBatch.__wrap(ret[0]);
+        }
+      };
+      if (Symbol.dispose) RecordBatch.prototype[Symbol.dispose] = RecordBatch.prototype.free;
+      RowGroupMetaData = class _RowGroupMetaData {
+        static __wrap(ptr) {
+          const obj = Object.create(_RowGroupMetaData.prototype);
+          obj.__wbg_ptr = ptr;
+          RowGroupMetaDataFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          RowGroupMetaDataFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_rowgroupmetadata_free(ptr, 0);
+        }
+        /**
+         * Returns column chunk metadata for `i`th column.
+         * @param {number} i
+         * @returns {ColumnChunkMetaData}
+         */
+        column(i) {
+          const ret = wasm.rowgroupmetadata_column(this.__wbg_ptr, i);
+          return ColumnChunkMetaData.__wrap(ret);
+        }
+        /**
+         * Returns column chunk metadata for all columns
+         * @returns {ColumnChunkMetaData[]}
+         */
+        columns() {
+          const ret = wasm.rowgroupmetadata_columns(this.__wbg_ptr);
+          var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]);
+          wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+          return v1;
+        }
+        /**
+         * Total size of all compressed column data in this row group.
+         * @returns {number}
+         */
+        compressedSize() {
+          const ret = wasm.rowgroupmetadata_compressedSize(this.__wbg_ptr);
+          return ret;
+        }
+        /**
+         * Number of columns in this row group.
+         * @returns {number}
+         */
+        numColumns() {
+          const ret = wasm.rowgroupmetadata_numColumns(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * Number of rows in this row group.
+         * @returns {number}
+         */
+        numRows() {
+          const ret = wasm.rowgroupmetadata_numRows(this.__wbg_ptr);
+          return ret;
+        }
+        /**
+         * Total byte size of all uncompressed column data in this row group.
+         * @returns {number}
+         */
+        totalByteSize() {
+          const ret = wasm.rowgroupmetadata_totalByteSize(this.__wbg_ptr);
+          return ret;
+        }
+      };
+      if (Symbol.dispose) RowGroupMetaData.prototype[Symbol.dispose] = RowGroupMetaData.prototype.free;
+      Schema = class _Schema {
+        static __wrap(ptr) {
+          const obj = Object.create(_Schema.prototype);
+          obj.__wbg_ptr = ptr;
+          SchemaFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          SchemaFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_schema_free(ptr, 0);
+        }
+        /**
+         * Find the index of the column with the given name.
+         * @param {string} name
+         * @returns {number}
+         */
+        indexOf(name) {
+          const ptr0 = passStringToWasm0(name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+          const len0 = WASM_VECTOR_LEN;
+          const ret = wasm.schema_indexOf(this.__wbg_ptr, ptr0, len0);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return ret[0] >>> 0;
+        }
+        /**
+         * Export this Table to FFI structs according to the Arrow C Data Interface.
+         *
+         * This method **does consume** the Table, so the original Table will be
+         * inaccessible after this call. You must still call {@linkcode FFITable.free} after
+         * you've finished using the FFITable.
+         * @returns {FFISchema}
+         */
+        intoFFI() {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.schema_intoFFI(ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return FFISchema.__wrap(ret[0]);
+        }
+        /**
+         * Consume this schema and convert to an Arrow IPC Stream buffer
+         * @returns {Uint8Array}
+         */
+        intoIPCStream() {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.schema_intoIPCStream(ptr);
+          if (ret[3]) {
+            throw takeFromExternrefTable0(ret[2]);
+          }
+          var v1 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
+          wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+          return v1;
+        }
+        /**
+         * Returns an immutable reference to the Map of custom metadata key-value pairs.
+         * @returns {SchemaMetadata}
+         */
+        metadata() {
+          const ret = wasm.schema_metadata(this.__wbg_ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return takeFromExternrefTable0(ret[0]);
+        }
+        /**
+         * Export this schema to an FFISchema object, which can be read with arrow-js-ffi.
+         *
+         * This method **does not consume** the Schema, so you must remember to call {@linkcode
+         * Schema.free} to release the resources. The underlying arrays are reference counted, so
+         * this method does not copy data, it only prevents the data from being released.
+         * @returns {FFISchema}
+         */
+        toFFI() {
+          const ret = wasm.schema_toFFI(this.__wbg_ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return FFISchema.__wrap(ret[0]);
+        }
+        /**
+         * Sets the metadata of this `Schema` to be `metadata` and returns a new object
+         * @param {SchemaMetadata} metadata
+         * @returns {Schema}
+         */
+        withMetadata(metadata) {
+          const ret = wasm.schema_withMetadata(this.__wbg_ptr, metadata);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return _Schema.__wrap(ret[0]);
+        }
+      };
+      if (Symbol.dispose) Schema.prototype[Symbol.dispose] = Schema.prototype.free;
+      Table = class _Table {
+        static __wrap(ptr) {
+          const obj = Object.create(_Table.prototype);
+          obj.__wbg_ptr = ptr;
+          TableFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          TableFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_table_free(ptr, 0);
+        }
+        /**
+         * Create a table from an Arrow IPC Stream buffer
+         * @param {Uint8Array} buf
+         * @returns {Table}
+         */
+        static fromIPCStream(buf) {
+          const ptr0 = passArray8ToWasm0(buf, wasm.__wbindgen_malloc);
+          const len0 = WASM_VECTOR_LEN;
+          const ret = wasm.table_fromIPCStream(ptr0, len0);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return _Table.__wrap(ret[0]);
+        }
+        /**
+         * Returns the total number of bytes of memory occupied physically by all batches in this
+         * table.
+         * @returns {number}
+         */
+        getArrayMemorySize() {
+          const ret = wasm.table_getArrayMemorySize(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * Export this Table to FFI structs according to the Arrow C Data Interface.
+         *
+         * This method **does consume** the Table, so the original Table will be
+         * inaccessible after this call. You must still call {@linkcode FFITable.free} after
+         * you've finished using the FFITable.
+         * @returns {FFIStream}
+         */
+        intoFFI() {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.table_intoFFI(ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return FFIStream.__wrap(ret[0]);
+        }
+        /**
+         * Consume this table and convert to an Arrow IPC Stream buffer
+         * @returns {Uint8Array}
+         */
+        intoIPCStream() {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.table_intoIPCStream(ptr);
+          if (ret[3]) {
+            throw takeFromExternrefTable0(ret[2]);
+          }
+          var v1 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
+          wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+          return v1;
+        }
+        /**
+         * The number of batches in the Table
+         * @returns {number}
+         */
+        get numBatches() {
+          const ret = wasm.table_numBatches(this.__wbg_ptr);
+          return ret >>> 0;
+        }
+        /**
+         * Access a RecordBatch from the Table by index.
+         *
+         * @param index The positional index of the RecordBatch to retrieve.
+         * @returns a RecordBatch or `null` if out of range.
+         * @param {number} index
+         * @returns {RecordBatch | undefined}
+         */
+        recordBatch(index) {
+          const ret = wasm.table_recordBatch(this.__wbg_ptr, index);
+          return ret === 0 ? void 0 : RecordBatch.__wrap(ret);
+        }
+        /**
+         * @returns {RecordBatch[]}
+         */
+        recordBatches() {
+          const ret = wasm.table_recordBatches(this.__wbg_ptr);
+          var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]);
+          wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+          return v1;
+        }
+        /**
+         * Access the Table's {@linkcode Schema}.
+         * @returns {Schema}
+         */
+        get schema() {
+          const ret = wasm.table_schema(this.__wbg_ptr);
+          return Schema.__wrap(ret);
+        }
+        /**
+         * Export this Table to FFI structs according to the Arrow C Data Interface.
+         *
+         * This method **does not consume** the Table, so you must remember to call {@linkcode
+         * Table.free} to release the resources. The underlying arrays are reference counted, so
+         * this method does not copy data, it only prevents the data from being released.
+         * @returns {FFIStream}
+         */
+        toFFI() {
+          const ret = wasm.table_toFFI(this.__wbg_ptr);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return FFIStream.__wrap(ret[0]);
+        }
+      };
+      if (Symbol.dispose) Table.prototype[Symbol.dispose] = Table.prototype.free;
+      WriterProperties = class _WriterProperties {
+        static __wrap(ptr) {
+          const obj = Object.create(_WriterProperties.prototype);
+          obj.__wbg_ptr = ptr;
+          WriterPropertiesFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          WriterPropertiesFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_writerproperties_free(ptr, 0);
+        }
+      };
+      if (Symbol.dispose) WriterProperties.prototype[Symbol.dispose] = WriterProperties.prototype.free;
+      WriterPropertiesBuilder = class _WriterPropertiesBuilder {
+        static __wrap(ptr) {
+          const obj = Object.create(_WriterPropertiesBuilder.prototype);
+          obj.__wbg_ptr = ptr;
+          WriterPropertiesBuilderFinalization.register(obj, obj.__wbg_ptr, obj);
+          return obj;
+        }
+        __destroy_into_raw() {
+          const ptr = this.__wbg_ptr;
+          this.__wbg_ptr = 0;
+          WriterPropertiesBuilderFinalization.unregister(this);
+          return ptr;
+        }
+        free() {
+          const ptr = this.__destroy_into_raw();
+          wasm.__wbg_writerpropertiesbuilder_free(ptr, 0);
+        }
+        /**
+         * Finalizes the configuration and returns immutable writer properties struct.
+         * @returns {WriterProperties}
+         */
+        build() {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_build(ptr);
+          return WriterProperties.__wrap(ret);
+        }
+        /**
+         * Returns default state of the builder.
+         */
+        constructor() {
+          const ret = wasm.writerpropertiesbuilder_new();
+          this.__wbg_ptr = ret;
+          WriterPropertiesBuilderFinalization.register(this, this.__wbg_ptr, this);
+          return this;
+        }
+        /**
+         * Sets compression codec for a column.
+         * Takes precedence over globally defined settings.
+         * @param {string} col
+         * @param {Compression} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setColumnCompression(col, value) {
+          const ptr = this.__destroy_into_raw();
+          const ptr0 = passStringToWasm0(col, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+          const len0 = WASM_VECTOR_LEN;
+          const ret = wasm.writerpropertiesbuilder_setColumnCompression(ptr, ptr0, len0, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets flag to enable/disable dictionary encoding for a column.
+         * Takes precedence over globally defined settings.
+         * @param {string} col
+         * @param {boolean} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setColumnDictionaryEnabled(col, value) {
+          const ptr = this.__destroy_into_raw();
+          const ptr0 = passStringToWasm0(col, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+          const len0 = WASM_VECTOR_LEN;
+          const ret = wasm.writerpropertiesbuilder_setColumnDictionaryEnabled(ptr, ptr0, len0, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets encoding for a column.
+         * Takes precedence over globally defined settings.
+         *
+         * If dictionary is not enabled, this is treated as a primary encoding for this
+         * column. In case when dictionary is enabled for this column, either through
+         * global defaults or explicitly, this value is considered to be a fallback
+         * encoding for this column.
+         *
+         * Panics if user tries to set dictionary encoding here, regardless of dictionary
+         * encoding flag being set.
+         * @param {string} col
+         * @param {Encoding} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setColumnEncoding(col, value) {
+          const ptr = this.__destroy_into_raw();
+          const ptr0 = passStringToWasm0(col, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+          const len0 = WASM_VECTOR_LEN;
+          const ret = wasm.writerpropertiesbuilder_setColumnEncoding(ptr, ptr0, len0, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets flag to enable/disable statistics for a column.
+         * Takes precedence over globally defined settings.
+         * @param {string} col
+         * @param {EnabledStatistics} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setColumnStatisticsEnabled(col, value) {
+          const ptr = this.__destroy_into_raw();
+          const ptr0 = passStringToWasm0(col, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+          const len0 = WASM_VECTOR_LEN;
+          const ret = wasm.writerpropertiesbuilder_setColumnStatisticsEnabled(ptr, ptr0, len0, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets compression codec for any column.
+         * @param {Compression} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setCompression(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setCompression(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets "created by" property.
+         * @param {string} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setCreatedBy(value) {
+          const ptr = this.__destroy_into_raw();
+          const ptr0 = passStringToWasm0(value, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+          const len0 = WASM_VECTOR_LEN;
+          const ret = wasm.writerpropertiesbuilder_setCreatedBy(ptr, ptr0, len0);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets data page size limit.
+         * @param {number} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setDataPageSizeLimit(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setDataPageSizeLimit(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets flag to enable/disable dictionary encoding for any column.
+         *
+         * Use this method to set dictionary encoding, instead of explicitly specifying
+         * encoding in `set_encoding` method.
+         * @param {boolean} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setDictionaryEnabled(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setDictionaryEnabled(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets dictionary page size limit.
+         * @param {number} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setDictionaryPageSizeLimit(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setDictionaryPageSizeLimit(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets encoding for any column.
+         *
+         * If dictionary is not enabled, this is treated as a primary encoding for all
+         * columns. In case when dictionary is enabled for any column, this value is
+         * considered to be a fallback encoding for that column.
+         *
+         * Panics if user tries to set dictionary encoding here, regardless of dictionary
+         * encoding flag being set.
+         * @param {Encoding} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setEncoding(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setEncoding(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets "key_value_metadata" property.
+         * @param {KeyValueMetadata} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setKeyValueMetadata(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setKeyValueMetadata(ptr, value);
+          if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+          }
+          return _WriterPropertiesBuilder.__wrap(ret[0]);
+        }
+        /**
+         * Sets maximum size of a row group in bytes.
+         * @param {number} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setMaxRowGroupBytes(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setMaxRowGroupBytes(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets maximum number of rows in a row group.
+         * @param {number} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setMaxRowGroupSize(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setMaxRowGroupSize(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets flag to enable/disable statistics for any column.
+         * @param {EnabledStatistics} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setStatisticsEnabled(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setStatisticsEnabled(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets write batch size.
+         * @param {number} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setWriteBatchSize(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setWriteBatchSize(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+        /**
+         * Sets writer version.
+         * @param {WriterVersion} value
+         * @returns {WriterPropertiesBuilder}
+         */
+        setWriterVersion(value) {
+          const ptr = this.__destroy_into_raw();
+          const ret = wasm.writerpropertiesbuilder_setWriterVersion(ptr, value);
+          return _WriterPropertiesBuilder.__wrap(ret);
+        }
+      };
+      if (Symbol.dispose) WriterPropertiesBuilder.prototype[Symbol.dispose] = WriterPropertiesBuilder.prototype.free;
+      WriterVersion = Object.freeze({
+        V1: 0,
+        "0": "V1",
+        V2: 1,
+        "1": "V2"
+      });
+      __wbindgen_enum_ReadableStreamType = ["bytes"];
+      __wbindgen_enum_RequestCache = ["default", "no-store", "reload", "no-cache", "force-cache", "only-if-cached"];
+      __wbindgen_enum_RequestCredentials = ["omit", "same-origin", "include"];
+      __wbindgen_enum_RequestMode = ["same-origin", "no-cors", "cors", "navigate"];
+      ColumnChunkMetaDataFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_columnchunkmetadata_free(ptr, 1));
+      FFIDataFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_ffidata_free(ptr, 1));
+      FFISchemaFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_ffischema_free(ptr, 1));
+      FFIStreamFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_ffistream_free(ptr, 1));
+      FileMetaDataFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_filemetadata_free(ptr, 1));
+      IntoUnderlyingByteSourceFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_intounderlyingbytesource_free(ptr, 1));
+      IntoUnderlyingSinkFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_intounderlyingsink_free(ptr, 1));
+      IntoUnderlyingSourceFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_intounderlyingsource_free(ptr, 1));
+      ParquetFileFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_parquetfile_free(ptr, 1));
+      ParquetMetaDataFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_parquetmetadata_free(ptr, 1));
+      RecordBatchFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_recordbatch_free(ptr, 1));
+      RowGroupMetaDataFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_rowgroupmetadata_free(ptr, 1));
+      SchemaFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_schema_free(ptr, 1));
+      TableFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_table_free(ptr, 1));
+      WriterPropertiesFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_writerproperties_free(ptr, 1));
+      WriterPropertiesBuilderFinalization = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((ptr) => wasm.__wbg_writerpropertiesbuilder_free(ptr, 1));
+      CLOSURE_DTORS = typeof FinalizationRegistry === "undefined" ? { register: () => {
+      }, unregister: () => {
+      } } : new FinalizationRegistry((state) => wasm.__wbindgen_destroy_closure(state.a, state.b));
+      cachedDataViewMemory0 = null;
+      cachedUint32ArrayMemory0 = null;
+      cachedUint8ArrayMemory0 = null;
+      cachedTextDecoder = new TextDecoder("utf-8", { ignoreBOM: true, fatal: true });
+      cachedTextDecoder.decode();
+      MAX_SAFARI_DECODE_BYTES = 2146435072;
+      numBytesDecoded = 0;
+      cachedTextEncoder = new TextEncoder();
+      if (!("encodeInto" in cachedTextEncoder)) {
+        cachedTextEncoder.encodeInto = function(arg, view) {
+          const buf = cachedTextEncoder.encode(arg);
+          view.set(buf);
+          return {
+            read: arg.length,
+            written: buf.length
+          };
+        };
+      }
+      WASM_VECTOR_LEN = 0;
+    }
+  });
+
   // src/schemas.js
   var require_schemas3 = __commonJS({
     "src/schemas.js"(exports, module) {
@@ -40736,6 +43239,16 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
   globalThis.__zod_globalConfig = { jitless: true };
   var duckdb = require_duckdb_browser();
   var { z } = require_zod();
+  var { writeParquet: writeParquet2, readParquet: readParquet2, Table: Table2, WriterPropertiesBuilder: WriterPropertiesBuilder2, Compression: Compression2 } = (init_parquet_wasm(), __toCommonJS(parquet_wasm_exports));
+  var initParquetWasm = (init_parquet_wasm(), __toCommonJS(parquet_wasm_exports)).default;
+  var { tableToIPC, tableFromIPC } = require_Arrow_dom();
+  var parquetWasmInitialized = false;
+  async function initParquet() {
+    if (!parquetWasmInitialized) {
+      await initParquetWasm({ module_or_path: browser.runtime.getURL("dist/parquet_wasm_bg.wasm") });
+      parquetWasmInitialized = true;
+    }
+  }
   var { TrendPayloadSchema, DatabaseRowSchema } = require_schemas3();
   var db;
   var conn;
@@ -41228,6 +43741,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       filter.onstop = async (event) => {
         filter.disconnect();
         try {
+          if (!responseBody || !responseBody.trim()) return;
           let rawData = JSON.parse(responseBody);
           let trendsArray = rawData.topics || rawData.trends || (Array.isArray(rawData) ? rawData : []);
           let validTrendsArray = TrendPayloadSchema.parse(trendsArray);
@@ -41299,11 +43813,18 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     if (message.command === "OPEN_OPTIONS_PAGE") {
       (async () => {
         try {
+          const optionsUrl = browser.runtime.getURL("src/options.html");
+          const existingTabs = await browser.tabs.query({ url: optionsUrl });
+          if (existingTabs.length > 0) {
+            await browser.tabs.update(existingTabs[0].id, { active: true });
+            await browser.windows.update(existingTabs[0].windowId, { focused: true });
+            return;
+          }
           if (activeBskyTabId) {
             const tab = await browser.tabs.get(activeBskyTabId);
             if (tab && tab.windowId !== void 0) {
               await browser.tabs.create({
-                url: browser.runtime.getURL("src/options.html"),
+                url: optionsUrl,
                 windowId: tab.windowId,
                 index: tab.index + 1
               });
@@ -41395,9 +43916,17 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       }
     } else if (message.command === "IMPORT") {
       console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Importing database...`);
+      let wasSleeping = false;
+      if (!conn) {
+        wasSleeping = true;
+        await initDatabase();
+      }
       try {
-        const buffer = new Uint8Array(await message.file.arrayBuffer());
-        await db.registerFileBuffer("import.parquet", buffer);
+        await initParquet();
+        const parquetBuffer = new Uint8Array(await message.file.arrayBuffer());
+        const wasmTable = readParquet2(parquetBuffer);
+        const ipcStream = wasmTable.intoIPCStream();
+        const arrowTable = tableFromIPC(ipcStream);
         const existingRes = await conn.query("SELECT captured_at FROM trends");
         const existingSet = new Set(existingRes.toArray().map((r) => {
           let d = r.toJSON ? r.toJSON().captured_at : r.captured_at;
@@ -41405,8 +43934,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
           if (typeof d === "number") return d;
           return new Date(d).getTime();
         }));
-        const importRes = await conn.query(`SELECT * FROM 'import.parquet'`);
-        const incomingRows = importRes.toArray().map((r) => r.toJSON ? r.toJSON() : r);
+        const incomingRows = arrowTable.toArray().map((r) => r.toJSON ? r.toJSON() : r);
         const validInsertRows = [];
         let errorsLogged = 0;
         for (let i = 0; i < incomingRows.length; i++) {
@@ -41461,7 +43989,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
             await stmt.close();
           }
         }
-        console.log(`[Import] Finished. Inserted ${validInsertRows.length} valid rows. Skipped ${errorsLogged} invalid/corrupt rows.`);
+        console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] [Import] Finished. Inserted ${validInsertRows.length} valid rows. Skipped ${errorsLogged} invalid/corrupt rows.`);
         const countRes = await conn.query("SELECT COUNT(*) as c FROM trends");
         const firstRow = countRes.toArray()[0].toJSON();
         eventCount = Number(firstRow.c || firstRow.count || Object.values(firstRow)[0] || 0);
@@ -41474,21 +44002,52 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         throw e;
       }
     } else if (message.command === "EXPORT") {
-      console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Exporting database...`);
-      try {
-        await conn.query(`COPY trends TO 'opfs://trends_export.parquet' (FORMAT PARQUET)`);
-        const opfsRoot = await navigator.storage.getDirectory();
-        const fileHandle = await opfsRoot.getFileHandle("trends_export.parquet");
-        const file = await fileHandle.getFile();
-        const url = URL.createObjectURL(file);
-        browser.downloads.download({
-          url,
-          filename: `bluesky_trends_${(/* @__PURE__ */ new Date()).getTime()}.parquet`,
-          saveAs: false
-        });
-      } catch (e) {
-        console.error(`[${(/* @__PURE__ */ new Date()).toISOString()}] Export failed`, e);
-      }
+      return new Promise(async (resolve, reject) => {
+        console.log(`[${(/* @__PURE__ */ new Date()).toISOString()}] Exporting database...`);
+        let wasSleeping = false;
+        if (!conn) {
+          wasSleeping = true;
+          await initDatabase();
+        }
+        try {
+          await initParquet();
+          const res = await conn.query("SELECT * FROM trends");
+          const rows = res.toArray().map((r) => r.toJSON ? r.toJSON() : r);
+          const { vectorFromArray, Table: ArrowTable } = require_Arrow_dom();
+          const captured_at = vectorFromArray(rows.map((r) => {
+            let d = r.captured_at;
+            if (d instanceof Date) return d.getTime();
+            if (typeof d === "number") return d;
+            return new Date(d).getTime();
+          }));
+          const raw_json = vectorFromArray(rows.map((r) => String(r.raw_json)));
+          const cleanTable = new ArrowTable({ captured_at, raw_json });
+          const ipcStream = tableToIPC(cleanTable, "stream");
+          const wasmTable = Table2.fromIPCStream(ipcStream);
+          const writerProps = new WriterPropertiesBuilder2().setCompression(Compression2.ZSTD).build();
+          const parquetBytes = writeParquet2(wasmTable, writerProps);
+          const blob = new Blob([parquetBytes], { type: "application/vnd.apache.parquet" });
+          const url = URL.createObjectURL(blob);
+          await browser.downloads.download({
+            url,
+            filename: `bluesky_trends_${(/* @__PURE__ */ new Date()).getTime()}.parquet`,
+            saveAs: false
+          });
+          setTimeout(() => URL.revokeObjectURL(url), 1e4);
+          if (wasSleeping) {
+            await terminateDatabase().catch(() => {
+            });
+          }
+          resolve({ success: true });
+        } catch (e) {
+          console.error(`[${(/* @__PURE__ */ new Date()).toISOString()}] Export failed`, e);
+          if (wasSleeping) {
+            await terminateDatabase().catch(() => {
+            });
+          }
+          resolve({ success: false, error: e.message || e.toString() });
+        }
+      });
     } else if (message.command === "CLEAR") {
       try {
         await conn.query(`DROP TABLE IF EXISTS trends`);

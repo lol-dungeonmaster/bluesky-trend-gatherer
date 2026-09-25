@@ -1,6 +1,18 @@
 globalThis.__zod_globalConfig = { jitless: true };
 const duckdb = require('@duckdb/duckdb-wasm');
 const { z } = require('zod');
+const { writeParquet, readParquet, Table, WriterPropertiesBuilder, Compression } = require('parquet-wasm/esm/parquet_wasm.js');
+const initParquetWasm = require('parquet-wasm/esm/parquet_wasm.js').default;
+const { tableToIPC, tableFromIPC } = require('apache-arrow');
+
+// Ensure parquet-wasm is initialized before use
+let parquetWasmInitialized = false;
+async function initParquet() {
+    if (!parquetWasmInitialized) {
+        await initParquetWasm({ module_or_path: browser.runtime.getURL('dist/parquet_wasm_bg.wasm') });
+        parquetWasmInitialized = true;
+    }
+}
 
 // --- ZOD SCHEMAS ---
 const { TrendPayloadSchema, DatabaseRowSchema } = require('./schemas.js');
@@ -519,7 +531,7 @@ browser.webRequest.onBeforeRequest.addListener(
     filter.onstop = async (event) => {
       filter.disconnect();
       try {
-        
+        if (!responseBody || !responseBody.trim()) return;
         let rawData = JSON.parse(responseBody);
         let trendsArray = rawData.topics || rawData.trends || (Array.isArray(rawData) ? rawData : []);
         
@@ -611,11 +623,19 @@ browser.runtime.onMessage.addListener(async (message) => {
     if (message.command === "OPEN_OPTIONS_PAGE") {
         (async () => {
             try {
+                const optionsUrl = browser.runtime.getURL("src/options.html");
+                const existingTabs = await browser.tabs.query({ url: optionsUrl });
+                if (existingTabs.length > 0) {
+                    await browser.tabs.update(existingTabs[0].id, { active: true });
+                    await browser.windows.update(existingTabs[0].windowId, { focused: true });
+                    return;
+                }
+                
                 if (activeBskyTabId) {
                     const tab = await browser.tabs.get(activeBskyTabId);
                     if (tab && tab.windowId !== undefined) {
                         await browser.tabs.create({
-                            url: browser.runtime.getURL("src/options.html"),
+                            url: optionsUrl,
                             windowId: tab.windowId,
                             index: tab.index + 1
                         });
@@ -711,9 +731,18 @@ browser.runtime.onMessage.addListener(async (message) => {
       }
     } else if (message.command === "IMPORT") {
         console.log(`[${new Date().toISOString()}] Importing database...`);
-        try {
-            const buffer = new Uint8Array(await message.file.arrayBuffer());
-            await db.registerFileBuffer('import.parquet', buffer);
+        let wasSleeping = false;
+        if (!conn) {
+            wasSleeping = true;
+            await initDatabase();
+        }
+                try {
+            await initParquet();
+            
+            const parquetBuffer = new Uint8Array(await message.file.arrayBuffer());
+            const wasmTable = readParquet(parquetBuffer);
+            const ipcStream = wasmTable.intoIPCStream();
+            const arrowTable = tableFromIPC(ipcStream);
             
             // Read all existing timestamps for deduplication
             const existingRes = await conn.query("SELECT captured_at FROM trends");
@@ -724,9 +753,7 @@ browser.runtime.onMessage.addListener(async (message) => {
                 return new Date(d).getTime();
             }));
             
-            // Read all incoming rows
-            const importRes = await conn.query(`SELECT * FROM 'import.parquet'`);
-            const incomingRows = importRes.toArray().map(r => r.toJSON ? r.toJSON() : r);
+            const incomingRows = arrowTable.toArray().map(r => r.toJSON ? r.toJSON() : r);
             
             const validInsertRows = [];
             let errorsLogged = 0;
@@ -792,10 +819,11 @@ browser.runtime.onMessage.addListener(async (message) => {
                 }
             }
             
-            console.log(`[Import] Finished. Inserted ${validInsertRows.length} valid rows. Skipped ${errorsLogged} invalid/corrupt rows.`);
+            console.log(`[${new Date().toISOString()}] [Import] Finished. Inserted ${validInsertRows.length} valid rows. Skipped ${errorsLogged} invalid/corrupt rows.`);
             
             const countRes = await conn.query("SELECT COUNT(*) as c FROM trends");
-            const firstRow = countRes.toArray()[0].toJSON();
+            const rowObj = countRes.toArray()[0];
+            const firstRow = rowObj.toJSON ? rowObj.toJSON() : rowObj;
             eventCount = Number(firstRow.c || firstRow.count || Object.values(firstRow)[0] || 0);
             await browser.storage.local.set({ eventCount });
             updateIcon();
@@ -806,23 +834,58 @@ browser.runtime.onMessage.addListener(async (message) => {
             throw e;
         }
     } else if (message.command === "EXPORT") {
-        console.log(`[${new Date().toISOString()}] Exporting database...`);
-        try {
-            await conn.query(`COPY trends TO 'opfs://trends_export.parquet' (FORMAT PARQUET)`);
-            
-            const opfsRoot = await navigator.storage.getDirectory();
-            const fileHandle = await opfsRoot.getFileHandle('trends_export.parquet');
-            const file = await fileHandle.getFile();
-            const url = URL.createObjectURL(file);
-            
-            browser.downloads.download({
-                url: url,
-                filename: `bluesky_trends_${new Date().getTime()}.parquet`,
-                saveAs: false
-            });
-        } catch (e) {
-            console.error(`[${new Date().toISOString()}] Export failed`, e);
-        }
+        return new Promise(async (resolve, reject) => {
+            console.log(`[${new Date().toISOString()}] Exporting database...`);
+            let wasSleeping = false;
+            if (!conn) {
+                wasSleeping = true;
+                await initDatabase();
+            }
+            try {
+                await initParquet();
+                
+                // Get data as Apache Arrow Table
+                const res = await conn.query("SELECT * FROM trends");
+                const rows = res.toArray().map(r => r.toJSON ? r.toJSON() : r);
+                
+                // Manually construct a pristine Apache Arrow Table to avoid DuckDB-Wasm schema corruption
+                const { vectorFromArray, Table: ArrowTable } = require('apache-arrow');
+                const captured_at = vectorFromArray(rows.map(r => {
+                    let d = r.captured_at;
+                    if (d instanceof Date) return d.getTime();
+                    if (typeof d === 'number') return d;
+                    return new Date(d).getTime();
+                }));
+                const raw_json = vectorFromArray(rows.map(r => String(r.raw_json)));
+                const cleanTable = new ArrowTable({ captured_at, raw_json });
+                
+                // Serialize to IPC stream
+                const ipcStream = tableToIPC(cleanTable, "stream");
+                
+                // Load into parquet-wasm and encode to Parquet
+                const wasmTable = Table.fromIPCStream(ipcStream);
+                const writerProps = new WriterPropertiesBuilder().setCompression(Compression.ZSTD).build();
+                const parquetBytes = writeParquet(wasmTable, writerProps);
+                
+                const blob = new Blob([parquetBytes], { type: 'application/vnd.apache.parquet' });
+                const url = URL.createObjectURL(blob);
+                
+                await browser.downloads.download({
+                    url: url,
+                    filename: `bluesky_trends_${new Date().getTime()}.parquet`,
+                    saveAs: false
+                });
+                
+                setTimeout(() => URL.revokeObjectURL(url), 10000);
+                
+                if (wasSleeping) { await terminateDatabase().catch(()=>{}); }
+                resolve({ success: true });
+            } catch (e) {
+                console.error(`[${new Date().toISOString()}] Export failed`, e);
+                if (wasSleeping) { await terminateDatabase().catch(()=>{}); }
+                resolve({ success: false, error: e.message || e.toString() });
+            }
+        });
     } else if (message.command === "CLEAR") {
         try {
             await conn.query(`DROP TABLE IF EXISTS trends`);

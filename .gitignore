@@ -1,3 +1,4 @@
 node_modules/
 *.xpi
 coverage/
+.dev_scripts/

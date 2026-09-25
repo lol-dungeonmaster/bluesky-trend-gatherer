@@ -19,4 +19,16 @@ code = code.replace(/return new Function\(\`x\`, \`\$\{fnBody\}\nreturn true;\`\
 
 fs.writeFileSync('dist/background.bundle.js', code);
 
-fs.copyFileSync('node_modules/webextension-polyfill/dist/browser-polyfill.min.js', 'dist/browser-polyfill.min.js');
+let polyfillCode = fs.readFileSync('node_modules/webextension-polyfill/dist/browser-polyfill.min.js', 'utf8');
+polyfillCode = polyfillCode.replace(/\/\/# sourceMappingURL=browser-polyfill\.min\.js\.map/g, '');
+fs.writeFileSync('dist/browser-polyfill.min.js', polyfillCode);
+
+
+const path = require('path');
+if (!fs.existsSync(path.join(__dirname, '../dist'))) {
+    fs.mkdirSync(path.join(__dirname, '../dist'));
+}
+fs.copyFileSync(
+    path.join(__dirname, '../node_modules/parquet-wasm/esm/parquet_wasm_bg.wasm'),
+    path.join(__dirname, '../dist/parquet_wasm_bg.wasm')
+);

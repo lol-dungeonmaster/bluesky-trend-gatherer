@@ -1,6 +1,11 @@
 document.getElementById('btn-export').addEventListener('click', () => {
-    browser.runtime.sendMessage({ command: "EXPORT" });
-    alert("Export started! Check your downloads folder in a moment.");
+    browser.runtime.sendMessage({ command: "EXPORT" }).then((res) => {
+        if (res && res.success) {
+            alert("Export started! Check your downloads folder in a moment.");
+        } else {
+            alert("Export failed: " + (res ? res.error : "Unknown error"));
+        }
+    }).catch(e => alert("Export failed: " + e.message));
 });
 
 document.getElementById('btn-clear').addEventListener('click', () => {
